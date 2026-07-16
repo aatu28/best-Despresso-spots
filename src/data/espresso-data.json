@@ -260,5 +260,29 @@
     "latitude": 40.7608,
     "longitude": -111.891,
     "cafes": ["Delice Frency Bakery"]
+  },
+  {
+    "id": "washington-dc-usa",
+    "city": "Washington DC",
+    "country": "United States",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "cafes": ["Tatte Bakery & Cafe"]
+  },
+  {
+    "id": "victoria-falls-zimbabwe",
+    "city": "Victoria Falls",
+    "country": "Zimbabwe",
+    "latitude": -17.9243,
+    "longitude": 25.8572,
+    "cafes": ["Anantara Stanley & Livingstone Victoria Falls Hotel"]
+  },
+  {
+    "id": "langkawi-malaysia",
+    "city": "Langkawi",
+    "country": "Malaysia",
+    "latitude": 6.35,
+    "longitude": 99.8,
+    "cafes": ["St Regis Langkawi"]
   }
 ]

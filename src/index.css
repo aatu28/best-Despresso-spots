@@ -10,6 +10,7 @@
   --color-paper-raised: #e3e6d8;
   --color-paper-card: #f6f7f0;
   --color-ocean: #b9cdd0;
+  --color-ocean-light: #cbdcde;
   --color-ocean-line: rgba(28, 43, 58, 0.09);
   --color-land: #cebe97;
   --color-land-line: rgba(28, 43, 58, 0.28);
@@ -33,6 +34,7 @@
     --color-paper-raised: #1b2624;
     --color-paper-card: #1c2725;
     --color-ocean: #0f1a1c;
+    --color-ocean-light: #17282b;
     --color-ocean-line: rgba(238, 240, 230, 0.06);
     --color-land: #423722;
     --color-land-line: rgba(238, 240, 230, 0.22);
@@ -149,4 +151,38 @@ g.city-marker:focus-visible .marker-dot {
 
 .stamp-card {
   transition: transform 0.28s cubic-bezier(0.22, 0.68, 0.34, 1), opacity 0.22s ease;
+}
+
+/* ---------- map zoom controls ---------- */
+
+.map-zoom-btn {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--color-ink-soft);
+  background: transparent;
+  cursor: pointer;
+}
+
+.map-zoom-btn:hover {
+  color: var(--color-ink);
+  background: var(--color-paper-raised);
+}
+
+.map-zoom-btn:focus-visible {
+  outline: 2px solid var(--color-accent-2);
+  outline-offset: -2px;
+}
+
+svg[role='img'] {
+  cursor: grab;
+}
+
+svg[role='img']:active {
+  cursor: grabbing;
 }
