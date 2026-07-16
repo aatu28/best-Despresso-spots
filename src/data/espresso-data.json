@@ -14,7 +14,8 @@
       "Haraz Coffee House",
       "Sightglass Coffee",
       "Red Bay Coffee",
-      "Rosalind Bakery"
+      "Rosalind Bakery",
+      "Blue Bottle Coffee Roasters"
     ]
   },
   {
@@ -75,7 +76,7 @@
     "country": "Vietnam",
     "latitude": 10.8231,
     "longitude": 106.6297,
-    "cafes": ["Copa Coffee", "Alembic City Cafe"]
+    "cafes": ["Copa Coffee", "Alembic City Cafe", "74 Ky Con"]
   },
   {
     "id": "istanbul-turkiye",
@@ -171,7 +172,7 @@
     "country": "South Korea",
     "latitude": 37.5665,
     "longitude": 126.978,
-    "cafes": ["London Bagel Museum", "Various cafes and bakeries", "% Arabica", "PP Coffee"]
+    "cafes": ["London Bagel Museum", "Various cafes and bakeries", "% Arabica", "PP Coffee", "UNDEBT"]
   },
   {
     "id": "petaling-jaya-malaysia",
@@ -236,5 +237,29 @@
     "latitude": 35.6467,
     "longitude": 139.6531,
     "cafes": ["Rain on the Roof"]
+  },
+  {
+    "id": "shinagawa-station-japan",
+    "city": "Shinagawa Station",
+    "country": "Japan",
+    "latitude": 35.6285,
+    "longitude": 139.7387,
+    "cafes": ["Blue Bottle Coffee Roasters"]
+  },
+  {
+    "id": "sofia-bulgaria",
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "latitude": 42.6977,
+    "longitude": 23.3219,
+    "cafes": ["Central Market Hall of Sofia"]
+  },
+  {
+    "id": "salt-lake-city-usa",
+    "city": "Salt Lake City",
+    "country": "United States",
+    "latitude": 40.7608,
+    "longitude": -111.891,
+    "cafes": ["Delice Frency Bakery"]
   }
 ]
