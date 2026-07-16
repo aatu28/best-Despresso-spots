@@ -28,16 +28,14 @@ export default function Map({ shops }: MapProps) {
         <Marker
           key={shop.id}
           position={[shop.latitude, shop.longitude]}
-          icon={createShopIcon(shop.rating)}
+          icon={createShopIcon(shop.vibe)}
         >
           <Popup>
             <div className="min-w-[180px] space-y-1">
               <p className="font-semibold text-stone-900">{shop.name}</p>
-              <p className="text-sm text-amber-800">
-                {'★'.repeat(Math.round(shop.rating))}
-                {'☆'.repeat(5 - Math.round(shop.rating))}
-                <span className="ml-1 text-stone-500">{shop.rating.toFixed(1)}</span>
-              </p>
+              <span className="inline-block rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900">
+                {shop.vibe}
+              </span>
               <p className="text-xs text-stone-500">{shop.city}</p>
               {shop.notes && <p className="text-sm text-stone-700">{shop.notes}</p>}
             </div>

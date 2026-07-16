@@ -5,7 +5,7 @@
     "city": "San Francisco",
     "latitude": 37.7951,
     "longitude": -122.4058,
-    "rating": 5,
+    "vibe": "Favorite",
     "notes": "Espresso Tonic. Tiny original Chinatown bar on the cable car line, 1030 Washington St."
   },
   {
@@ -14,17 +14,17 @@
     "city": "San Francisco",
     "latitude": 37.7998,
     "longitude": -122.4079,
-    "rating": 4.5,
+    "vibe": "Great",
     "notes": "Lavazza Italian espresso. North Beach institution, 423 Columbus Ave."
   },
   {
     "id": "sf-cafe-reveille",
     "name": "Cafe Reseile (Peruvian Espresso)",
     "city": "San Francisco",
-    "latitude": null,
-    "longitude": null,
-    "rating": 4,
-    "notes": "Peruvian espresso. Could not confidently match this name to a verified San Francisco location — coordinates left blank."
+    "latitude": 37.7712,
+    "longitude": -122.4332,
+    "vibe": "Good",
+    "notes": "Peruvian espresso. 201 Steiner St, Lower Haight/Duboce Triangle."
   },
   {
     "id": "sf-caffe-trieste",
@@ -32,7 +32,7 @@
     "city": "San Francisco",
     "latitude": 37.7998,
     "longitude": -122.4083,
-    "rating": 3.5,
+    "vibe": "Decent",
     "notes": "Affogato. Legendary Beat-era North Beach cafe, 601 Vallejo St."
   },
   {
@@ -41,7 +41,7 @@
     "city": "Nairobi",
     "latitude": -1.2822,
     "longitude": 36.7676,
-    "rating": 5,
+    "vibe": "Favorite",
     "notes": "Lavington Business Hub, James Gichuru Road."
   },
   {
@@ -50,7 +50,7 @@
     "city": "Nairobi",
     "latitude": -1.2648,
     "longitude": 36.8027,
-    "rating": 4.5,
+    "vibe": "Great",
     "notes": "Rhapta Road, Westlands."
   },
   {
@@ -59,17 +59,17 @@
     "city": "Nairobi",
     "latitude": -1.2461,
     "longitude": 36.7583,
-    "rating": 4,
+    "vibe": "Good",
     "notes": "Farm-to-table cafe and roastery, Loresho Ridge."
   },
   {
     "id": "hcmc-copa-coffee",
     "name": "Copa Coffee",
     "city": "Ho Chi Minh City",
-    "latitude": null,
-    "longitude": null,
-    "rating": 5,
-    "notes": "Could not confidently verify an address for this spot — coordinates left blank."
+    "latitude": 10.907,
+    "longitude": 106.766,
+    "vibe": "Favorite",
+    "notes": "73 Dong Thanh, Tan Dong Hiep — Di An/Binh Duong area, now part of greater HCMC."
   },
   {
     "id": "istanbul-petra-roasting",
@@ -77,7 +77,7 @@
     "city": "Istanbul",
     "latitude": 41.0678,
     "longitude": 29.0089,
-    "rating": 5,
+    "vibe": "Favorite",
     "notes": "Gayrettepe, Besiktas."
   },
   {
@@ -86,7 +86,7 @@
     "city": "Istanbul",
     "latitude": 41.0328,
     "longitude": 28.9764,
-    "rating": 4.5,
+    "vibe": "Great",
     "notes": "No-frills Turkish coffee house since 1967, just off Istiklal Caddesi in Beyoglu."
   },
   {
@@ -95,7 +95,7 @@
     "city": "Istanbul",
     "latitude": 41.0257,
     "longitude": 28.9745,
-    "rating": 4,
+    "vibe": "Good",
     "notes": "Galata flagship near the Galata Tower, serving since 2015."
   },
   {
@@ -104,7 +104,61 @@
     "city": "Istanbul",
     "latitude": 41.0453,
     "longitude": 28.9903,
-    "rating": 3.5,
+    "vibe": "Decent",
     "notes": "Elmadag, Sisli, near Taksim. Antique decor, ground floor of a historic building."
+  },
+  {
+    "id": "chiangmai-mars",
+    "name": "MARS.cnx",
+    "city": "Chiang Mai",
+    "latitude": 18.7889,
+    "longitude": 98.9787,
+    "vibe": "Favorite",
+    "notes": "Space-themed cafe, 27 Arak Rd, Si Phum — Old City."
+  },
+  {
+    "id": "chiangmai-fern-forest",
+    "name": "Fern Forest Cafe",
+    "city": "Chiang Mai",
+    "latitude": 18.7925,
+    "longitude": 98.9825,
+    "vibe": "Great",
+    "notes": "Singharat Rd, northwest corner of the Old City."
+  },
+  {
+    "id": "bucharest-origo",
+    "name": "Origo Coffee",
+    "city": "Bucharest",
+    "latitude": 44.4308,
+    "longitude": 26.1027,
+    "vibe": "Favorite",
+    "notes": "Strada Lipscani 9, Old Town."
+  },
+  {
+    "id": "bangalore-something-brewing",
+    "name": "Something's Brewing",
+    "city": "Bangalore",
+    "latitude": 12.9731,
+    "longitude": 77.6412,
+    "vibe": "Favorite",
+    "notes": "12th A Main Rd, HAL 2nd Stage, Indiranagar."
+  },
+  {
+    "id": "bangalore-copper-cloves",
+    "name": "Copper + Cloves",
+    "city": "Bangalore",
+    "latitude": 12.9752,
+    "longitude": 77.636,
+    "vibe": "Great",
+    "notes": "9th A Main Rd, Hoysala Nagar, Indiranagar."
+  },
+  {
+    "id": "vadodara-greenr-cafe",
+    "name": "Alembic City - Greenr Cafe",
+    "city": "Vadodara",
+    "latitude": 22.3255,
+    "longitude": 73.178,
+    "vibe": "Favorite",
+    "notes": "Alembic Campus, Nanubhai Amin Marg, Gorwa."
   }
 ]

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import rawShops from './data/espresso-data.json';
-import type { EspressoShop } from './types/shop';
+import type { EspressoShop, Vibe } from './types/shop';
+import { VIBE_TIERS } from './types/shop';
 import { splitByCoordinates } from './utils/geo';
 import FilterBar from './components/FilterBar';
 import UnmappedList from './components/UnmappedList';
@@ -10,21 +11,22 @@ const shops = rawShops as EspressoShop[];
 
 function App() {
   const [selectedCity, setSelectedCity] = useState('all');
-  const [minRating, setMinRating] = useState(0);
+  const [minVibe, setMinVibe] = useState<Vibe | 'any'>('any');
 
   const cities = useMemo(
     () => Array.from(new Set(shops.map((shop) => shop.city))).sort(),
     [],
   );
 
-  const filteredShops = useMemo(
-    () =>
-      shops.filter(
-        (shop) =>
-          (selectedCity === 'all' || shop.city === selectedCity) && shop.rating >= minRating,
-      ),
-    [selectedCity, minRating],
-  );
+  const filteredShops = useMemo(() => {
+    const minVibeIndex = minVibe === 'any' ? VIBE_TIERS.length - 1 : VIBE_TIERS.indexOf(minVibe);
+
+    return shops.filter(
+      (shop) =>
+        (selectedCity === 'all' || shop.city === selectedCity) &&
+        VIBE_TIERS.indexOf(shop.vibe) <= minVibeIndex,
+    );
+  }, [selectedCity, minVibe]);
 
   const { mapped, unmapped } = useMemo(() => splitByCoordinates(filteredShops), [filteredShops]);
 
@@ -34,8 +36,8 @@ function App() {
         cities={cities}
         selectedCity={selectedCity}
         onCityChange={setSelectedCity}
-        minRating={minRating}
-        onMinRatingChange={setMinRating}
+        minVibe={minVibe}
+        onMinVibeChange={setMinVibe}
         shownCount={mapped.length}
         totalCount={filteredShops.length}
       />

@@ -1,3 +1,6 @@
+export const VIBE_TIERS = ['Favorite', 'Great', 'Good', 'Decent'] as const;
+export type Vibe = (typeof VIBE_TIERS)[number];
+
 export interface EspressoShop {
   id: string;
   name: string;
@@ -5,7 +8,6 @@ export interface EspressoShop {
   /** null when the source data had no verified coordinates */
   latitude: number | null;
   longitude: number | null;
-  /** personal rating, 1-5 */
-  rating: number;
+  vibe: Vibe;
   notes: string;
 }

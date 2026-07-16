@@ -1,14 +1,15 @@
 import L from 'leaflet';
+import type { Vibe } from '../types/shop';
 
-function colorForRating(rating: number): string {
-  if (rating >= 4.5) return '#3b2417';
-  if (rating >= 3.5) return '#7b4b2a';
-  if (rating >= 2.5) return '#a9713f';
-  return '#c9986a';
-}
+const VIBE_COLORS: Record<Vibe, string> = {
+  Favorite: '#3b2417',
+  Great: '#7b4b2a',
+  Good: '#a9713f',
+  Decent: '#c9986a',
+};
 
-export function createShopIcon(rating: number): L.DivIcon {
-  const color = colorForRating(rating);
+export function createShopIcon(vibe: Vibe): L.DivIcon {
+  const color = VIBE_COLORS[vibe];
 
   return L.divIcon({
     className: '',

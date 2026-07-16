@@ -1,9 +1,11 @@
+import { VIBE_TIERS, type Vibe } from '../types/shop';
+
 interface FilterBarProps {
   cities: string[];
   selectedCity: string;
   onCityChange: (city: string) => void;
-  minRating: number;
-  onMinRatingChange: (rating: number) => void;
+  minVibe: Vibe | 'any';
+  onMinVibeChange: (vibe: Vibe | 'any') => void;
   shownCount: number;
   totalCount: number;
 }
@@ -12,8 +14,8 @@ export default function FilterBar({
   cities,
   selectedCity,
   onCityChange,
-  minRating,
-  onMinRatingChange,
+  minVibe,
+  onMinVibeChange,
   shownCount,
   totalCount,
 }: FilterBarProps) {
@@ -44,15 +46,16 @@ export default function FilterBar({
         </label>
 
         <label className="flex items-center gap-2 text-sm text-stone-700">
-          Min rating
+          Vibe
           <select
-            value={minRating}
-            onChange={(e) => onMinRatingChange(Number(e.target.value))}
+            value={minVibe}
+            onChange={(e) => onMinVibeChange(e.target.value as Vibe | 'any')}
             className="rounded-md border border-stone-300 bg-white px-2 py-1.5 text-sm focus:border-amber-700 focus:outline-none"
           >
-            {[0, 3, 3.5, 4, 4.5, 5].map((value) => (
-              <option key={value} value={value}>
-                {value === 0 ? 'Any' : `${value}+`}
+            <option value="any">Any vibe</option>
+            {VIBE_TIERS.map((vibe) => (
+              <option key={vibe} value={vibe}>
+                {vibe} or better
               </option>
             ))}
           </select>
