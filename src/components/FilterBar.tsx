@@ -2,32 +2,42 @@ interface FilterBarProps {
   countries: string[];
   selectedCountry: string;
   onCountryChange: (country: string) => void;
-  shownCount: number;
-  totalCount: number;
+  totalCities: number;
+  totalCafes: number;
 }
 
 export default function FilterBar({
   countries,
   selectedCountry,
   onCountryChange,
-  shownCount,
-  totalCount,
+  totalCities,
+  totalCafes,
 }: FilterBarProps) {
   return (
-    <div className="flex flex-col gap-4 border-b border-stone-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+    <header className="z-20 flex flex-wrap items-center justify-between gap-3 border-b border-dashed border-line bg-paper-raised px-5 py-3.5">
       <div>
-        <h1 className="text-xl font-semibold text-stone-900">Espresso Spots</h1>
-        <p className="text-sm text-stone-500">
-          Showing {shownCount} of {totalCount} cities
+        <div className="flex items-baseline gap-2.5">
+          <span
+            aria-hidden="true"
+            className="flex h-8.5 w-8.5 flex-none -rotate-6 items-center justify-center rounded-full border-[1.5px] border-accent text-lg text-accent"
+          >
+            ☕
+          </span>
+          <h1 className="font-mono text-lg font-bold tracking-wide text-balance uppercase">
+            Espresso Passport
+          </h1>
+        </div>
+        <p className="mt-0.5 ml-11 font-mono text-xs tracking-wide text-ink-soft uppercase tabular-nums">
+          {totalCities} cities logged — {totalCafes} cafes
         </p>
       </div>
 
-      <label className="flex items-center gap-2 text-sm text-stone-700">
+      <label className="flex items-center gap-2 font-mono text-xs tracking-wider text-ink-soft uppercase">
         Country
         <select
           value={selectedCountry}
           onChange={(e) => onCountryChange(e.target.value)}
-          className="rounded-md border border-stone-300 bg-white px-2 py-1.5 text-sm focus:border-amber-700 focus:outline-none"
+          className="ticket-select cursor-pointer rounded-sm border border-line bg-paper-card py-1.5 pr-7 pl-2.5 font-mono text-sm text-ink normal-case focus-visible:outline-2 focus-visible:outline-accent-2"
         >
           <option value="all">All countries</option>
           {countries.map((country) => (
@@ -37,6 +47,6 @@ export default function FilterBar({
           ))}
         </select>
       </label>
-    </div>
+    </header>
   );
 }

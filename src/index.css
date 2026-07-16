@@ -1,5 +1,48 @@
 @import "tailwindcss";
 
+@theme {
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+  --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+
+  --color-ink: #1c2b3a;
+  --color-ink-soft: rgba(28, 43, 58, 0.62);
+  --color-paper: #eef0e6;
+  --color-paper-raised: #e3e6d8;
+  --color-paper-card: #f6f7f0;
+  --color-ocean: #b9cdd0;
+  --color-ocean-line: rgba(28, 43, 58, 0.09);
+  --color-land: #cebe97;
+  --color-land-line: rgba(28, 43, 58, 0.28);
+  --color-accent: #9c2b1f;
+  --color-accent-soft: rgba(156, 43, 31, 0.14);
+  --color-accent-2: #1f5c6e;
+  --color-line: rgba(28, 43, 58, 0.16);
+}
+
+/*
+ * Tailwind's utilities (bg-ink, text-accent, etc.) resolve through the
+ * var(--color-*) custom properties @theme generated above, so redefining
+ * those same properties here — plain CSS, not another @theme block —
+ * repaints every utility that uses them for dark mode.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: #eef0e6;
+    --color-ink-soft: rgba(238, 240, 230, 0.62);
+    --color-paper: #141d1c;
+    --color-paper-raised: #1b2624;
+    --color-paper-card: #1c2725;
+    --color-ocean: #0f1a1c;
+    --color-ocean-line: rgba(238, 240, 230, 0.06);
+    --color-land: #423722;
+    --color-land-line: rgba(238, 240, 230, 0.22);
+    --color-accent: #e07160;
+    --color-accent-soft: rgba(224, 113, 96, 0.16);
+    --color-accent-2: #5fb2c7;
+    --color-line: rgba(238, 240, 230, 0.16);
+  }
+}
+
 html,
 body,
 #root {
@@ -8,4 +51,102 @@ body,
 
 body {
   margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+}
+
+/* ---------- world map markers ---------- */
+
+.landmass {
+  fill: var(--color-land);
+  stroke: var(--color-land-line);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.graticule-line {
+  stroke: var(--color-ocean-line);
+  stroke-width: 1;
+}
+
+.marker-halo {
+  fill: var(--color-accent);
+  opacity: 0.16;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.marker-dot {
+  fill: var(--color-paper-card);
+  stroke: var(--color-accent);
+  stroke-width: 1.6;
+  cursor: pointer;
+  transition: transform 0.15s ease, fill 0.15s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.marker-label {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.02em;
+  fill: var(--color-ink);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+g.city-marker:hover .marker-dot,
+g.city-marker.active .marker-dot {
+  fill: var(--color-accent);
+}
+
+g.city-marker:hover .marker-halo,
+g.city-marker.active .marker-halo {
+  opacity: 0.32;
+}
+
+g.city-marker.active .marker-dot {
+  transform: scale(1.35);
+}
+
+g.city-marker:hover .marker-label,
+g.city-marker.active .marker-label {
+  opacity: 1;
+}
+
+g.city-marker {
+  outline: none;
+}
+
+g.city-marker:focus-visible .marker-dot {
+  outline: 2px solid var(--color-accent-2);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marker-dot,
+  .marker-halo,
+  .marker-label,
+  .stamp-card {
+    transition: none !important;
+  }
+}
+
+/* ---------- ticket-style select ---------- */
+
+.ticket-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-ink-soft) 50%),
+    linear-gradient(135deg, var(--color-ink-soft) 50%, transparent 50%);
+  background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* ---------- stamp card slide-in ---------- */
+
+.stamp-card {
+  transition: transform 0.28s cubic-bezier(0.22, 0.68, 0.34, 1), opacity 0.22s ease;
 }
