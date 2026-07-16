@@ -63,7 +63,6 @@
       "The Canteen",
       "Kesh Kesh Coffee Roasters & Cafe",
       "The Coffee Club",
-      "Vietnamese Cafe (Lavington)",
       "Okia Cafe",
       "Mam Mam (Westlands)",
       "Coffee Lab Nairobi",
@@ -76,7 +75,7 @@
     "country": "Vietnam",
     "latitude": 10.8231,
     "longitude": 106.6297,
-    "cafes": ["Copa Coffee", "Alembic City Cafe", "74 Ky Con"]
+    "cafes": ["Copa Coffee", "74 Ky Con"]
   },
   {
     "id": "istanbul-turkiye",
@@ -172,7 +171,7 @@
     "country": "South Korea",
     "latitude": 37.5665,
     "longitude": 126.978,
-    "cafes": ["London Bagel Museum", "Various cafes and bakeries", "% Arabica", "PP Coffee", "UNDEBT"]
+    "cafes": ["London Bagel Museum", "% Arabica", "PP Coffee", "UNDEBT"]
   },
   {
     "id": "petaling-jaya-malaysia",
