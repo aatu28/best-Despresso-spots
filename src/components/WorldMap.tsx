@@ -1,14 +1,10 @@
 import type { CityStop } from '../types/city';
-import { CONTINENTS, GRATICULE_LATS, GRATICULE_LONS, MAP_HEIGHT, MAP_WIDTH, project } from '../lib/worldMap';
+import { GRATICULE_LATS, GRATICULE_LONS, LAND_PATH, MAP_HEIGHT, MAP_WIDTH, project } from '../lib/worldMap';
 
 interface WorldMapProps {
   cities: CityStop[];
   selectedCityId: string | null;
   onSelectCity: (city: CityStop) => void;
-}
-
-function polygonPoints(ring: [number, number][]): string {
-  return ring.map(([lon, lat]) => project(lon, lat).map((n) => n.toFixed(1)).join(',')).join(' ');
 }
 
 export default function WorldMap({ cities, selectedCityId, onSelectCity }: WorldMapProps) {
@@ -31,11 +27,7 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
         })}
       </g>
 
-      <g>
-        {CONTINENTS.map((ring, i) => (
-          <polygon key={i} className="landmass" points={polygonPoints(ring)} />
-        ))}
-      </g>
+      <path className="landmass" d={LAND_PATH} />
 
       <g>
         {cities.map((entry) => {

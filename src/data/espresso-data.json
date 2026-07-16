@@ -28,7 +28,7 @@
     "country": "United States",
     "latitude": 42.3601,
     "longitude": -71.0589,
-    "cafes": ["Various local cafes"]
+    "cafes": ["Tatte Bakery & Cafe (Back Bay)", "Cafe Bonjour"]
   },
   {
     "id": "nairobi-kenya",
@@ -44,7 +44,10 @@
       "The Canteen",
       "Kesh Kesh Coffee Roasters & Cafe",
       "The Coffee Club",
-      "Vietnamese Cafe (Lavington)"
+      "Vietnamese Cafe (Lavington)",
+      "Okia Cafe",
+      "Mam Mam (Westlands)",
+      "Coffee Lab Nairobi"
     ]
   },
   {
@@ -59,8 +62,8 @@
     "id": "istanbul-turkiye",
     "city": "Istanbul",
     "country": "Turkiye",
-    "latitude": 41.0082,
-    "longitude": 28.9784,
+    "latitude": 40.9082,
+    "longitude": 29.0784,
     "cafes": ["Petra Roasting Co", "Mandabatmaz", "Federal Coffee", "Bohem's Coffee"]
   },
   {
@@ -157,6 +160,6 @@
     "country": "Mexico",
     "latitude": 20.6296,
     "longitude": -87.0739,
-    "cafes": ["Local cafe"]
+    "cafes": ["Quadra Cafe - Specialty Coffee"]
   }
 ]
