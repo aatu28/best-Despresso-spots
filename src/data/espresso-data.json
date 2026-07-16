@@ -11,7 +11,10 @@
       "Cafe Reveille (Peruvian Espresso)",
       "Caffe Trieste",
       "Avotoasty",
-      "Haraz Coffee House"
+      "Haraz Coffee House",
+      "Sightglass Coffee",
+      "Red Bay Coffee",
+      "Rosalind Bakery"
     ]
   },
   {
@@ -20,7 +23,14 @@
     "country": "United States",
     "latitude": 32.7157,
     "longitude": -117.1611,
-    "cafes": ["Bird Rock Coffee Roasters", "The Barn"]
+    "cafes": [
+      "Bird Rock Coffee Roasters",
+      "The Barn",
+      "Scrimshaw Coffee",
+      "Ostra Coffee",
+      "Cafe Madelene",
+      "Caffe Italia (Little Italy)"
+    ]
   },
   {
     "id": "los-angeles-usa",
@@ -28,7 +38,7 @@
     "country": "United States",
     "latitude": 34.0522,
     "longitude": -118.2437,
-    "cafes": ["Equator Coffee"]
+    "cafes": ["Equator Coffee", "Great White"]
   },
   {
     "id": "boston-usa",
@@ -55,7 +65,8 @@
       "Vietnamese Cafe (Lavington)",
       "Okia Cafe",
       "Mam Mam (Westlands)",
-      "Coffee Lab Nairobi"
+      "Coffee Lab Nairobi",
+      "Le Grenier a Pain"
     ]
   },
   {
@@ -80,7 +91,7 @@
     "country": "Thailand",
     "latitude": 18.7883,
     "longitude": 98.9853,
-    "cafes": ["MARS.cnx", "Fern Forest Cafe"]
+    "cafes": ["MARS.cnx", "Fern Forest Cafe", "Gateway Coffee Roaster"]
   },
   {
     "id": "bucharest-romania",
@@ -104,7 +115,7 @@
     "country": "India",
     "latitude": 22.3072,
     "longitude": 73.1812,
-    "cafes": ["Alembic City - Greenr Cafe"]
+    "cafes": ["Alembic City - Greenr Cafe", "Curators Coffee"]
   },
   {
     "id": "costa-da-caparica-portugal",
@@ -120,7 +131,7 @@
     "country": "Portugal",
     "latitude": 38.7223,
     "longitude": -9.1393,
-    "cafes": ["Collect - Food . Radio . Records", "Tact", "Good Company"]
+    "cafes": ["Collect - Food . Radio . Records", "Tact", "Good Company", "Comoba"]
   },
   {
     "id": "london-uk",
@@ -128,7 +139,15 @@
     "country": "United Kingdom",
     "latitude": 51.5074,
     "longitude": -0.1278,
-    "cafes": ["Caffe Nero", "GAIL's", "Bar Italia", "Blank Street Coffee", "Algerian Coffee Stores"]
+    "cafes": [
+      "Caffe Nero",
+      "GAIL's",
+      "Bar Italia",
+      "Blank Street Coffee",
+      "Algerian Coffee Stores",
+      "Costa Coffee",
+      "Barbican Cinema Cafe"
+    ]
   },
   {
     "id": "kyoto-japan",
@@ -144,7 +163,7 @@
     "country": "Japan",
     "latitude": 34.6937,
     "longitude": 135.5023,
-    "cafes": ["Embankment Coffee"]
+    "cafes": ["Embankment Coffee", "Elmersgreen", "Moto Coffee", "Brooklyn Coffee Shop"]
   },
   {
     "id": "seoul-south-korea",
@@ -152,7 +171,7 @@
     "country": "South Korea",
     "latitude": 37.5665,
     "longitude": 126.978,
-    "cafes": ["London Bagel Museum", "Various cafes and bakeries"]
+    "cafes": ["London Bagel Museum", "Various cafes and bakeries", "% Arabica", "PP Coffee"]
   },
   {
     "id": "petaling-jaya-malaysia",
@@ -160,7 +179,7 @@
     "country": "Malaysia",
     "latitude": 3.1073,
     "longitude": 101.6067,
-    "cafes": ["Luckin Coffee"]
+    "cafes": ["Luckin Coffee", "Coffeeboy Club"]
   },
   {
     "id": "playa-del-carmen-mexico",
@@ -168,6 +187,54 @@
     "country": "Mexico",
     "latitude": 20.6296,
     "longitude": -87.0739,
-    "cafes": ["Quadra Cafe - Specialty Coffee"]
+    "cafes": ["Quadra Cafe - Specialty Coffee", "Chez Celine"]
+  },
+  {
+    "id": "santa-barbara-usa",
+    "city": "Santa Barbara",
+    "country": "United States",
+    "latitude": 34.4208,
+    "longitude": -119.6982,
+    "cafes": ["D Angelo"]
+  },
+  {
+    "id": "seattle-usa",
+    "city": "Seattle",
+    "country": "United States",
+    "latitude": 47.6062,
+    "longitude": -122.3321,
+    "cafes": ["Starbucks Roastery"]
+  },
+  {
+    "id": "new-york-city-usa",
+    "city": "New York City",
+    "country": "United States",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "cafes": ["Magnolia Bakery"]
+  },
+  {
+    "id": "brasov-romania",
+    "city": "Brasov",
+    "country": "Romania",
+    "latitude": 45.6427,
+    "longitude": 25.5887,
+    "cafes": ["Twin Beans Coffee Shop"]
+  },
+  {
+    "id": "madrid-spain",
+    "city": "Madrid",
+    "country": "Spain",
+    "latitude": 40.4168,
+    "longitude": -3.7038,
+    "cafes": ["Santagloria Coffee and Bakery"]
+  },
+  {
+    "id": "setagaya-city-japan",
+    "city": "Setagaya City",
+    "country": "Japan",
+    "latitude": 35.6467,
+    "longitude": 139.6531,
+    "cafes": ["Rain on the Roof"]
   }
 ]
