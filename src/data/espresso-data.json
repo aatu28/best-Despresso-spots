@@ -1,0 +1,110 @@
+[
+  {
+    "id": "sf-coffee-movement",
+    "name": "The Coffee Movement",
+    "city": "San Francisco",
+    "latitude": 37.7951,
+    "longitude": -122.4058,
+    "rating": 5,
+    "notes": "Espresso Tonic. Tiny original Chinatown bar on the cable car line, 1030 Washington St."
+  },
+  {
+    "id": "sf-caffe-greco",
+    "name": "Caffe Greco",
+    "city": "San Francisco",
+    "latitude": 37.7998,
+    "longitude": -122.4079,
+    "rating": 4.5,
+    "notes": "Lavazza Italian espresso. North Beach institution, 423 Columbus Ave."
+  },
+  {
+    "id": "sf-cafe-reveille",
+    "name": "Cafe Reseile (Peruvian Espresso)",
+    "city": "San Francisco",
+    "latitude": null,
+    "longitude": null,
+    "rating": 4,
+    "notes": "Peruvian espresso. Could not confidently match this name to a verified San Francisco location — coordinates left blank."
+  },
+  {
+    "id": "sf-caffe-trieste",
+    "name": "Caffe Trieste",
+    "city": "San Francisco",
+    "latitude": 37.7998,
+    "longitude": -122.4083,
+    "rating": 3.5,
+    "notes": "Affogato. Legendary Beat-era North Beach cafe, 601 Vallejo St."
+  },
+  {
+    "id": "nairobi-spring-valley-lavington",
+    "name": "Spring Valley Coffee (Lavington)",
+    "city": "Nairobi",
+    "latitude": -1.2822,
+    "longitude": 36.7676,
+    "rating": 5,
+    "notes": "Lavington Business Hub, James Gichuru Road."
+  },
+  {
+    "id": "nairobi-artcaffe-rhapta",
+    "name": "Artcaffe Rhapta Square",
+    "city": "Nairobi",
+    "latitude": -1.2648,
+    "longitude": 36.8027,
+    "rating": 4.5,
+    "notes": "Rhapta Road, Westlands."
+  },
+  {
+    "id": "nairobi-shamba-roastery",
+    "name": "Shamba Roastery",
+    "city": "Nairobi",
+    "latitude": -1.2461,
+    "longitude": 36.7583,
+    "rating": 4,
+    "notes": "Farm-to-table cafe and roastery, Loresho Ridge."
+  },
+  {
+    "id": "hcmc-copa-coffee",
+    "name": "Copa Coffee",
+    "city": "Ho Chi Minh City",
+    "latitude": null,
+    "longitude": null,
+    "rating": 5,
+    "notes": "Could not confidently verify an address for this spot — coordinates left blank."
+  },
+  {
+    "id": "istanbul-petra-roasting",
+    "name": "Petra Roasting Co",
+    "city": "Istanbul",
+    "latitude": 41.0678,
+    "longitude": 29.0089,
+    "rating": 5,
+    "notes": "Gayrettepe, Besiktas."
+  },
+  {
+    "id": "istanbul-mandabatmaz",
+    "name": "Mandabatmaz",
+    "city": "Istanbul",
+    "latitude": 41.0328,
+    "longitude": 28.9764,
+    "rating": 4.5,
+    "notes": "No-frills Turkish coffee house since 1967, just off Istiklal Caddesi in Beyoglu."
+  },
+  {
+    "id": "istanbul-federal-coffee",
+    "name": "Federal Coffee",
+    "city": "Istanbul",
+    "latitude": 41.0257,
+    "longitude": 28.9745,
+    "rating": 4,
+    "notes": "Galata flagship near the Galata Tower, serving since 2015."
+  },
+  {
+    "id": "istanbul-bohems-coffee",
+    "name": "Bohem's Coffee",
+    "city": "Istanbul",
+    "latitude": 41.0453,
+    "longitude": 28.9903,
+    "rating": 3.5,
+    "notes": "Elmadag, Sisli, near Taksim. Antique decor, ground floor of a historic building."
+  }
+]
