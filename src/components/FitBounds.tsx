@@ -1,26 +1,26 @@
 import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
-import type { GeocodedShop } from '../utils/geo';
+import type { CityStop } from '../types/city';
 
 interface FitBoundsProps {
-  shops: GeocodedShop[];
+  cities: CityStop[];
 }
 
-export default function FitBounds({ shops }: FitBoundsProps) {
+export default function FitBounds({ cities }: FitBoundsProps) {
   const map = useMap();
 
   useEffect(() => {
-    if (shops.length === 0) return;
+    if (cities.length === 0) return;
 
-    if (shops.length === 1) {
-      map.setView([shops[0].latitude, shops[0].longitude], 13);
+    if (cities.length === 1) {
+      map.setView([cities[0].latitude, cities[0].longitude], 10);
       return;
     }
 
-    const bounds = L.latLngBounds(shops.map((shop) => [shop.latitude, shop.longitude]));
+    const bounds = L.latLngBounds(cities.map((city) => [city.latitude, city.longitude]));
     map.fitBounds(bounds, { padding: [48, 48] });
-  }, [map, shops]);
+  }, [map, cities]);
 
   return null;
 }

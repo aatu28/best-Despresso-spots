@@ -1,164 +1,162 @@
 [
   {
-    "id": "sf-coffee-movement",
-    "name": "The Coffee Movement",
+    "id": "san-francisco-usa",
     "city": "San Francisco",
-    "latitude": 37.7951,
-    "longitude": -122.4058,
-    "vibe": "Favorite",
-    "notes": "Espresso Tonic. Tiny original Chinatown bar on the cable car line, 1030 Washington St."
+    "country": "United States",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "cafes": [
+      "The Coffee Movement",
+      "Caffe Greco",
+      "Cafe Reveille (Peruvian Espresso)",
+      "Caffe Trieste",
+      "Avotoasty",
+      "Haraz Coffee House"
+    ]
   },
   {
-    "id": "sf-caffe-greco",
-    "name": "Caffe Greco",
-    "city": "San Francisco",
-    "latitude": 37.7998,
-    "longitude": -122.4079,
-    "vibe": "Great",
-    "notes": "Lavazza Italian espresso. North Beach institution, 423 Columbus Ave."
+    "id": "san-diego-usa",
+    "city": "San Diego",
+    "country": "United States",
+    "latitude": 32.7157,
+    "longitude": -117.1611,
+    "cafes": ["Bird Rock Coffee Roasters", "The Barn"]
   },
   {
-    "id": "sf-cafe-reveille",
-    "name": "Cafe Reseile (Peruvian Espresso)",
-    "city": "San Francisco",
-    "latitude": 37.7712,
-    "longitude": -122.4332,
-    "vibe": "Good",
-    "notes": "Peruvian espresso. 201 Steiner St, Lower Haight/Duboce Triangle."
+    "id": "boston-usa",
+    "city": "Boston",
+    "country": "United States",
+    "latitude": 42.3601,
+    "longitude": -71.0589,
+    "cafes": ["Various local cafes"]
   },
   {
-    "id": "sf-caffe-trieste",
-    "name": "Caffe Trieste",
-    "city": "San Francisco",
-    "latitude": 37.7998,
-    "longitude": -122.4083,
-    "vibe": "Decent",
-    "notes": "Affogato. Legendary Beat-era North Beach cafe, 601 Vallejo St."
-  },
-  {
-    "id": "nairobi-spring-valley-lavington",
-    "name": "Spring Valley Coffee (Lavington)",
+    "id": "nairobi-kenya",
     "city": "Nairobi",
-    "latitude": -1.2822,
-    "longitude": 36.7676,
-    "vibe": "Favorite",
-    "notes": "Lavington Business Hub, James Gichuru Road."
+    "country": "Kenya",
+    "latitude": -1.2921,
+    "longitude": 36.8219,
+    "cafes": [
+      "Spring Valley Coffee",
+      "Artcaffe",
+      "Shamba Roastery",
+      "Tandeli Cafe",
+      "The Canteen",
+      "Kesh Kesh Coffee Roasters & Cafe",
+      "The Coffee Club",
+      "Vietnamese Cafe (Lavington)"
+    ]
   },
   {
-    "id": "nairobi-artcaffe-rhapta",
-    "name": "Artcaffe Rhapta Square",
-    "city": "Nairobi",
-    "latitude": -1.2648,
-    "longitude": 36.8027,
-    "vibe": "Great",
-    "notes": "Rhapta Road, Westlands."
-  },
-  {
-    "id": "nairobi-shamba-roastery",
-    "name": "Shamba Roastery",
-    "city": "Nairobi",
-    "latitude": -1.2461,
-    "longitude": 36.7583,
-    "vibe": "Good",
-    "notes": "Farm-to-table cafe and roastery, Loresho Ridge."
-  },
-  {
-    "id": "hcmc-copa-coffee",
-    "name": "Copa Coffee",
+    "id": "ho-chi-minh-city-vietnam",
     "city": "Ho Chi Minh City",
-    "latitude": 10.907,
-    "longitude": 106.766,
-    "vibe": "Favorite",
-    "notes": "73 Dong Thanh, Tan Dong Hiep — Di An/Binh Duong area, now part of greater HCMC."
+    "country": "Vietnam",
+    "latitude": 10.8231,
+    "longitude": 106.6297,
+    "cafes": ["Copa Coffee", "Alembic City Cafe"]
   },
   {
-    "id": "istanbul-petra-roasting",
-    "name": "Petra Roasting Co",
+    "id": "istanbul-turkiye",
     "city": "Istanbul",
-    "latitude": 41.0678,
-    "longitude": 29.0089,
-    "vibe": "Favorite",
-    "notes": "Gayrettepe, Besiktas."
+    "country": "Turkiye",
+    "latitude": 41.0082,
+    "longitude": 28.9784,
+    "cafes": ["Petra Roasting Co", "Mandabatmaz", "Federal Coffee", "Bohem's Coffee"]
   },
   {
-    "id": "istanbul-mandabatmaz",
-    "name": "Mandabatmaz",
-    "city": "Istanbul",
-    "latitude": 41.0328,
-    "longitude": 28.9764,
-    "vibe": "Great",
-    "notes": "No-frills Turkish coffee house since 1967, just off Istiklal Caddesi in Beyoglu."
-  },
-  {
-    "id": "istanbul-federal-coffee",
-    "name": "Federal Coffee",
-    "city": "Istanbul",
-    "latitude": 41.0257,
-    "longitude": 28.9745,
-    "vibe": "Good",
-    "notes": "Galata flagship near the Galata Tower, serving since 2015."
-  },
-  {
-    "id": "istanbul-bohems-coffee",
-    "name": "Bohem's Coffee",
-    "city": "Istanbul",
-    "latitude": 41.0453,
-    "longitude": 28.9903,
-    "vibe": "Decent",
-    "notes": "Elmadag, Sisli, near Taksim. Antique decor, ground floor of a historic building."
-  },
-  {
-    "id": "chiangmai-mars",
-    "name": "MARS.cnx",
+    "id": "chiang-mai-thailand",
     "city": "Chiang Mai",
-    "latitude": 18.7889,
-    "longitude": 98.9787,
-    "vibe": "Favorite",
-    "notes": "Space-themed cafe, 27 Arak Rd, Si Phum — Old City."
+    "country": "Thailand",
+    "latitude": 18.7883,
+    "longitude": 98.9853,
+    "cafes": ["MARS.cnx", "Fern Forest Cafe"]
   },
   {
-    "id": "chiangmai-fern-forest",
-    "name": "Fern Forest Cafe",
-    "city": "Chiang Mai",
-    "latitude": 18.7925,
-    "longitude": 98.9825,
-    "vibe": "Great",
-    "notes": "Singharat Rd, northwest corner of the Old City."
-  },
-  {
-    "id": "bucharest-origo",
-    "name": "Origo Coffee",
+    "id": "bucharest-romania",
     "city": "Bucharest",
-    "latitude": 44.4308,
-    "longitude": 26.1027,
-    "vibe": "Favorite",
-    "notes": "Strada Lipscani 9, Old Town."
+    "country": "Romania",
+    "latitude": 44.4268,
+    "longitude": 26.1025,
+    "cafes": ["Origo Coffee"]
   },
   {
-    "id": "bangalore-something-brewing",
-    "name": "Something's Brewing",
-    "city": "Bangalore",
-    "latitude": 12.9731,
-    "longitude": 77.6412,
-    "vibe": "Favorite",
-    "notes": "12th A Main Rd, HAL 2nd Stage, Indiranagar."
+    "id": "bengaluru-india",
+    "city": "Bengaluru",
+    "country": "India",
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "cafes": ["Something's Brewing", "Copper + Cloves", "Araku Coffee", "Cafe Appetito", "Champaca Bookstore", "Subko"]
   },
   {
-    "id": "bangalore-copper-cloves",
-    "name": "Copper + Cloves",
-    "city": "Bangalore",
-    "latitude": 12.9752,
-    "longitude": 77.636,
-    "vibe": "Great",
-    "notes": "9th A Main Rd, Hoysala Nagar, Indiranagar."
-  },
-  {
-    "id": "vadodara-greenr-cafe",
-    "name": "Alembic City - Greenr Cafe",
+    "id": "vadodara-india",
     "city": "Vadodara",
-    "latitude": 22.3255,
-    "longitude": 73.178,
-    "vibe": "Favorite",
-    "notes": "Alembic Campus, Nanubhai Amin Marg, Gorwa."
+    "country": "India",
+    "latitude": 22.3072,
+    "longitude": 73.1812,
+    "cafes": ["Alembic City - Greenr Cafe"]
+  },
+  {
+    "id": "costa-da-caparica-portugal",
+    "city": "Costa da Caparica",
+    "country": "Portugal",
+    "latitude": 38.6489,
+    "longitude": -9.2367,
+    "cafes": ["Local cafe"]
+  },
+  {
+    "id": "lisbon-portugal",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "latitude": 38.7223,
+    "longitude": -9.1393,
+    "cafes": ["Collect - Food . Radio . Records"]
+  },
+  {
+    "id": "london-uk",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "cafes": ["Caffe Nero", "GAIL's"]
+  },
+  {
+    "id": "kyoto-japan",
+    "city": "Kyoto",
+    "country": "Japan",
+    "latitude": 35.0116,
+    "longitude": 135.7681,
+    "cafes": ["Kyoto Mameshiba Cafe"]
+  },
+  {
+    "id": "osaka-japan",
+    "city": "Osaka",
+    "country": "Japan",
+    "latitude": 34.6937,
+    "longitude": 135.5023,
+    "cafes": ["Embankment Coffee"]
+  },
+  {
+    "id": "seoul-south-korea",
+    "city": "Seoul",
+    "country": "South Korea",
+    "latitude": 37.5665,
+    "longitude": 126.978,
+    "cafes": ["London Bagel Museum", "Various cafes and bakeries"]
+  },
+  {
+    "id": "petaling-jaya-malaysia",
+    "city": "Petaling Jaya",
+    "country": "Malaysia",
+    "latitude": 3.1073,
+    "longitude": 101.6067,
+    "cafes": ["Luckin Coffee"]
+  },
+  {
+    "id": "playa-del-carmen-mexico",
+    "city": "Playa del Carmen",
+    "country": "Mexico",
+    "latitude": 20.6296,
+    "longitude": -87.0739,
+    "cafes": ["Local cafe"]
   }
 ]
