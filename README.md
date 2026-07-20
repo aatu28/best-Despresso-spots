@@ -1,6 +1,6 @@
-# Espresso Passport
+# Despresso Spots
 
-An interactive world map of cities where I've had good coffee, built with Vite, React, TypeScript, and Tailwind CSS.
+An interactive 3D globe of cities where I've had good coffee, built with Vite, React, TypeScript, three.js, and Tailwind CSS.
 
 ## Getting started
 
@@ -24,18 +24,20 @@ interface CityStop {
 }
 ```
 
-One marker per city — click it to open a "stamp card" with the country and the list of cafes visited there. The "Country" filter in the top bar narrows the map down to cities in a given country.
+One pin per city — drag to rotate the globe, scroll to zoom, click a pin to open a detail panel with the country and the list of cafes visited there. The "Country" filter (top-right) toggles which pins are shown without rebuilding the scene.
 
 To add a city, add an entry to `espresso-data.json` with its coordinates and cafe names.
 
-## Map rendering
+## Globe rendering
 
-The world map is a hand-built low-poly SVG (`src/lib/worldMap.ts` has the landmass outlines and the equirectangular projection), not a tile-based map library — no map tiles to fetch, no API keys, fully self-contained. `src/components/WorldMap.tsx` projects each city's lat/lon onto the SVG and renders it as a stamp marker; `src/components/StampCard.tsx` is the detail panel that slides in on click (a bottom sheet on narrow viewports).
+`src/components/Globe.tsx` sets up the three.js scene: a lit sphere, a faint lat/lon graticule, real coastlines, and a teardrop pin + halo + stem per city, with `OrbitControls` for drag/zoom/auto-rotate and raycasting for click-to-select. The coastline outline is real Natural Earth data (`world-atlas` npm package via `topojson-client`), baked once into `src/lib/coastlines.ts` as a flat lat/lon point array — no runtime geo-data fetch or dependency, matching the same approach used for the map before this became a globe.
 
-The landmass shapes are stylized rather than geographically precise — good enough to place a city marker recognizably, not for cartographic accuracy.
+## Design
+
+Visual identity follows a design handoff for a "Coffee Coverage Globe" — warm, softly-lit white sphere, espresso-brown pins, Archivo typography, cream/near-black light/dark themes (`src/index.css`). The panel and pin data are adapted to what's actually in `espresso-data.json` (city + real cafe names) rather than the handoff's richer per-shop mock fields (neighborhood, blurb, tag) — those would have needed fabricating descriptive text about real businesses that wasn't provided.
 
 ## Stack
 
 - Vite + React + TypeScript
-- Hand-built SVG world map (equirectangular projection)
-- Tailwind CSS for styling, with a light/dark "travel document" theme driven by CSS custom properties in `src/index.css`
+- three.js (`OrbitControls`, raycasting) for the 3D globe
+- Tailwind CSS for the surrounding UI, with a light/dark theme via CSS custom properties
