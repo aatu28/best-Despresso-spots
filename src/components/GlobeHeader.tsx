@@ -11,7 +11,7 @@ export default function GlobeHeader({ totalCities, totalCountries, totalCafes }:
         Global Coverage
       </div>
       <h1 className="m-0 mb-4 text-[36px] leading-[1] font-extrabold tracking-[-0.02em] text-balance sm:text-[52px]">
-        Despresso Spots
+        D-espresso Spots
       </h1>
       <p className="m-0 max-w-[400px] text-[15px] leading-[1.6] text-ink-soft">
         {totalCities} coffee stops across {totalCountries} countries — {totalCafes} cafes and counting.

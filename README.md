@@ -1,4 +1,4 @@
-# Despresso Spots
+# D-espresso Spots
 
 An interactive 3D globe of cities where I've had good coffee, built with Vite, React, TypeScript, three.js, and Tailwind CSS.
 
