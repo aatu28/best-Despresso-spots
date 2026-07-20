@@ -20,7 +20,9 @@ export default function StampCard({ city, index, total, onClose }: StampCardProp
     <aside
       aria-live="polite"
       className={`stamp-card absolute inset-x-0 bottom-0 z-30 max-h-[62vh] overflow-y-auto rounded-t-xl border border-line bg-paper-card p-5 shadow-2xl sm:inset-x-auto sm:top-4 sm:right-4 sm:bottom-auto sm:max-h-[calc(100%-2rem)] sm:w-80 sm:rounded ${
-        open ? 'translate-y-0 opacity-100 sm:translate-x-0' : 'translate-y-full opacity-0 sm:translate-x-[calc(100%+2rem)] sm:translate-y-0'
+        open
+          ? 'translate-y-0 opacity-100 sm:translate-x-0 sm:-rotate-[0.6deg]'
+          : 'translate-y-full opacity-0 sm:translate-x-[calc(100%+2rem)] sm:translate-y-0'
       }`}
     >
       {city && (

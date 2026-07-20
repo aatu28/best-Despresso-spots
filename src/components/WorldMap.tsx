@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent, WheelEvent as ReactWheelEvent } from 'react';
+import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
 import type { CityStop } from '../types/city';
 import { GRATICULE_LATS, GRATICULE_LONS, LAND_PATH, MAP_HEIGHT, MAP_WIDTH, project } from '../lib/worldMap';
 
@@ -19,9 +19,18 @@ interface ViewBox {
 const WORLD_VIEW: ViewBox = { x: 0, y: 0, w: MAP_WIDTH, h: MAP_HEIGHT };
 const MIN_WIDTH = 40; // most zoomed in
 const MAX_WIDTH = MAP_WIDTH; // fully zoomed out
-const BASE_MARKER_R = 3.4;
-const BASE_HALO_R = 9;
+const BASE_MARKER_R = 4.6;
+const BASE_RING_R = 7.4;
+const BASE_HALO_R = 13;
 const BASE_FONT = 6.5;
+const BASE_GLYPH = 5.4;
+
+/** Small stable per-marker tilt so the ink-ring reads as hand-stamped, not a grid of identical dots. */
+function markerTilt(id: string): number {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) | 0;
+  return (Math.abs(hash) % 26) - 13;
+}
 
 function clampView(v: ViewBox): ViewBox {
   const w = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, v.w));
@@ -102,11 +111,23 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
     });
   }
 
-  function handleWheel(evt: ReactWheelEvent<SVGSVGElement>) {
-    evt.preventDefault();
-    const factor = evt.deltaY > 0 ? 1.2 : 1 / 1.2;
-    zoomAt(evt.clientX, evt.clientY, factor);
-  }
+  // React's onWheel prop is attached as a passive listener, so preventDefault()
+  // inside it silently fails. Attach a native, non-passive listener instead so
+  // scrolling the wheel over the map zooms instead of scrolling the page.
+  const zoomAtRef = useRef(zoomAt);
+  zoomAtRef.current = zoomAt;
+
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const onWheel = (evt: WheelEvent) => {
+      evt.preventDefault();
+      const factor = evt.deltaY > 0 ? 1.2 : 1 / 1.2;
+      zoomAtRef.current(evt.clientX, evt.clientY, factor);
+    };
+    svg.addEventListener('wheel', onWheel, { passive: false });
+    return () => svg.removeEventListener('wheel', onWheel);
+  }, []);
 
   function handlePointerDown(evt: ReactPointerEvent<SVGSVGElement>) {
     const target = evt.target as Element;
@@ -141,9 +162,13 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
   }
 
   const markerR = BASE_MARKER_R / scale;
+  const ringR = BASE_RING_R / scale;
   const haloR = BASE_HALO_R / scale;
   const fontSize = BASE_FONT / scale;
+  const glyphSize = BASE_GLYPH / scale;
   const strokeW = 1.6 / scale;
+  const ringStrokeW = 1 / scale;
+  const ringDash = `${1.4 / scale} ${1.6 / scale}`;
 
   return (
     <div className="relative h-full w-full">
@@ -154,7 +179,6 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
         role="img"
         aria-label="World map of cities visited for coffee"
         className="h-full w-full touch-none bg-ocean"
-        onWheel={handleWheel}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -162,10 +186,21 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
         onDoubleClick={handleDoubleClick}
       >
         <defs>
-          <radialGradient id="oceanGradient" cx="50%" cy="35%" r="80%">
+          <radialGradient id="oceanGradient" cx="42%" cy="28%" r="85%">
             <stop offset="0%" stopColor="var(--color-ocean-light)" />
-            <stop offset="100%" stopColor="var(--color-ocean)" />
+            <stop offset="55%" stopColor="var(--color-ocean)" />
+            <stop offset="100%" stopColor="var(--color-ocean-deep)" />
           </radialGradient>
+          <linearGradient id="landGradient" x1="0%" y1="0%" x2="30%" y2="100%">
+            <stop offset="0%" stopColor="var(--color-land-light)" />
+            <stop offset="100%" stopColor="var(--color-land)" />
+          </linearGradient>
+          <filter id="landShadow" x="-15%" y="-15%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="1.4" stdDeviation="1.6" floodColor="#000" floodOpacity="0.28" />
+          </filter>
+          <filter id="markerGlow" x="-150%" y="-150%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="2.2" />
+          </filter>
         </defs>
 
         <rect x={0} y={0} width={MAP_WIDTH} height={MAP_HEIGHT} fill="url(#oceanGradient)" />
@@ -201,7 +236,13 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
           })}
         </g>
 
-        <path className="landmass" d={LAND_PATH} vectorEffect="non-scaling-stroke" />
+        <path
+          className="landmass"
+          d={LAND_PATH}
+          fill="url(#landGradient)"
+          filter="url(#landShadow)"
+          vectorEffect="non-scaling-stroke"
+        />
 
         <g>
           {cities.map((entry) => {
@@ -224,12 +265,31 @@ export default function WorldMap({ cities, selectedCityId, onSelectCity }: World
                   }
                 }}
               >
-                <circle className="marker-halo" cx={x} cy={y} r={haloR} />
+                <circle className="marker-halo" cx={x} cy={y} r={haloR} filter="url(#markerGlow)" />
+                <circle
+                  className="marker-ring"
+                  cx={x}
+                  cy={y}
+                  r={ringR}
+                  strokeWidth={ringStrokeW}
+                  strokeDasharray={ringDash}
+                  style={{ transform: `rotate(${markerTilt(entry.id)}deg)` }}
+                />
                 <circle className="marker-dot" cx={x} cy={y} r={markerR} strokeWidth={strokeW} />
                 <text
+                  className="marker-glyph"
+                  x={x}
+                  y={y}
+                  fontSize={glyphSize}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                >
+                  ☕
+                </text>
+                <text
                   className="marker-label"
-                  x={x + markerR * 1.8}
-                  y={y - markerR * 1.8}
+                  x={x + ringR * 1.4}
+                  y={y - ringR * 1.4}
                   fontSize={fontSize}
                 >
                   {entry.city}

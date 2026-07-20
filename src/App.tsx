@@ -27,6 +27,7 @@ function App() {
 
   return (
     <div className="relative flex h-screen flex-col overflow-hidden bg-paper text-ink">
+      <div className="paper-grain" aria-hidden="true" />
       <FilterBar
         countries={countries}
         selectedCountry={selectedCountry}
