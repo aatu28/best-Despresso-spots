@@ -1,5 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
+import {
+  AmbientLight,
+  BufferGeometry,
+  Clock,
+  CylinderGeometry,
+  DirectionalLight,
+  Float32BufferAttribute,
+  Group,
+  LatheGeometry,
+  LineBasicMaterial,
+  LineSegments,
+  Mesh,
+  MeshBasicMaterial,
+  MeshStandardMaterial,
+  PerspectiveCamera,
+  Raycaster,
+  Scene,
+  SphereGeometry,
+  Vector2,
+  Vector3,
+  WebGLRenderer,
+} from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import type { CityStop } from '../types/city';
 import { COASTLINE_POINTS } from '../lib/coastlines';
@@ -23,15 +44,15 @@ const FLY_DURATION = 0.55;
 
 interface Pin {
   id: string;
-  mesh: THREE.Mesh;
-  halo: THREE.Mesh;
-  stem: THREE.Mesh;
+  mesh: Mesh;
+  halo: Mesh;
+  stem: Mesh;
 }
 
-function toVector(lat: number, lon: number, r: number): THREE.Vector3 {
+function toVector(lat: number, lon: number, r: number): Vector3 {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lon + 180) * (Math.PI / 180);
-  return new THREE.Vector3(
+  return new Vector3(
     -r * Math.sin(phi) * Math.cos(theta),
     r * Math.cos(phi),
     r * Math.sin(phi) * Math.sin(theta),
@@ -42,19 +63,19 @@ function easeInOutCubic(x: number): number {
   return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 }
 
-function teardropGeometry(): THREE.LatheGeometry {
-  const points: THREE.Vector2[] = [];
+function teardropGeometry(): LatheGeometry {
+  const points: Vector2[] = [];
   for (let i = 0; i <= 12; i++) {
     const t = i / 12;
     const r = 0.06 * Math.sin(t * Math.PI);
-    points.push(new THREE.Vector2(r, 0.12 * (1 - t)));
+    points.push(new Vector2(r, 0.12 * (1 - t)));
   }
-  return new THREE.LatheGeometry(points, 16);
+  return new LatheGeometry(points, 16);
 }
 
-function coastlineGeometry(): THREE.BufferGeometry {
+function coastlineGeometry(): BufferGeometry {
   const positions: number[] = [];
-  let prev: THREE.Vector3 | null = null;
+  let prev: Vector3 | null = null;
   for (let i = 0; i < COASTLINE_POINTS.length; i += 2) {
     const lat = COASTLINE_POINTS[i];
     const lon = COASTLINE_POINTS[i + 1];
@@ -66,8 +87,8 @@ function coastlineGeometry(): THREE.BufferGeometry {
     if (prev) positions.push(prev.x, prev.y, prev.z, v.x, v.y, v.z);
     prev = v;
   }
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  const geo = new BufferGeometry();
+  geo.setAttribute('position', new Float32BufferAttribute(positions, 3));
   return geo;
 }
 
@@ -78,10 +99,10 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
   const visibleIdsRef = useRef(visibleIds);
   const onSelectRef = useRef(onSelectCity);
   const sceneRef = useRef<{
-    camera: THREE.PerspectiveCamera;
+    camera: PerspectiveCamera;
     controls: OrbitControls;
     pins: Pin[];
-    flyTo: (dir: THREE.Vector3, distance?: number) => void;
+    flyTo: (dir: Vector3, distance?: number) => void;
   } | null>(null);
   const [ready, setReady] = useState(false);
 
@@ -95,8 +116,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
     // PerspectiveCamera fixes the *vertical* FOV, so on a narrow portrait
     // viewport the horizontal extent shrinks and the globe overflows the
     // sides. Back the camera up so the globe fits the tighter of the two
@@ -107,55 +128,55 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       (RADIUS * 1.325) / (Math.tan(fovRad / 2) * Math.min(1, aspect));
     camera.position.set(0, 0, comfortableDistance(container.clientWidth / container.clientHeight));
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.domElement.style.cursor = 'grab';
     container.appendChild(renderer.domElement);
 
-    scene.add(new THREE.AmbientLight(0xf8ead8, 0.7));
-    const key = new THREE.DirectionalLight(0xfde8d0, 1.3);
+    scene.add(new AmbientLight(0xf8ead8, 0.7));
+    const key = new DirectionalLight(0xfde8d0, 1.3);
     key.position.set(5, 4, 6);
     scene.add(key);
-    const fill = new THREE.DirectionalLight(0xe8d5bf, 0.4);
+    const fill = new DirectionalLight(0xe8d5bf, 0.4);
     fill.position.set(-5, -3, -4);
     scene.add(fill);
 
-    const globeGroup = new THREE.Group();
+    const globeGroup = new Group();
     scene.add(globeGroup);
 
     globeGroup.add(
-      new THREE.Mesh(
-        new THREE.SphereGeometry(RADIUS, 64, 64),
-        new THREE.MeshStandardMaterial({ color: 0xfbf8f2, roughness: 0.65, metalness: 0.12 }),
+      new Mesh(
+        new SphereGeometry(RADIUS, 64, 64),
+        new MeshStandardMaterial({ color: 0xfbf8f2, roughness: 0.65, metalness: 0.12 }),
       ),
     );
 
     globeGroup.add(
-      new THREE.Mesh(
-        new THREE.SphereGeometry(RADIUS * 1.006, 24, 16),
-        new THREE.MeshBasicMaterial({ color: INK_COLOR, wireframe: true, transparent: true, opacity: 0.06 }),
+      new Mesh(
+        new SphereGeometry(RADIUS * 1.006, 24, 16),
+        new MeshBasicMaterial({ color: INK_COLOR, wireframe: true, transparent: true, opacity: 0.06 }),
       ),
     );
 
     globeGroup.add(
-      new THREE.LineSegments(
+      new LineSegments(
         coastlineGeometry(),
-        new THREE.LineBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.7 }),
+        new LineBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.7 }),
       ),
     );
 
-    const haloGeo = new THREE.SphereGeometry(0.12, 16, 8);
-    const haloMat = new THREE.MeshBasicMaterial({ color: HALO_COLOR, transparent: true, opacity: 0.22 });
+    const haloGeo = new SphereGeometry(0.12, 16, 8);
+    const haloMat = new MeshBasicMaterial({ color: HALO_COLOR, transparent: true, opacity: 0.22 });
     const pinGeo = teardropGeometry();
-    const pinMat = new THREE.MeshStandardMaterial({
+    const pinMat = new MeshStandardMaterial({
       color: MARKER_COLOR,
       emissive: MARKER_COLOR,
       emissiveIntensity: 0.7,
       roughness: 0.35,
     });
-    const stemGeo = new THREE.CylinderGeometry(0.006, 0.006, RADIUS * 0.03, 6);
-    const stemMat = new THREE.MeshBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.4 });
+    const stemGeo = new CylinderGeometry(0.006, 0.006, RADIUS * 0.03, 6);
+    const stemMat = new MeshBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.4 });
 
     const pins: Pin[] = [];
 
@@ -163,20 +184,20 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       const pos = toVector(city.latitude, city.longitude, RADIUS * 1.03);
       const dir = pos.clone().normalize();
 
-      const mesh = new THREE.Mesh(pinGeo, pinMat.clone());
+      const mesh = new Mesh(pinGeo, pinMat.clone());
       mesh.position.copy(pos);
-      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+      mesh.quaternion.setFromUnitVectors(new Vector3(0, 1, 0), dir);
       mesh.userData.cityId = city.id;
       globeGroup.add(mesh);
 
-      const halo = new THREE.Mesh(haloGeo, haloMat.clone());
+      const halo = new Mesh(haloGeo, haloMat.clone());
       halo.position.copy(pos);
       globeGroup.add(halo);
 
-      const stem = new THREE.Mesh(stemGeo, stemMat);
+      const stem = new Mesh(stemGeo, stemMat);
       const stemPos = toVector(city.latitude, city.longitude, RADIUS * 1.015);
       stem.position.copy(stemPos);
-      stem.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+      stem.quaternion.setFromUnitVectors(new Vector3(0, 1, 0), dir);
       globeGroup.add(stem);
 
       pins.push({ id: city.id, mesh, halo, stem });
@@ -199,8 +220,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     // badge all move the camera through this instead of snapping it, so the
     // globe reads as one continuous, deliberate motion. autoRotate is
     // suspended for the duration so the two don't fight over the position.
-    let flight: { from: THREE.Vector3; to: THREE.Vector3; start: number; duration: number } | null = null;
-    const flyTo = (dir: THREE.Vector3, distance?: number) => {
+    let flight: { from: Vector3; to: Vector3; start: number; duration: number } | null = null;
+    const flyTo = (dir: Vector3, distance?: number) => {
       const dist = distance ?? camera.position.length();
       const to = dir.clone().normalize().multiplyScalar(dist);
       if (reducedMotion) {
@@ -211,8 +232,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       flight = { from: camera.position.clone(), to, start: clock.getElapsedTime(), duration: FLY_DURATION };
     };
 
-    const raycaster = new THREE.Raycaster();
-    const pointer = new THREE.Vector2();
+    const raycaster = new Raycaster();
+    const pointer = new Vector2();
     let downPos: { x: number; y: number } | null = null;
     let hoveredId: string | null = null;
 
@@ -273,7 +294,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
         dot.className = 'cluster-badge-dot';
         button.appendChild(dot);
         button.addEventListener('click', () => {
-          const dir = (button as unknown as { _dir?: THREE.Vector3 })._dir;
+          const dir = (button as unknown as { _dir?: Vector3 })._dir;
           if (!dir) return;
           flyTo(dir, Math.max(controls.minDistance, camera.position.length() * 0.55));
         });
@@ -285,7 +306,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     }
 
     let raf = 0;
-    const clock = new THREE.Clock();
+    const clock = new Clock();
     const animate = () => {
       raf = requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
@@ -310,7 +331,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
         const camDir = camera.position.clone().normalize();
         const horizon = RADIUS / camDist + 0.03;
 
-        const candidates: { id: string; x: number; y: number; dir: THREE.Vector3 }[] = [];
+        const candidates: { id: string; x: number; y: number; dir: Vector3 }[] = [];
         for (const pin of pins) {
           if (!visible.has(pin.id)) continue;
           const dir = pin.mesh.position.clone().normalize();
@@ -342,7 +363,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
           for (const m of group) clusteredHidden.add(m.id);
           const cx = group.reduce((s, m) => s + m.x, 0) / group.length;
           const cy = group.reduce((s, m) => s + m.y, 0) / group.length;
-          const avgDir = new THREE.Vector3();
+          const avgDir = new Vector3();
           for (const m of group) avgDir.add(m.dir);
           avgDir.normalize();
 
@@ -351,7 +372,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
           button.style.display = 'flex';
           button.style.left = `${cx}px`;
           button.style.top = `${cy}px`;
-          (button as unknown as { _dir: THREE.Vector3 })._dir = avgDir;
+          (button as unknown as { _dir: Vector3 })._dir = avgDir;
         }
         for (let i = badgeIndex; i < badgePool.length; i++) badgePool[i].button.style.display = 'none';
       }
@@ -367,17 +388,17 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
           const pulse = reducedMotion ? 1.2 : 1 + Math.sin(t * 4) * 0.25;
           pin.mesh.scale.setScalar(pulse);
           pin.halo.scale.setScalar(reducedMotion ? 1.5 : 1.3 + Math.sin(t * 4) * 0.4);
-          (pin.halo.material as THREE.MeshBasicMaterial).opacity = reducedMotion ? 0.4 : 0.35 + Math.sin(t * 4) * 0.15;
+          (pin.halo.material as MeshBasicMaterial).opacity = reducedMotion ? 0.4 : 0.35 + Math.sin(t * 4) * 0.15;
         } else if (pin.id === hoveredId) {
           pin.mesh.scale.setScalar(1.18);
           pin.halo.scale.setScalar(1.15);
-          (pin.halo.material as THREE.MeshBasicMaterial).opacity = 0.28;
+          (pin.halo.material as MeshBasicMaterial).opacity = 0.28;
         } else {
           const introFactor = reducedMotion ? 0 : Math.max(0, (INTRO_DURATION - t) / INTRO_DURATION);
           const wobble = introFactor > 0 ? Math.sin(t * 3.2) : 0;
           pin.mesh.scale.setScalar(1 + wobble * 0.14 * introFactor);
           pin.halo.scale.setScalar(1 + wobble * 0.12 * introFactor);
-          (pin.halo.material as THREE.MeshBasicMaterial).opacity = 0.18 + wobble * 0.08 * introFactor;
+          (pin.halo.material as MeshBasicMaterial).opacity = 0.18 + wobble * 0.08 * introFactor;
         }
       }
 
@@ -413,7 +434,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       controls.dispose();
       renderer.dispose();
       scene.traverse((obj) => {
-        if (obj instanceof THREE.Mesh || obj instanceof THREE.LineSegments) {
+        if (obj instanceof Mesh || obj instanceof LineSegments) {
           obj.geometry.dispose();
           const mat = obj.material;
           if (Array.isArray(mat)) mat.forEach((m) => m.dispose());
@@ -449,7 +470,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     }
 
     if (visibleIds.size === 0 || visibleIds.size === s.pins.length) return;
-    const sum = new THREE.Vector3();
+    const sum = new Vector3();
     for (const pin of s.pins) {
       if (visibleIds.has(pin.id)) sum.add(pin.mesh.position.clone().normalize());
     }

@@ -50,7 +50,7 @@ function App() {
   }
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-bg text-ink">
+    <div className="relative h-dvh w-full overflow-hidden bg-bg text-ink">
       <Suspense
         fallback={
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
