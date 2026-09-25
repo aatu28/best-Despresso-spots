@@ -37,11 +37,13 @@ function App() {
         onSelectCity={(city) => setSelectedCityId(city.id)}
       />
 
+      <div className="paper-grain pointer-events-none absolute inset-0 z-0" />
+
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            'radial-gradient(ellipse 150% 100% at 50% -10%, rgba(92,64,51,0.08) 0%, transparent 60%)',
+            'radial-gradient(ellipse 150% 100% at 50% -10%, rgba(180,98,61,0.10) 0%, transparent 60%)',
         }}
       />
 
@@ -63,6 +65,19 @@ function App() {
       <p className="pointer-events-none absolute bottom-8 left-8 z-10 text-[11px] tracking-[0.02em] text-ink-faint sm:bottom-12 sm:left-14">
         Drag to rotate &bull; Scroll to zoom &bull; Click a mark
       </p>
+
+      <div
+        aria-hidden
+        className="stamp-badge pointer-events-none absolute right-14 bottom-12 z-10 hidden h-[122px] w-[122px] flex-none items-center justify-center rounded-full sm:flex"
+      >
+        <div className="flex h-[100px] w-[100px] items-center justify-center rounded-full border border-accent text-center">
+          <span className="text-[10.5px] leading-[1.5] font-semibold tracking-[0.12em] text-accent uppercase">
+            Field Notes
+            <br />
+            Est. Coverage
+          </span>
+        </div>
+      </div>
 
       <DetailPanel key={selectedCity?.id ?? 'none'} city={selectedCity} onClose={() => setSelectedCityId(null)} />
     </div>

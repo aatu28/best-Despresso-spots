@@ -39,7 +39,7 @@ To add a city, add an entry to `espresso-data.json` with its coordinates and caf
 
 ## Design
 
-Visual identity follows a design handoff for a "Coffee Coverage Globe" — warm, softly-lit white sphere, espresso-brown pins, Archivo typography, cream/near-black light/dark themes (`src/index.css`). The panel and pin data are adapted to what's actually in `espresso-data.json` (city + real cafe names) rather than the handoff's richer per-shop mock fields (neighborhood, blurb, tag) — those would have needed fabricating descriptive text about real businesses that wasn't provided.
+A coffee-travel-journal identity: warm ivory paper with a subtle grain, a single clay accent (`#B4623D`) for pins, links and the rotated "field notes" stamp motifs, Fraunces serif for place names and headlines paired with Archivo for UI and body text, and cream/near-black light/dark themes (`src/index.css`). The panel and pin data are adapted to what's actually in `espresso-data.json` (city + real cafe names) rather than inventing richer per-shop fields (neighborhood, blurb, tag) that weren't provided.
 
 ## Stack
 

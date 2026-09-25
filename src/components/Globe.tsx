@@ -14,9 +14,9 @@ interface GlobeProps {
 }
 
 const RADIUS = 2;
-const MARKER_COLOR = 0x5c4033;
+const MARKER_COLOR = 0xb4623d;
 const HALO_COLOR = 0xc9a878;
-const INK_COLOR = 0x201e1d;
+const INK_COLOR = 0x201c1a;
 
 interface Pin {
   id: string;
@@ -103,7 +103,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     globeGroup.add(
       new THREE.Mesh(
         new THREE.SphereGeometry(RADIUS, 64, 64),
-        new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.65, metalness: 0.12 }),
+        new THREE.MeshStandardMaterial({ color: 0xfbf8f2, roughness: 0.65, metalness: 0.12 }),
       ),
     );
 

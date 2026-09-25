@@ -41,55 +41,63 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
       </button>
 
       {city && (
-        <div className="flex flex-col gap-4">
-          <div>
-            <div className="mb-1.5 text-[10px] font-extrabold tracking-[0.12em] text-accent uppercase opacity-70">
+        <div className="flex flex-1 flex-col gap-5">
+          <div className="flex flex-col gap-2.5">
+            <div className="text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
               {city.country}
             </div>
-            <h2 className="mb-2 text-[28px] leading-[1.1] font-extrabold text-balance">{city.city}</h2>
-            <div className="text-[13px] text-ink-soft">
+            <h2 className="font-serif text-[40px] leading-[1] font-medium text-balance">{city.city}</h2>
+            <div className="text-[14px] text-ink-soft">
               {city.cafes.length} cafe{city.cafes.length === 1 ? '' : 's'} visited &mdash; tap one for details
             </div>
           </div>
 
-          <ul className="flex flex-col gap-1 text-[14px] leading-[1.4]">
+          <div className="h-px bg-line" />
+
+          <ul className="flex flex-col gap-2.5">
             {city.cafes.map((cafe) => {
               const isOpen = expanded.has(cafe.name);
               const hasDescription = cafe.description && cafe.description !== 'UNVERIFIED';
               return (
-                <li key={cafe.name} className="border-b border-line last:border-b-0">
+                <li key={cafe.name}>
                   <button
                     onClick={() => toggle(cafe.name)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-3 py-2.5 text-left"
+                    className="w-full rounded-xl border border-panel-border px-[18px] py-4 text-left transition-colors hover:bg-tag-bg"
                   >
-                    <span className="flex items-baseline gap-2">
-                      <span className="text-accent opacity-60">&bull;</span>
-                      <span className="text-ink-soft">{cafe.name}</span>
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="text-[15px] leading-[1.35] font-medium text-ink">{cafe.name}</span>
+                      <span
+                        aria-hidden
+                        className="flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[13px] text-accent"
+                        style={{ borderColor: 'color-mix(in srgb, var(--color-accent) 50%, transparent)' }}
+                      >
+                        {isOpen ? '−' : '+'}
+                      </span>
                     </span>
-                    <span className="flex-none text-[12px] text-ink-faint">{isOpen ? '−' : '+'}</span>
+                    {isOpen && (
+                      <p className="mt-3 text-[13.5px] leading-[1.6] text-ink-faint">
+                        {hasDescription ? cafe.description : 'No verified details yet.'}
+                      </p>
+                    )}
                   </button>
-                  {isOpen && (
-                    <p className="mb-3 pl-4 text-[13px] leading-[1.55] text-ink-faint">
-                      {hasDescription ? cafe.description : 'No verified details yet.'}
-                    </p>
-                  )}
                 </li>
               );
             })}
           </ul>
 
-          <div
-            className="inline-flex w-fit items-center rounded-sm px-3 py-1.5 text-[10px] font-semibold tracking-[0.04em] text-accent uppercase"
-            style={{ background: 'var(--color-tag-bg)' }}
-          >
-            Coverage: Active
-          </div>
+          <div className="flex-1" />
 
-          <div className="my-1 h-px bg-line" />
+          <div className="flex items-center justify-between">
+            <div
+              className="stamp-badge inline-flex w-fit items-center rounded-full px-4 py-[7px] text-[10px] font-semibold tracking-[0.14em] text-accent uppercase"
+            >
+              Coverage: Active
+            </div>
 
-          <div className="text-[10px] tracking-[0.06em] text-ink-faint uppercase tabular-nums">
-            {formatCoord(city.latitude, city.longitude)}
+            <div className="text-[12px] tracking-[0.02em] text-ink-faint tabular-nums">
+              {formatCoord(city.latitude, city.longitude)}
+            </div>
           </div>
         </div>
       )}
