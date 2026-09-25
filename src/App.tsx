@@ -1,18 +1,25 @@
-import { useMemo, useState } from 'react';
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import rawCities from './data/espresso-data.json';
 import type { CityStop } from './types/city';
-import Globe from './components/Globe';
 import GlobeHeader from './components/GlobeHeader';
 import CountryFilter from './components/CountryFilter';
+import CityFinder from './components/CityFinder';
 import DetailPanel from './components/DetailPanel';
+
+const Globe = lazy(() => import('./components/Globe'));
 
 const cities = rawCities as CityStop[];
 const totalCafes = cities.reduce((sum, c) => sum + c.cafes.length, 0);
 const countries = Array.from(new Set(cities.map((c) => c.country))).sort();
 
+function cityIdFromUrl(): string | null {
+  const id = new URLSearchParams(window.location.search).get('city');
+  return id && cities.some((c) => c.id === id) ? id : null;
+}
+
 function App() {
   const [selectedCountry, setSelectedCountry] = useState('all');
-  const [selectedCityId, setSelectedCityId] = useState<string | null>(null);
+  const [selectedCityId, setSelectedCityId] = useState<string | null>(cityIdFromUrl);
 
   const visibleIds = useMemo(
     () =>
@@ -28,14 +35,25 @@ function App() {
     ? (cities.find((c) => c.id === selectedCityId) ?? null)
     : null;
 
+  // Keep the URL in sync so a city can be linked/bookmarked directly.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (selectedCityId) params.set('city', selectedCityId);
+    else params.delete('city');
+    const qs = params.toString();
+    window.history.replaceState(null, '', `${window.location.pathname}${qs ? `?${qs}` : ''}`);
+  }, [selectedCityId]);
+
+  function selectCity(city: CityStop) {
+    if (selectedCountry !== 'all' && selectedCountry !== city.country) setSelectedCountry('all');
+    setSelectedCityId(city.id);
+  }
+
   return (
     <div className="relative h-screen w-full overflow-hidden bg-bg text-ink">
-      <Globe
-        cities={cities}
-        visibleIds={visibleIds}
-        selectedCityId={selectedCityId}
-        onSelectCity={(city) => setSelectedCityId(city.id)}
-      />
+      <Suspense fallback={null}>
+        <Globe cities={cities} visibleIds={visibleIds} selectedCityId={selectedCityId} onSelectCity={selectCity} />
+      </Suspense>
 
       <div className="paper-grain pointer-events-none absolute inset-0 z-0" />
 
@@ -50,16 +68,19 @@ function App() {
       <div className="absolute inset-x-0 top-0 z-10 flex flex-col gap-3 p-4 sm:block sm:p-0">
         <GlobeHeader totalCities={cities.length} totalCountries={countries.length} totalCafes={totalCafes} />
 
-        <CountryFilter
-          countries={countries}
-          selectedCountry={selectedCountry}
-          onCountryChange={(country) => {
-            setSelectedCountry(country);
-            setSelectedCityId(null);
-          }}
-          shownCount={visibleIds.size}
-          totalCount={cities.length}
-        />
+        <div className="flex flex-col items-end gap-3 sm:absolute sm:top-14 sm:right-14">
+          <CountryFilter
+            countries={countries}
+            selectedCountry={selectedCountry}
+            onCountryChange={(country) => {
+              setSelectedCountry(country);
+              setSelectedCityId(null);
+            }}
+            shownCount={visibleIds.size}
+            totalCount={cities.length}
+          />
+          <CityFinder cities={cities} onSelectCity={selectCity} />
+        </div>
       </div>
 
       <p className="pointer-events-none absolute bottom-8 left-8 z-10 text-[11px] tracking-[0.02em] text-ink-faint sm:bottom-12 sm:left-14">

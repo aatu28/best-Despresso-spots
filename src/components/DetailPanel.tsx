@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { CityStop } from '../types/city';
 
 interface DetailPanelProps {
@@ -15,6 +15,13 @@ function formatCoord(lat: number, lon: number): string {
 export default function DetailPanel({ city, onClose }: DetailPanelProps) {
   const open = city !== null;
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 1600);
+    return () => clearTimeout(timer);
+  }, [copied]);
 
   function toggle(name: string) {
     setExpanded((prev) => {
@@ -25,6 +32,18 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
     });
   }
 
+  async function copyLink() {
+    if (!city) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('city', city.id);
+    try {
+      await navigator.clipboard.writeText(url.toString());
+      setCopied(true);
+    } catch {
+      // clipboard access can be denied (permissions, insecure context); fail quietly
+    }
+  }
+
   return (
     <aside
       aria-live="polite"
@@ -32,13 +51,31 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
         open ? 'translate-y-0 sm:translate-x-0' : 'translate-y-full sm:translate-x-full sm:translate-y-0'
       }`}
     >
-      <button
-        onClick={onClose}
-        aria-label="Close"
-        className="panel-close-btn flex h-9 w-9 flex-none items-center justify-center self-end rounded-sm text-lg text-ink"
-      >
-        &times;
-      </button>
+      <div className="flex flex-none items-center gap-2">
+        {city && (
+          <button
+            onClick={copyLink}
+            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] text-ink-faint hover:bg-tag-bg hover:text-ink"
+          >
+            <svg aria-hidden width="13" height="13" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M5.8 8.2L8.2 5.8M6.4 3.6L7.1 2.9a2.2 2.2 0 0 1 3.1 3.1l-1.3 1.3M7.6 10.4l-.7.7a2.2 2.2 0 0 1-3.1-3.1l1.3-1.3"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+              />
+            </svg>
+            {copied ? 'Link copied' : 'Copy link'}
+          </button>
+        )}
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="panel-close-btn ml-auto flex h-9 w-9 flex-none items-center justify-center rounded-sm text-lg text-ink"
+        >
+          &times;
+        </button>
+      </div>
 
       {city && (
         <div className="flex flex-1 flex-col gap-5">

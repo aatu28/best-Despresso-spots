@@ -17,6 +17,8 @@ const RADIUS = 2;
 const MARKER_COLOR = 0xb4623d;
 const HALO_COLOR = 0xc9a878;
 const INK_COLOR = 0x201c1a;
+const INTRO_DURATION = 2.6;
+const CLUSTER_RADIUS_PX = 32;
 
 interface Pin {
   id: string;
@@ -66,6 +68,7 @@ function coastlineGeometry(): THREE.BufferGeometry {
 
 export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity }: GlobeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const selectedIdRef = useRef(selectedCityId);
   const visibleIdsRef = useRef(visibleIds);
   const onSelectRef = useRef(onSelectCity);
@@ -186,7 +189,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       pointer.x = ((evt.clientX - rect.left) / rect.width) * 2 - 1;
       pointer.y = -((evt.clientY - rect.top) / rect.height) * 2 + 1;
       raycaster.setFromCamera(pointer, camera);
-      const hits = raycaster.intersectObjects(pins.filter((p) => visibleIdsRef.current.has(p.id)).map((p) => p.mesh));
+      const targets = pins.filter((p) => visibleIdsRef.current.has(p.id) && p.mesh.visible).map((p) => p.mesh);
+      const hits = raycaster.intersectObjects(targets);
       if (hits.length > 0) {
         const hit = pins.find((p) => p.mesh === hits[0].object);
         const city = hit && cities.find((c) => c.id === hit.id);
@@ -196,6 +200,34 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     renderer.domElement.addEventListener('pointerdown', onPointerDown);
     renderer.domElement.addEventListener('pointerup', onPointerUp);
 
+    // Cluster badges: a small pool of real <button> elements laid over the
+    // canvas, repositioned each frame. Tightly-grouped pins (e.g. the US
+    // west coast) collapse into one badge showing a count; clicking it zooms
+    // the camera in until the group is loose enough to split back apart.
+    const overlay = overlayRef.current;
+    const badgePool: HTMLButtonElement[] = [];
+    function getBadge(i: number): HTMLButtonElement {
+      let el = badgePool[i];
+      if (!el) {
+        el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'cluster-badge';
+        el.style.display = 'none';
+        el.setAttribute('aria-hidden', 'true');
+        el.tabIndex = -1;
+        el.addEventListener('click', () => {
+          const dir = (el as unknown as { _dir?: THREE.Vector3 })._dir;
+          if (!dir) return;
+          const dist = Math.max(controls.minDistance, camera.position.length() * 0.55);
+          camera.position.copy(dir.clone().multiplyScalar(dist));
+          controls.update();
+        });
+        overlay?.appendChild(el);
+        badgePool[i] = el;
+      }
+      return el;
+    }
+
     let raf = 0;
     const clock = new THREE.Clock();
     const animate = () => {
@@ -204,8 +236,62 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       const selectedId = selectedIdRef.current;
       const visible = visibleIdsRef.current;
 
+      const clusteredHidden = new Set<string>();
+      if (overlay) {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        const camDist = camera.position.length();
+        const camDir = camera.position.clone().normalize();
+        const horizon = RADIUS / camDist + 0.03;
+
+        const candidates: { id: string; x: number; y: number; dir: THREE.Vector3 }[] = [];
+        for (const pin of pins) {
+          if (!visible.has(pin.id)) continue;
+          const dir = pin.mesh.position.clone().normalize();
+          if (dir.dot(camDir) < horizon) continue;
+          const proj = pin.mesh.position.clone().project(camera);
+          if (proj.z > 1) continue;
+          candidates.push({ id: pin.id, x: (proj.x * 0.5 + 0.5) * w, y: (1 - (proj.y * 0.5 + 0.5)) * h, dir });
+        }
+
+        const used = new Set<string>();
+        const groups: (typeof candidates)[] = [];
+        for (const c of candidates) {
+          if (used.has(c.id)) continue;
+          const group = [c];
+          used.add(c.id);
+          for (const other of candidates) {
+            if (used.has(other.id)) continue;
+            if (Math.hypot(other.x - c.x, other.y - c.y) < CLUSTER_RADIUS_PX) {
+              group.push(other);
+              used.add(other.id);
+            }
+          }
+          groups.push(group);
+        }
+
+        let badgeIndex = 0;
+        for (const group of groups) {
+          if (group.length < 2) continue;
+          for (const m of group) clusteredHidden.add(m.id);
+          const cx = group.reduce((s, m) => s + m.x, 0) / group.length;
+          const cy = group.reduce((s, m) => s + m.y, 0) / group.length;
+          const avgDir = new THREE.Vector3();
+          for (const m of group) avgDir.add(m.dir);
+          avgDir.normalize();
+
+          const badge = getBadge(badgeIndex++);
+          badge.textContent = String(group.length);
+          badge.style.display = 'flex';
+          badge.style.left = `${cx}px`;
+          badge.style.top = `${cy}px`;
+          (badge as unknown as { _dir: THREE.Vector3 })._dir = avgDir;
+        }
+        for (let i = badgeIndex; i < badgePool.length; i++) badgePool[i].style.display = 'none';
+      }
+
       for (const pin of pins) {
-        const shown = visible.has(pin.id);
+        const shown = visible.has(pin.id) && !clusteredHidden.has(pin.id);
         pin.mesh.visible = shown;
         pin.halo.visible = shown;
         pin.stem.visible = shown;
@@ -217,9 +303,11 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
           pin.halo.scale.setScalar(1.3 + Math.sin(t * 4) * 0.4);
           (pin.halo.material as THREE.MeshBasicMaterial).opacity = 0.35 + Math.sin(t * 4) * 0.15;
         } else {
-          pin.mesh.scale.setScalar(1);
-          pin.halo.scale.setScalar(1);
-          (pin.halo.material as THREE.MeshBasicMaterial).opacity = 0.18;
+          const introFactor = Math.max(0, (INTRO_DURATION - t) / INTRO_DURATION);
+          const wobble = introFactor > 0 ? Math.sin(t * 3.2) : 0;
+          pin.mesh.scale.setScalar(1 + wobble * 0.14 * introFactor);
+          pin.halo.scale.setScalar(1 + wobble * 0.12 * introFactor);
+          (pin.halo.material as THREE.MeshBasicMaterial).opacity = 0.18 + wobble * 0.08 * introFactor;
         }
       }
 
@@ -244,6 +332,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       sceneRef.current = null;
       cancelAnimationFrame(raf);
       ro.disconnect();
+      overlay?.replaceChildren();
       renderer.domElement.removeEventListener('pointerdown', onPointerDown);
       renderer.domElement.removeEventListener('pointerup', onPointerUp);
       controls.dispose();
@@ -263,14 +352,32 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cities]);
 
-  // Filtering the country dropdown narrows visibleIds; when that leaves the
-  // camera facing an empty stretch of globe, rotate to face the centroid of
-  // the pins that are still shown. Left alone (still showing everything),
-  // the camera keeps whatever framing the user last dragged/zoomed to.
+  // Keep the camera pointed at whatever the app wants shown: a selected city
+  // (from a pin click, search result, or a `?city=` deep link) takes
+  // priority — reposition only when it isn't already comfortably in view, so
+  // a click near the center of the visible hemisphere doesn't cause a jump.
+  // With nothing selected, narrowing the country filter reorients toward the
+  // centroid of the pins still shown, so a single remote pin never ends up
+  // hidden on the far side of the globe.
   useEffect(() => {
     const s = sceneRef.current;
-    if (!s || visibleIds.size === 0 || visibleIds.size === s.pins.length) return;
+    if (!s) return;
 
+    if (selectedCityId) {
+      const pin = s.pins.find((p) => p.id === selectedCityId);
+      if (pin) {
+        const dir = pin.mesh.position.clone().normalize();
+        const camDir = s.camera.position.clone().normalize();
+        if (camDir.dot(dir) < 0.6) {
+          const dist = s.camera.position.length();
+          s.camera.position.copy(dir.multiplyScalar(dist));
+          s.controls.update();
+        }
+      }
+      return;
+    }
+
+    if (visibleIds.size === 0 || visibleIds.size === s.pins.length) return;
     const sum = new THREE.Vector3();
     for (const pin of s.pins) {
       if (visibleIds.has(pin.id)) sum.add(pin.mesh.position.clone().normalize());
@@ -280,7 +387,12 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const dist = s.camera.position.length();
     s.camera.position.copy(sum.normalize().multiplyScalar(dist));
     s.controls.update();
-  }, [visibleIds]);
+  }, [selectedCityId, visibleIds]);
 
-  return <div ref={containerRef} className="h-full w-full touch-none" aria-label="3D globe of cities visited for coffee" role="img" />;
+  return (
+    <div className="relative h-full w-full">
+      <div ref={containerRef} className="h-full w-full touch-none" aria-label="3D globe of cities visited for coffee" role="img" />
+      <div ref={overlayRef} className="pointer-events-none absolute inset-0 z-10" />
+    </div>
+  );
 }

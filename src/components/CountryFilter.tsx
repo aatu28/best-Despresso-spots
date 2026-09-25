@@ -14,7 +14,7 @@ export default function CountryFilter({
   totalCount,
 }: CountryFilterProps) {
   return (
-    <div className="flex flex-col items-end gap-1.5 self-end sm:absolute sm:top-14 sm:right-14 sm:self-auto">
+    <div className="flex flex-col items-end gap-1.5 self-end sm:self-auto">
       <label className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-ink-faint uppercase">
         Country
         <select
