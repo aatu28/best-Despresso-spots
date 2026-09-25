@@ -642,5 +642,78 @@
         "description": "Small, cozy all-day cafe bar in the Mets neighborhood of Athens with hillside-view seating, serving coffee and food from morning into the night."
       }
     ]
+  },
+  {
+    "id": "naivasha-kenya",
+    "city": "Naivasha",
+    "country": "Kenya",
+    "latitude": -0.7172,
+    "longitude": 36.4310,
+    "cafes": [
+      {
+        "name": "The Coffee Hut",
+        "description": "Garden cafe on Moi South Lake Road in Naivasha, Kenya, serving Spring Valley coffee with fresh pastries, breakfast, and lunch in a family-friendly space with a children's play area."
+      }
+    ]
+  },
+  {
+    "id": "doha-qatar",
+    "city": "Doha",
+    "country": "Qatar",
+    "latitude": 25.2854,
+    "longitude": 51.5310,
+    "cafes": [
+      {
+        "name": "Savant Cafe",
+        "description": "Modern specialty coffee cafe and restaurant in Doha's Msheireb district serving French- and American-influenced dishes alongside artisanal coffee, including a tasting-flight-style \"Savant Tray.\""
+      }
+    ]
+  },
+  {
+    "id": "singapore",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "cafes": [
+      {
+        "name": "Nylon Coffee Roasters",
+        "description": "Pioneering specialty coffee micro-roastery at Everton Park, Singapore, opened in 2012 by Dennis Tang and Jia Min Lee, sourcing beans directly from farms and cooperatives."
+      },
+      {
+        "name": "Five Oars Coffee Roasters",
+        "description": "Homegrown Singapore coffee roaster founded in 2018, known for brunch classics and freshly roasted coffee across its Upper East Coast, Asia Square, and Tanjong Pagar Heritage locations."
+      }
+    ]
+  },
+  {
+    "id": "lusaka-zambia",
+    "city": "Lusaka",
+    "country": "Zambia",
+    "latitude": -15.3875,
+    "longitude": 28.3228,
+    "cafes": [
+      {
+        "name": "Peaberry Coffee Roasters",
+        "description": "Coffee roastery on Malambo Road in Lusaka, Zambia, owned by World Barista Championship judge and Q Grader Teija Lublinkhof, roasting beans from Zambia, Uganda, Ethiopia, and Colombia."
+      }
+    ]
+  },
+  {
+    "id": "dubai-uae",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "latitude": 25.2048,
+    "longitude": 55.2708,
+    "cafes": [
+      {
+        "name": "The Espresso Lab Roastery",
+        "description": "Dubai-born artisan coffee company founded by Ibrahim Al Mallouhi, roasting specialty beans at its Al Quoz facility and serving them at its Dubai Design District cafe; a four-time UAE National Barista Championship winner."
+      },
+      {
+        "name": "The Lounge, Burj Khalifa",
+        "description": "Sky-high lounge spanning levels 152 to 154 of the Burj Khalifa, a Guinness World Record holder as the highest lounge in the world, serving tea, coffee, and canapés with panoramic views of Dubai."
+      }
+    ]
   }
 ]
