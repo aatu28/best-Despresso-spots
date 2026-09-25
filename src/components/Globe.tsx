@@ -97,7 +97,15 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 0, 6.4);
+    // PerspectiveCamera fixes the *vertical* FOV, so on a narrow portrait
+    // viewport the horizontal extent shrinks and the globe overflows the
+    // sides. Back the camera up so the globe fits the tighter of the two
+    // dimensions; on landscape/square viewports this reduces to the
+    // original fixed distance (~6.4) unchanged.
+    const fovRad = (camera.fov * Math.PI) / 180;
+    const comfortableDistance = (aspect: number) =>
+      (RADIUS * 1.325) / (Math.tan(fovRad / 2) * Math.min(1, aspect));
+    camera.position.set(0, 0, comfortableDistance(container.clientWidth / container.clientHeight));
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -180,8 +188,12 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     controls.autoRotate = !reducedMotion;
     controls.autoRotateSpeed = 0.6;
     controls.enablePan = false;
-    controls.minDistance = 3.6;
-    controls.maxDistance = 9;
+    const setZoomRange = (aspect: number) => {
+      const base = comfortableDistance(aspect);
+      controls.minDistance = base * 0.5625;
+      controls.maxDistance = base * 1.40625;
+    };
+    setZoomRange(container.clientWidth / container.clientHeight);
 
     // Eased camera moves: a selected city, a narrowed filter, or a cluster
     // badge all move the camera through this instead of snapping it, so the
@@ -382,6 +394,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
+      setZoomRange(w / h);
+      camera.position.clampLength(controls.minDistance, controls.maxDistance);
     };
     const ro = new ResizeObserver(onResize);
     ro.observe(container);

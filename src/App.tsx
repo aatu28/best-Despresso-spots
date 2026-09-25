@@ -71,10 +71,10 @@ function App() {
         }}
       />
 
-      <div className="absolute inset-x-0 top-0 z-10 flex flex-col gap-3 p-4 sm:block sm:p-0">
+      <div className="absolute inset-x-0 top-0 z-10 flex flex-col gap-2 p-4 sm:block sm:p-0">
         <GlobeHeader totalCities={cities.length} totalCountries={countries.length} totalCafes={totalCafes} />
 
-        <div className="flex flex-col items-end gap-3 sm:absolute sm:top-14 sm:right-14">
+        <div className="flex flex-col items-end gap-2 sm:absolute sm:top-14 sm:right-14 sm:gap-3">
           <CountryFilter
             countries={countries}
             selectedCountry={selectedCountry}
