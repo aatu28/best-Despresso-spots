@@ -621,5 +621,26 @@
         "description": "The Drawing Room at St. Regis Langkawi resort serves gourmet coffee and baked goods, with weekend afternoon tea overlooking the Andaman Sea."
       }
     ]
+  },
+  {
+    "id": "athens-greece",
+    "city": "Athens",
+    "country": "Greece",
+    "latitude": 37.9838,
+    "longitude": 23.7275,
+    "cafes": [
+      {
+        "name": "Plegma Coffee and Living",
+        "description": "Concept store and specialty coffee shop in Athens' Pagrati neighborhood near the Panathenaic Stadium, blending design-focused retail with a calm cafe space."
+      },
+      {
+        "name": "φιλινγκς | more feelings",
+        "description": "All-day cafe-bistro in Koukaki, Athens, serving Scandinavian-inspired pastries and coffee by day and creative small plates by night."
+      },
+      {
+        "name": "Hillside Cafe",
+        "description": "Small, cozy all-day cafe bar in the Mets neighborhood of Athens with hillside-view seating, serving coffee and food from morning into the night."
+      }
+    ]
   }
 ]

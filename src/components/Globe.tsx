@@ -18,6 +18,13 @@ const MARKER_COLOR = 0x5c4033;
 const HALO_COLOR = 0xc9a878;
 const INK_COLOR = 0x201e1d;
 
+interface Pin {
+  id: string;
+  mesh: THREE.Mesh;
+  halo: THREE.Mesh;
+  stem: THREE.Mesh;
+}
+
 function toVector(lat: number, lon: number, r: number): THREE.Vector3 {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lon + 180) * (Math.PI / 180);
@@ -62,6 +69,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
   const selectedIdRef = useRef(selectedCityId);
   const visibleIdsRef = useRef(visibleIds);
   const onSelectRef = useRef(onSelectCity);
+  const sceneRef = useRef<{ camera: THREE.PerspectiveCamera; controls: OrbitControls; pins: Pin[] } | null>(null);
 
   selectedIdRef.current = selectedCityId;
   visibleIdsRef.current = visibleIds;
@@ -125,12 +133,6 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const stemGeo = new THREE.CylinderGeometry(0.006, 0.006, RADIUS * 0.03, 6);
     const stemMat = new THREE.MeshBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.4 });
 
-    interface Pin {
-      id: string;
-      mesh: THREE.Mesh;
-      halo: THREE.Mesh;
-      stem: THREE.Mesh;
-    }
     const pins: Pin[] = [];
 
     for (const city of cities) {
@@ -236,7 +238,10 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const ro = new ResizeObserver(onResize);
     ro.observe(container);
 
+    sceneRef.current = { camera, controls, pins };
+
     return () => {
+      sceneRef.current = null;
       cancelAnimationFrame(raf);
       ro.disconnect();
       renderer.domElement.removeEventListener('pointerdown', onPointerDown);
@@ -257,6 +262,25 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     // are read from refs each frame so the effect doesn't need to depend on them.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cities]);
+
+  // Filtering the country dropdown narrows visibleIds; when that leaves the
+  // camera facing an empty stretch of globe, rotate to face the centroid of
+  // the pins that are still shown. Left alone (still showing everything),
+  // the camera keeps whatever framing the user last dragged/zoomed to.
+  useEffect(() => {
+    const s = sceneRef.current;
+    if (!s || visibleIds.size === 0 || visibleIds.size === s.pins.length) return;
+
+    const sum = new THREE.Vector3();
+    for (const pin of s.pins) {
+      if (visibleIds.has(pin.id)) sum.add(pin.mesh.position.clone().normalize());
+    }
+    if (sum.lengthSq() === 0) return;
+
+    const dist = s.camera.position.length();
+    s.camera.position.copy(sum.normalize().multiplyScalar(dist));
+    s.controls.update();
+  }, [visibleIds]);
 
   return <div ref={containerRef} className="h-full w-full touch-none" aria-label="3D globe of cities visited for coffee" role="img" />;
 }
