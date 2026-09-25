@@ -112,11 +112,11 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
                         {isOpen ? '−' : '+'}
                       </span>
                     </span>
-                    {isOpen && (
-                      <p className="mt-3 text-[13.5px] leading-[1.6] text-ink-faint">
+                    <div className={`cafe-description ${isOpen ? 'is-open' : ''}`}>
+                      <p className="pt-3 text-[13.5px] leading-[1.6] text-ink-faint">
                         {hasDescription ? cafe.description : 'No verified details yet.'}
                       </p>
-                    )}
+                    </div>
                   </button>
                 </li>
               );

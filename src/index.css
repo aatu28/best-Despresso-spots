@@ -113,8 +113,23 @@ body {
 
 /* ---------- globe cluster badges ---------- */
 
+/* 44px invisible hit area (WCAG touch-target minimum) around a smaller visible dot. */
 .cluster-badge {
   position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.cluster-badge-dot {
+  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 26px;
@@ -125,18 +140,39 @@ body {
   background: var(--color-accent);
   color: var(--color-panel-deep);
   font: 600 12px/1 "Archivo", sans-serif;
-  cursor: pointer;
-  pointer-events: auto;
-  transform: translate(-50%, -50%);
   box-shadow: 0 2px 6px rgba(32, 28, 26, 0.25);
 }
 
-.cluster-badge:hover {
+.cluster-badge:hover .cluster-badge-dot {
   filter: brightness(1.08);
 }
 
+/* ---------- focus ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- cafe row expand/collapse ---------- */
+
+.cafe-description {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.cafe-description.is-open {
+  grid-template-rows: 1fr;
+}
+
+.cafe-description > p {
+  overflow: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .detail-panel {
+  .detail-panel,
+  .cafe-description {
     transition: none !important;
   }
 }
