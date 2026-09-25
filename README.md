@@ -14,19 +14,24 @@ npm run dev
 City data lives in `src/data/espresso-data.json`, typed by `src/types/city.ts`:
 
 ```ts
+interface Cafe {
+  name: string;
+  description: string;
+}
+
 interface CityStop {
   id: string;
   city: string;
   country: string;
   latitude: number;
   longitude: number;
-  cafes: string[];
+  cafes: Cafe[];
 }
 ```
 
-One pin per city — drag to rotate the globe, scroll to zoom, click a pin to open a detail panel with the country and the list of cafes visited there. The "Country" filter (top-right) toggles which pins are shown without rebuilding the scene.
+One pin per city — drag to rotate the globe, scroll to zoom, click a pin to open a detail panel with the country and the list of cafes visited there. Tap a cafe in that list to expand a short description of the spot. The "Country" filter (top-right) toggles which pins are shown without rebuilding the scene.
 
-To add a city, add an entry to `espresso-data.json` with its coordinates and cafe names.
+To add a city, add an entry to `espresso-data.json` with its coordinates and cafes. A cafe's `description` is a real, sourced one-liner (official site / press / reviews) — if nothing about a name could be verified, set it to the literal string `"UNVERIFIED"` rather than inventing something; the panel shows "No verified details yet." for those instead of fabricated text.
 
 ## Globe rendering
 

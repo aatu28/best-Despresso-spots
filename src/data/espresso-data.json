@@ -6,16 +6,46 @@
     "latitude": 37.7749,
     "longitude": -122.4194,
     "cafes": [
-      "The Coffee Movement",
-      "Caffe Greco",
-      "Cafe Reveille (Peruvian Espresso)",
-      "Caffe Trieste",
-      "Avotoasty",
-      "Haraz Coffee House",
-      "Sightglass Coffee",
-      "Red Bay Coffee",
-      "Rosalind Bakery",
-      "Blue Bottle Coffee Roasters"
+      {
+        "name": "The Coffee Movement",
+        "description": "Multi-location San Francisco specialty coffee shop known for tasting flights of three different coffees and expertly pulled espresso drinks."
+      },
+      {
+        "name": "Caffe Greco",
+        "description": "North Beach Italian coffeehouse opened in 1988 by the Suleiman family, known for oversized cappuccinos made with Illy coffee and homemade tiramisu."
+      },
+      {
+        "name": "Cafe Reveille (Peruvian Espresso)",
+        "description": "North Beach cafe and roaster (Reveille Coffee Co.) known for its Paradise Espresso sourced from Peru's Amazonas region, served in a modernist space."
+      },
+      {
+        "name": "Caffe Trieste",
+        "description": "North Beach's pioneering espresso house, founded in 1956 by Gianni Giotta, a Beat-era literary hangout famous for its Saturday opera singalongs."
+      },
+      {
+        "name": "Avotoasty",
+        "description": "Marina and Financial District cafe and in-house roastery founded in 2017 by Sofia Pinzon, known for avocado toast and a full espresso bar."
+      },
+      {
+        "name": "Haraz Coffee House",
+        "description": "Lower Nob Hill outpost of a Yemeni coffee chain founded in Dearborn, Michigan in 2021, serving cardamom-spiced coffee and traditional pastries."
+      },
+      {
+        "name": "Sightglass Coffee",
+        "description": "SoMa roastery and cafe founded in 2009 by brothers Jerad and Justin Morrison, housed in a converted 1914 warehouse with a vintage Probat roaster."
+      },
+      {
+        "name": "Red Bay Coffee",
+        "description": "Oakland-based Black-owned specialty coffee roaster founded in 2014 by artist Keba Konte, with a cafe location inside San Francisco's Ferry Building."
+      },
+      {
+        "name": "Rosalind Bakery",
+        "description": "Pacifica-born bakery that opened a San Francisco outlet in Embarcadero Center, known for handmade pastries, sourdough bread, and fresh coffee drinks."
+      },
+      {
+        "name": "Blue Bottle Coffee Roasters",
+        "description": "Third-wave coffee roaster founded in 2002 by former clarinetist James Freeman, known for roasting small batches and serving beans within 24 hours."
+      }
     ]
   },
   {
@@ -25,12 +55,30 @@
     "latitude": 32.7157,
     "longitude": -117.1611,
     "cafes": [
-      "Bird Rock Coffee Roasters",
-      "The Barn",
-      "Scrimshaw Coffee",
-      "Ostra Coffee",
-      "Cafe Madelene",
-      "Caffe Italia (Little Italy)"
+      {
+        "name": "Bird Rock Coffee Roasters",
+        "description": "La Jolla-based specialty coffee roaster founded in 2006, known for direct-trade single-origin coffees, competition-winning blends, and a dedicated pour-over bar."
+      },
+      {
+        "name": "The Barn",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "Scrimshaw Coffee",
+        "description": "All-day cafe on El Cajon Boulevard operating since 2017, serving espresso drinks, bagels, wine and beer in a community-focused space."
+      },
+      {
+        "name": "Ostra Coffee",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "Cafe Madelene",
+        "description": "Paris-inspired cafe founded in 2010 by Christine Perez, serving French crepes, paninis, and Illy espresso drinks at two San Diego locations."
+      },
+      {
+        "name": "Caffe Italia (Little Italy)",
+        "description": "Espresso bar inside Little Italy's La Pensione Hotel, operating since 1992, serving Lavazza coffee, gelato, and Italian panini sandwiches."
+      }
     ]
   },
   {
@@ -39,7 +87,16 @@
     "country": "United States",
     "latitude": 34.0522,
     "longitude": -118.2437,
-    "cafes": ["Equator Coffee", "Great White"]
+    "cafes": [
+      {
+        "name": "Equator Coffee",
+        "description": "Culver City cafe opened in 2022, the first Southern California location of Bay Area roaster Equator Coffees, a women-owned, B-Corp certified company."
+      },
+      {
+        "name": "Great White",
+        "description": "Venice all-day cafe near the Venice Beach sign, founded by Sam Trude and Sam Cooper, known for coastal-Californian fare and Australian-style coffee."
+      }
+    ]
   },
   {
     "id": "boston-usa",
@@ -47,7 +104,16 @@
     "country": "United States",
     "latitude": 42.3601,
     "longitude": -71.0589,
-    "cafes": ["Tatte Bakery & Cafe (Back Bay)", "Cafe Bonjour"]
+    "cafes": [
+      {
+        "name": "Tatte Bakery & Cafe (Back Bay)",
+        "description": "Boylston Street location of the Mediterranean bakery-cafe chain founded by Israeli-born baker Tzurit Or in 2008, known for pastries and coffee."
+      },
+      {
+        "name": "Cafe Bonjour",
+        "description": "Downtown Crossing breakfast spot serving Moroccan and French dishes, including mint tea, with halal-friendly and largely organic ingredients."
+      }
+    ]
   },
   {
     "id": "nairobi-kenya",
@@ -56,17 +122,50 @@
     "latitude": -1.2921,
     "longitude": 36.8219,
     "cafes": [
-      "Spring Valley Coffee",
-      "Artcaffe",
-      "Shamba Roastery",
-      "Tandeli Cafe",
-      "The Canteen",
-      "Kesh Kesh Coffee Roasters & Cafe",
-      "The Coffee Club",
-      "Okia Cafe",
-      "Mam Mam (Westlands)",
-      "Coffee Lab Nairobi",
-      "Le Grenier a Pain"
+      {
+        "name": "Spring Valley Coffee",
+        "description": "Kenyan specialty coffee roaster founded in 2009, sourcing beans locally, with cafe locations at Wilson Airport, Karen, and Village Market."
+      },
+      {
+        "name": "Artcaffe",
+        "description": "Nairobi-based bakery and coffee shop chain founded in 2007, operating over 30 branches across the city's shopping malls."
+      },
+      {
+        "name": "Shamba Roastery",
+        "description": "Farm-to-table cafe and shop in Nairobi's Loresho area that roasts and sells some of the last coffee grown within the city."
+      },
+      {
+        "name": "Tandeli Cafe",
+        "description": "Nairobi-based microbakery blending Swahili and Gujarati influences, operating Tuesday through Friday via pre-order rather than a walk-in storefront."
+      },
+      {
+        "name": "The Canteen",
+        "description": "Lavington cafe and gallery space in Nairobi celebrating Black art and culture, serving Swahili breakfast dishes alongside coffee."
+      },
+      {
+        "name": "Kesh Kesh Coffee Roasters & Cafe",
+        "description": "Specialty coffee roaster and cafe in Kilimani, Nairobi, roasting in-house Kenyan and East African arabica beans, popular for laptop-friendly workspace."
+      },
+      {
+        "name": "The Coffee Club",
+        "description": "Australian coffee chain founded in Brisbane in 1989 that opened its first African location in Nairobi's Luqman Mall, sourcing beans from Dormans."
+      },
+      {
+        "name": "Okia Cafe",
+        "description": "Contemporary all-day cafe on Riverside Drive in Nairobi serving specialty coffee, breakfast, and brunch in a minimalist modern setting."
+      },
+      {
+        "name": "Mam Mam (Westlands)",
+        "description": "Vietnamese street food restaurant and rooftop bar at Mwanzi Market in Westlands, Nairobi, noted for its Vietnamese coffee."
+      },
+      {
+        "name": "Coffee Lab Nairobi",
+        "description": "Specialty coffee roaster and cafe off Farasi Lane in Nairobi, founded by Wanjiru Mari, serving single-origin coffee with sourdough pastries."
+      },
+      {
+        "name": "Le Grenier a Pain",
+        "description": "French bakery chain founded by Michel Galloyer in 1998, operating four Nairobi branches offering traditional baguettes, pastries, and viennoiseries."
+      }
     ]
   },
   {
@@ -75,7 +174,16 @@
     "country": "Vietnam",
     "latitude": 10.8231,
     "longitude": 106.6297,
-    "cafes": ["Copa Coffee", "74 Ky Con"]
+    "cafes": [
+      {
+        "name": "Copa Coffee",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "74 Ky Con",
+        "description": "UNVERIFIED"
+      }
+    ]
   },
   {
     "id": "istanbul-turkiye",
@@ -83,7 +191,24 @@
     "country": "Turkiye",
     "latitude": 40.9082,
     "longitude": 29.0784,
-    "cafes": ["Petra Roasting Co", "Mandabatmaz", "Federal Coffee", "Bohem's Coffee"]
+    "cafes": [
+      {
+        "name": "Petra Roasting Co",
+        "description": "Third-wave coffee roaster and cafe in Gayrettepe, Istanbul, founded by Kaan Bergsen, roasting beans on a 12-kilo Probat roaster."
+      },
+      {
+        "name": "Mandabatmaz",
+        "description": "Tiny historic Turkish coffee shop on Istiklal Street in Beyoglu serving traditional Turkish coffee since 1967, renowned for its thick foam."
+      },
+      {
+        "name": "Federal Coffee",
+        "description": "Istanbul coffee chain founded in 2016 by Levent Kocarslan, with multiple branches including near Galata Tower serving espresso drinks and brownies."
+      },
+      {
+        "name": "Bohem's Coffee",
+        "description": "Vintage-inspired specialty coffee cafe in Istanbul's Sisli district housed in a historic building, known for its flavored lattes and cozy bohemian atmosphere."
+      }
+    ]
   },
   {
     "id": "chiang-mai-thailand",
@@ -91,7 +216,20 @@
     "country": "Thailand",
     "latitude": 18.7883,
     "longitude": 98.9853,
-    "cafes": ["MARS.cnx", "Fern Forest Cafe", "Gateway Coffee Roaster"]
+    "cafes": [
+      {
+        "name": "MARS.cnx",
+        "description": "Mars-themed cafe in Chiang Mai's Old City with red rocky decor, spacecraft styling, and a mini Grand Canyon photo zone."
+      },
+      {
+        "name": "Fern Forest Cafe",
+        "description": "Family-run garden cafe in Chiang Mai's Old City, founded in 2003 from the family's coffee plantation, with a waterfall and koi pond."
+      },
+      {
+        "name": "Gateway Coffee Roaster",
+        "description": "Vintage-style coffee roastery opened in 2018 on Chang Moi Road, roasting local Arabica in-house and serving espresso on La Marzocco equipment."
+      }
+    ]
   },
   {
     "id": "bucharest-romania",
@@ -99,7 +237,12 @@
     "country": "Romania",
     "latitude": 44.4268,
     "longitude": 26.1025,
-    "cafes": ["Origo Coffee"]
+    "cafes": [
+      {
+        "name": "Origo Coffee",
+        "description": "First specialty coffee shop with its own roaster in Bucharest, open since 2013 on Lipscani Street, doubling as a cocktail bar."
+      }
+    ]
   },
   {
     "id": "bengaluru-india",
@@ -107,7 +250,32 @@
     "country": "India",
     "latitude": 12.9716,
     "longitude": 77.5946,
-    "cafes": ["Something's Brewing", "Copper + Cloves", "Araku Coffee", "Cafe Appetito", "Champaca Bookstore", "Subko"]
+    "cafes": [
+      {
+        "name": "Something's Brewing",
+        "description": "Indiranagar coffee-gear retail store and cafe in Bengaluru where customers can brew their own coffee for free as a hands-on demo."
+      },
+      {
+        "name": "Copper + Cloves",
+        "description": "Plant-based wellness cafe and bookshop set in a garden in Indiranagar, Bengaluru, serving smoothies, salads, and bowls made from locally grown produce."
+      },
+      {
+        "name": "Araku Coffee",
+        "description": "Flagship two-storey specialty cafe in Indiranagar, Bengaluru, with India's first Modbar brew bar, an in-house roastery, and an SCA-certified training academy."
+      },
+      {
+        "name": "Cafe Appetito",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "Champaca Bookstore",
+        "description": "Independent, women-run bookstore, children's library, and cafe in Vasanth Nagar, Bengaluru, founded in 2019, serving coffee and desserts alongside indie-published books."
+      },
+      {
+        "name": "Subko",
+        "description": "Specialty coffee roastery, bakehouse, and cacao brand with outlets in Koramangala, Shanti Nagar, and Indiranagar, Bengaluru, sourcing beans from India's coffee-growing states."
+      }
+    ]
   },
   {
     "id": "vadodara-india",
@@ -115,7 +283,16 @@
     "country": "India",
     "latitude": 22.3072,
     "longitude": 73.1812,
-    "cafes": ["Alembic City - Greenr Cafe", "Curators Coffee"]
+    "cafes": [
+      {
+        "name": "Alembic City - Greenr Cafe",
+        "description": "Health-focused cafe in the MLCP retail block of Vadodara's Alembic City art district, serving Italian, sushi, and healthy-food menus."
+      },
+      {
+        "name": "Curators Coffee",
+        "description": "Specialty coffee chain with branches in Alkapuri and Subhanpura, Vadodara, serving coffee, tea, and continental fare alongside desserts."
+      }
+    ]
   },
   {
     "id": "costa-da-caparica-portugal",
@@ -123,7 +300,12 @@
     "country": "Portugal",
     "latitude": 38.6489,
     "longitude": -9.2367,
-    "cafes": ["Local cafe"]
+    "cafes": [
+      {
+        "name": "Local cafe",
+        "description": "UNVERIFIED"
+      }
+    ]
   },
   {
     "id": "lisbon-portugal",
@@ -131,7 +313,24 @@
     "country": "Portugal",
     "latitude": 38.7223,
     "longitude": -9.1393,
-    "cafes": ["Collect - Food . Radio . Records", "Tact", "Good Company", "Comoba"]
+    "cafes": [
+      {
+        "name": "Collect - Food . Radio . Records",
+        "description": "A Pink Street venue in Cais do Sodré combining a burger bar, vinyl record store, and live in-house radio station."
+      },
+      {
+        "name": "Tact",
+        "description": "Family-run specialty coffee shop in Lisbon's Lapa neighborhood, set in a converted 1960s laundry with a no-laptop, community-focused policy."
+      },
+      {
+        "name": "Good Company",
+        "description": "Lisbon's largest English-language bookshop and café on Avenida Visconde de Valmor, serving Portuguese-roasted coffee, wine, and hosting literary events."
+      },
+      {
+        "name": "Comoba",
+        "description": "Zero-waste café near the Tejo River in a converted historic pharmacy building, serving organic, mostly plant-based food and fair-trade coffee since 2018."
+      }
+    ]
   },
   {
     "id": "london-uk",
@@ -140,13 +339,34 @@
     "latitude": 51.5074,
     "longitude": -0.1278,
     "cafes": [
-      "Caffe Nero",
-      "GAIL's",
-      "Bar Italia",
-      "Blank Street Coffee",
-      "Algerian Coffee Stores",
-      "Costa Coffee",
-      "Barbican Cinema Cafe"
+      {
+        "name": "Caffe Nero",
+        "description": "British coffeehouse chain founded in 1990 in South Kensington, later expanded under Gerry Ford into one of the UK's largest coffee chains."
+      },
+      {
+        "name": "GAIL's",
+        "description": "British bakery chain founded as a wholesale operation by Yael Mejia, opening its first customer-facing shop on Hampstead High Street in 2005."
+      },
+      {
+        "name": "Bar Italia",
+        "description": "Soho espresso bar opened in 1949 by the Polledri family at 22 Frith Street, site of Baird's first TV demonstration."
+      },
+      {
+        "name": "Blank Street Coffee",
+        "description": "Brooklyn-founded coffee chain that opened its first UK location in Fitzrovia in March 2022, serving specialty Arabica from Origin Coffee Roasters."
+      },
+      {
+        "name": "Algerian Coffee Stores",
+        "description": "Soho tea and coffee merchant founded in 1887 at 52 Old Compton Street, widely cited as London's oldest coffee shop."
+      },
+      {
+        "name": "Costa Coffee",
+        "description": "British coffeehouse chain founded in London in 1971 by brothers Bruno and Sergio Costa, later acquired by Whitbread and then Coca-Cola."
+      },
+      {
+        "name": "Barbican Cinema Cafe",
+        "description": "Daytime café inside the Barbican Centre's Beech Street cinema building, serving pastries and coffee from Volcano Coffee Works."
+      }
     ]
   },
   {
@@ -155,7 +375,12 @@
     "country": "Japan",
     "latitude": 35.0116,
     "longitude": 135.7681,
-    "cafes": ["Kyoto Mameshiba Cafe"]
+    "cafes": [
+      {
+        "name": "Kyoto Mameshiba Cafe",
+        "description": "Pet café in Kyoto's Nakagyo Ward offering timed sessions with resident Shiba Inu dogs and a complimentary vending-machine drink."
+      }
+    ]
   },
   {
     "id": "osaka-japan",
@@ -163,7 +388,24 @@
     "country": "Japan",
     "latitude": 34.6937,
     "longitude": 135.5023,
-    "cafes": ["Embankment Coffee", "Elmersgreen", "Moto Coffee", "Brooklyn Coffee Shop"]
+    "cafes": [
+      {
+        "name": "Embankment Coffee",
+        "description": "Specialty coffee shop in Osaka's Kitahama district, housed in a 1912 riverside wooden building, serving light-roast single-origin coffee."
+      },
+      {
+        "name": "Elmersgreen",
+        "description": "Café and bakery that opened in Sakai, Osaka in 2013, roasting its own coffee beans and baking cakes on-site."
+      },
+      {
+        "name": "Moto Coffee",
+        "description": "Riverside coffee shop in Osaka's Kitahama Terrace overlooking Nakanoshima Park, serving hand-drip and espresso drinks with popular terrace seating."
+      },
+      {
+        "name": "Brooklyn Coffee Shop",
+        "description": "New York-founded Brooklyn Roasting Company runs a riverside café in Osaka's Kitahama district, serving freshly roasted coffee since opening in 2012."
+      }
+    ]
   },
   {
     "id": "seoul-south-korea",
@@ -171,7 +413,24 @@
     "country": "South Korea",
     "latitude": 37.5665,
     "longitude": 126.978,
-    "cafes": ["London Bagel Museum", "% Arabica", "PP Coffee", "UNDEBT"]
+    "cafes": [
+      {
+        "name": "London Bagel Museum",
+        "description": "Popular Seoul bakery café chain, opened in 2021, known for freshly baked bagels and a vintage British-inspired interior with long daily queues."
+      },
+      {
+        "name": "% Arabica",
+        "description": "Kyoto-founded specialty coffee chain with a minimalist white design; its Seoul branch opened in 2022 inside COEX's Starfield Library."
+      },
+      {
+        "name": "PP Coffee",
+        "description": "Long-running Mapo-gu café whose owner roasts Philippine-grown beans over charcoal and brews coffee by siphon using custom-built equipment."
+      },
+      {
+        "name": "UNDEBT",
+        "description": "Cave-themed café in Seoul's Yongsan district blending hanok wood and stone interiors, known for specialty lattes and affogato desserts."
+      }
+    ]
   },
   {
     "id": "petaling-jaya-malaysia",
@@ -179,7 +438,16 @@
     "country": "Malaysia",
     "latitude": 3.1073,
     "longitude": 101.6067,
-    "cafes": ["Luckin Coffee", "Coffeeboy Club"]
+    "cafes": [
+      {
+        "name": "Luckin Coffee",
+        "description": "Outlet of the China-founded Luckin Coffee chain at Jaya One, Petaling Jaya, opened in early 2025 under Hextar's Malaysia franchise."
+      },
+      {
+        "name": "Coffeeboy Club",
+        "description": "Tokyo-listening-bar-inspired cafe in Gasket Alley, Section 13, Petaling Jaya, making its coffee-bar ingredients and kitchen fare in-house and hosting occasional music events."
+      }
+    ]
   },
   {
     "id": "playa-del-carmen-mexico",
@@ -187,7 +455,16 @@
     "country": "Mexico",
     "latitude": 20.6296,
     "longitude": -87.0739,
-    "cafes": ["Quadra Cafe - Specialty Coffee", "Chez Celine"]
+    "cafes": [
+      {
+        "name": "Quadra Cafe - Specialty Coffee",
+        "description": "Argentine-owned specialty coffee shop just off Fifth Avenue in Playa del Carmen, known for its minimalist, pet-friendly space and espresso-based breakfast menu."
+      },
+      {
+        "name": "Chez Celine",
+        "description": "French bakery and cafe on Playa del Carmen's Quinta Avenida, serving baguettes, croissants, quiches, and crepes, rated 4.5 on Tripadvisor."
+      }
+    ]
   },
   {
     "id": "santa-barbara-usa",
@@ -195,7 +472,12 @@
     "country": "United States",
     "latitude": 34.4208,
     "longitude": -119.6982,
-    "cafes": ["D Angelo"]
+    "cafes": [
+      {
+        "name": "D Angelo",
+        "description": "Downtown Santa Barbara bakery-cafe (D'Angelo Bakery) from Dietmar Ellbacher, known for European-style breads and pastries plus strong Italian coffee."
+      }
+    ]
   },
   {
     "id": "seattle-usa",
@@ -203,7 +485,12 @@
     "country": "United States",
     "latitude": 47.6062,
     "longitude": -122.3321,
-    "cafes": ["Starbucks Roastery"]
+    "cafes": [
+      {
+        "name": "Starbucks Roastery",
+        "description": "Original Starbucks Reserve Roastery, opened December 2014 on Capitol Hill in a converted 1920s auto showroom; it closed permanently in September 2025."
+      }
+    ]
   },
   {
     "id": "new-york-city-usa",
@@ -211,7 +498,12 @@
     "country": "United States",
     "latitude": 40.7128,
     "longitude": -74.006,
-    "cafes": ["Magnolia Bakery"]
+    "cafes": [
+      {
+        "name": "Magnolia Bakery",
+        "description": "West Village bakery on Bleecker Street, opened in 1996 by Jennifer Appel and Allysa Torey, credited with sparking the 1990s cupcake craze."
+      }
+    ]
   },
   {
     "id": "brasov-romania",
@@ -219,7 +511,12 @@
     "country": "Romania",
     "latitude": 45.6427,
     "longitude": 25.5887,
-    "cafes": ["Twin Beans Coffee Shop"]
+    "cafes": [
+      {
+        "name": "Twin Beans Coffee Shop",
+        "description": "Small specialty coffee shop on Strada Prundului in Brasov's old town, serving single-origin Ethiopian, Colombian, and Brazilian arabica coffee with croissants."
+      }
+    ]
   },
   {
     "id": "madrid-spain",
@@ -227,7 +524,12 @@
     "country": "Spain",
     "latitude": 40.4168,
     "longitude": -3.7038,
-    "cafes": ["Santagloria Coffee and Bakery"]
+    "cafes": [
+      {
+        "name": "Santagloria Coffee and Bakery",
+        "description": "Spanish coffee and bakery chain with multiple Madrid locations, including Atocha, Chamberí, and Malasaña, known for artisanal pastries and freshly baked bread."
+      }
+    ]
   },
   {
     "id": "setagaya-city-japan",
@@ -235,7 +537,12 @@
     "country": "Japan",
     "latitude": 35.6467,
     "longitude": 139.6531,
-    "cafes": ["Rain on the Roof"]
+    "cafes": [
+      {
+        "name": "Rain on the Roof",
+        "description": "Sangenjaya café in Setagaya known for curry dishes and a dim, wood-paneled interior said to have inspired Persona 5's Leblanc café."
+      }
+    ]
   },
   {
     "id": "shinagawa-station-japan",
@@ -243,7 +550,12 @@
     "country": "Japan",
     "latitude": 35.6285,
     "longitude": 139.7387,
-    "cafes": ["Blue Bottle Coffee Roasters"]
+    "cafes": [
+      {
+        "name": "Blue Bottle Coffee Roasters",
+        "description": "Blue Bottle Coffee location on the third floor of Atré Shinagawa above the station, designed by Schemata Architects with white stone interiors."
+      }
+    ]
   },
   {
     "id": "sofia-bulgaria",
@@ -251,7 +563,12 @@
     "country": "Bulgaria",
     "latitude": 42.6977,
     "longitude": 23.3219,
-    "cafes": ["Central Market Hall of Sofia"]
+    "cafes": [
+      {
+        "name": "Central Market Hall of Sofia",
+        "description": "Historic 1911 Neo-Renaissance covered market on Maria Luiza Boulevard in Sofia, housing food stalls and cafes serving coffee amid Roman ruins."
+      }
+    ]
   },
   {
     "id": "salt-lake-city-usa",
@@ -259,7 +576,12 @@
     "country": "United States",
     "latitude": 40.7608,
     "longitude": -111.891,
-    "cafes": ["Delice Frency Bakery"]
+    "cafes": [
+      {
+        "name": "Delice Frency Bakery",
+        "description": "South Salt Lake French bakery (Delice French Bakery & Cafe) founded in 2018 by Chef Jean-Jacques Grossi and Akbar Matinkhah, known for almond croissants."
+      }
+    ]
   },
   {
     "id": "washington-dc-usa",
@@ -267,7 +589,12 @@
     "country": "United States",
     "latitude": 38.9072,
     "longitude": -77.0369,
-    "cafes": ["Tatte Bakery & Cafe"]
+    "cafes": [
+      {
+        "name": "Tatte Bakery & Cafe",
+        "description": "Washington DC outpost of the Mediterranean bakery chain founded by Israeli-born baker Tzurit Or, with over 20 locations across the DC area."
+      }
+    ]
   },
   {
     "id": "victoria-falls-zimbabwe",
@@ -275,7 +602,12 @@
     "country": "Zimbabwe",
     "latitude": -17.9243,
     "longitude": 25.8572,
-    "cafes": ["Anantara Stanley & Livingstone Victoria Falls Hotel"]
+    "cafes": [
+      {
+        "name": "Anantara Stanley & Livingstone Victoria Falls Hotel",
+        "description": "Boutique 16-suite hotel near Victoria Falls on the Zimbabwe side, featuring a private game reserve, spa, and the rooftop restaurant 1871."
+      }
+    ]
   },
   {
     "id": "langkawi-malaysia",
@@ -283,6 +615,11 @@
     "country": "Malaysia",
     "latitude": 6.35,
     "longitude": 99.8,
-    "cafes": ["St Regis Langkawi"]
+    "cafes": [
+      {
+        "name": "St Regis Langkawi",
+        "description": "The Drawing Room at St. Regis Langkawi resort serves gourmet coffee and baked goods, with weekend afternoon tea overlooking the Andaman Sea."
+      }
+    ]
   }
 ]

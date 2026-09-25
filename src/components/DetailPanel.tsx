@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { CityStop } from '../types/city';
 
 interface DetailPanelProps {
@@ -13,6 +14,16 @@ function formatCoord(lat: number, lon: number): string {
 
 export default function DetailPanel({ city, onClose }: DetailPanelProps) {
   const open = city !== null;
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+
+  function toggle(name: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  }
 
   return (
     <aside
@@ -37,17 +48,35 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
             </div>
             <h2 className="mb-2 text-[28px] leading-[1.1] font-extrabold text-balance">{city.city}</h2>
             <div className="text-[13px] text-ink-soft">
-              {city.cafes.length} cafe{city.cafes.length === 1 ? '' : 's'} visited
+              {city.cafes.length} cafe{city.cafes.length === 1 ? '' : 's'} visited &mdash; tap one for details
             </div>
           </div>
 
-          <ul className="flex flex-col gap-2.5 text-[14px] leading-[1.4]">
-            {city.cafes.map((cafe) => (
-              <li key={cafe} className="flex items-baseline gap-2">
-                <span className="text-accent opacity-60">&bull;</span>
-                <span className="text-ink-soft">{cafe}</span>
-              </li>
-            ))}
+          <ul className="flex flex-col gap-1 text-[14px] leading-[1.4]">
+            {city.cafes.map((cafe) => {
+              const isOpen = expanded.has(cafe.name);
+              const hasDescription = cafe.description && cafe.description !== 'UNVERIFIED';
+              return (
+                <li key={cafe.name} className="border-b border-line last:border-b-0">
+                  <button
+                    onClick={() => toggle(cafe.name)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-3 py-2.5 text-left"
+                  >
+                    <span className="flex items-baseline gap-2">
+                      <span className="text-accent opacity-60">&bull;</span>
+                      <span className="text-ink-soft">{cafe.name}</span>
+                    </span>
+                    <span className="flex-none text-[12px] text-ink-faint">{isOpen ? '−' : '+'}</span>
+                  </button>
+                  {isOpen && (
+                    <p className="mb-3 pl-4 text-[13px] leading-[1.55] text-ink-faint">
+                      {hasDescription ? cafe.description : 'No verified details yet.'}
+                    </p>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <div

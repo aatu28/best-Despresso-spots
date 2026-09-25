@@ -64,7 +64,7 @@ function App() {
         Drag to rotate &bull; Scroll to zoom &bull; Click a mark
       </p>
 
-      <DetailPanel city={selectedCity} onClose={() => setSelectedCityId(null)} />
+      <DetailPanel key={selectedCity?.id ?? 'none'} city={selectedCity} onClose={() => setSelectedCityId(null)} />
     </div>
   );
 }
