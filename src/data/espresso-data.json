@@ -640,6 +640,30 @@
       {
         "name": "Hillside Cafe",
         "description": "Small, cozy all-day cafe bar in the Mets neighborhood of Athens with hillside-view seating, serving coffee and food from morning into the night."
+      },
+      {
+        "name": "4M (Rule of 4M)",
+        "description": "Specialty coffee shop on Agiou Spyridonos in Athens' Pagrati neighborhood, named for the Italian espresso rule of four M's (miscela, macinadosatore, macchina, mano), run by owner Christos Pranis with Greek-roasted blends."
+      },
+      {
+        "name": "Cultivos Coffee Koukaki",
+        "description": "Specialty coffee shop in Koukaki, a short walk from the Acropolis Museum, part of a small Greek multi-unit chain known for microlot coffees and a full breakfast and brunch menu."
+      },
+      {
+        "name": "Tpaka",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "KROSS Coffee Roasters",
+        "description": "Minimalist specialty coffee shop and roastery on Vriaxidos Street in Pagrati, a sister location to an award-winning roastery in Chania, Crete operating since 2010."
+      },
+      {
+        "name": "Samba Coffee Roasters",
+        "description": "Greek family-run coffee roaster operating since 1979, with specialty coffee shops across Athens serving single-origin beans, espresso, and coffee-education tastings."
+      },
+      {
+        "name": "Fabrica de Cafe",
+        "description": "Microroastery on Imittou Street in Athens serving as the flagship store for Caffe Luigi and 7 Grams Espresso, known for its cappuccino and freddo."
       }
     ]
   },
