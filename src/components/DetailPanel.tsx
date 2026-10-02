@@ -127,7 +127,7 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
 
           <div className="flex items-center justify-between">
             <div
-              className="stamp-badge inline-flex w-fit items-center rounded-full px-4 py-[7px] text-[10px] font-semibold tracking-[0.14em] text-accent uppercase"
+              className="stamp-badge inline-flex w-fit items-center rounded-full px-4 py-[7px] text-[10px] font-semibold tracking-[0.14em] text-brass uppercase"
             >
               Coverage: Active
             </div>

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  AdditiveBlending,
   AmbientLight,
   BufferGeometry,
   Clock,
@@ -12,6 +11,7 @@ import {
   LatheGeometry,
   Mesh,
   MeshBasicMaterial,
+  MeshStandardMaterial,
   PerspectiveCamera,
   Points,
   Raycaster,
@@ -36,10 +36,11 @@ interface GlobeProps {
 }
 
 const RADIUS = 2;
-const MARKER_COLOR = 0xffab66;
-const HALO_COLOR = 0xffc98f;
-const SPHERE_COLOR = 0x121010;
-const DOT_COLOR = 0xcfc3ae;
+const MARKER_COLOR = 0xa8453a;
+const HALO_COLOR = 0xc9995a;
+const SPHERE_COLOR = 0xf3e9d1;
+const DOT_COLOR = 0xab8b56;
+const GRATICULE_COLOR = 0x6b4a2b;
 const INTRO_DURATION = 2.6;
 const CLUSTER_RADIUS_PX = 32;
 const FLY_DURATION = 0.55;
@@ -75,30 +76,25 @@ function teardropGeometry(): LatheGeometry {
   return new LatheGeometry(points, 16);
 }
 
-// Night-sky dot globe (Stripe-style): continents as a field of points
-// rather than drawn coastlines, each with a random twinkle phase.
+// Land is drawn as a dense field of small circular points (a flat lat/lon
+// array baked from real world-atlas land polygons — see src/lib/landDots.ts)
+// rather than a textured mesh: at this density they read as filled
+// continents without needing any geometry/texture generation at runtime.
 function landDotsGeometry(): BufferGeometry {
   const positions: number[] = [];
-  const phases: number[] = [];
   for (let i = 0; i < LAND_DOTS.length; i += 2) {
     const v = toVector(LAND_DOTS[i], LAND_DOTS[i + 1], RADIUS * 1.03);
     positions.push(v.x, v.y, v.z);
-    phases.push(Math.random());
   }
   const geo = new BufferGeometry();
   geo.setAttribute('position', new Float32BufferAttribute(positions, 3));
-  geo.setAttribute('phase', new Float32BufferAttribute(phases, 1));
   return geo;
 }
 
 const DOT_VERTEX_SHADER = `
-  attribute float phase;
-  uniform float time;
   uniform float pixelRatio;
   uniform float baseSize;
-  varying float vTwinkle;
   void main() {
-    vTwinkle = 0.5 + 0.5 * sin(time * 1.4 + phase * 6.2831853);
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
     gl_PointSize = baseSize * pixelRatio * (6.0 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
@@ -107,13 +103,11 @@ const DOT_VERTEX_SHADER = `
 
 const DOT_FRAGMENT_SHADER = `
   uniform vec3 color;
-  varying float vTwinkle;
   void main() {
     vec2 c = gl_PointCoord - vec2(0.5);
     float d = length(c);
     if (d > 0.5) discard;
-    float alpha = smoothstep(0.5, 0.0, d) * (0.4 + 0.6 * vTwinkle);
-    gl_FragColor = vec4(color, alpha);
+    gl_FragColor = vec4(color, smoothstep(0.5, 0.0, d) * 0.9);
   }
 `;
 
@@ -164,10 +158,13 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     renderer.domElement.style.cursor = 'grab';
     container.appendChild(renderer.domElement);
 
-    scene.add(new AmbientLight(0x4a4038, 0.8));
-    const key = new DirectionalLight(0xffd9ad, 1.1);
+    scene.add(new AmbientLight(0xf8ead8, 0.7));
+    const key = new DirectionalLight(0xfde8d0, 1.3);
     key.position.set(5, 4, 6);
     scene.add(key);
+    const fill = new DirectionalLight(0xe8d5bf, 0.4);
+    fill.position.set(-5, -3, -4);
+    scene.add(fill);
 
     const globeGroup = new Group();
     scene.add(globeGroup);
@@ -175,13 +172,20 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     globeGroup.add(
       new Mesh(
         new SphereGeometry(RADIUS, 64, 64),
-        new MeshBasicMaterial({ color: SPHERE_COLOR }),
+        new MeshStandardMaterial({ color: SPHERE_COLOR, roughness: 0.7, metalness: 0.05 }),
+      ),
+    );
+
+    // Faint graticule, like lines of latitude/longitude on a paper atlas.
+    globeGroup.add(
+      new Mesh(
+        new SphereGeometry(RADIUS * 1.006, 24, 16),
+        new MeshBasicMaterial({ color: GRATICULE_COLOR, wireframe: true, transparent: true, opacity: 0.1 }),
       ),
     );
 
     const dotMaterial = new ShaderMaterial({
       uniforms: {
-        time: { value: 0 },
         pixelRatio: { value: Math.min(window.devicePixelRatio || 1, 2) },
         baseSize: { value: 6 },
         color: { value: new Color(DOT_COLOR) },
@@ -197,14 +201,18 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const haloMat = new MeshBasicMaterial({
       color: HALO_COLOR,
       transparent: true,
-      opacity: 0.28,
-      blending: AdditiveBlending,
+      opacity: 0.3,
       depthWrite: false,
     });
     const pinGeo = teardropGeometry();
-    const pinMat = new MeshBasicMaterial({ color: MARKER_COLOR });
+    const pinMat = new MeshStandardMaterial({
+      color: MARKER_COLOR,
+      emissive: MARKER_COLOR,
+      emissiveIntensity: 0.4,
+      roughness: 0.35,
+    });
     const stemGeo = new CylinderGeometry(0.006, 0.006, RADIUS * 0.03, 6);
-    const stemMat = new MeshBasicMaterial({ color: MARKER_COLOR, transparent: true, opacity: 0.35 });
+    const stemMat = new MeshBasicMaterial({ color: GRATICULE_COLOR, transparent: true, opacity: 0.4 });
 
     const pins: Pin[] = [];
 
@@ -340,7 +348,6 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       const t = clock.getElapsedTime();
       const selectedId = selectedIdRef.current;
       const visible = visibleIdsRef.current;
-      dotMaterial.uniforms.time.value = reducedMotion ? 0 : t;
 
       if (flight) {
         const elapsed = (t - flight.start) / flight.duration;

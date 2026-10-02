@@ -67,9 +67,12 @@ function App() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            'radial-gradient(ellipse 150% 100% at 50% -10%, rgba(180,98,61,0.10) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 10% 100%, rgba(107,74,43,0.1) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 100% 0%, rgba(107,74,43,0.08) 0%, transparent 55%)',
         }}
       />
+
+      <div className="airmail-stripe pointer-events-none absolute inset-x-0 top-0 z-10" />
+      <div className="airmail-stripe pointer-events-none absolute inset-x-0 bottom-0 z-10" />
 
       <div className="absolute inset-x-0 top-0 z-10 flex flex-col gap-2 p-4 sm:block sm:p-0">
         <GlobeHeader totalCities={cities.length} totalCountries={countries.length} totalCafes={totalCafes} />
@@ -95,15 +98,16 @@ function App() {
 
       <div
         aria-hidden
-        className="stamp-badge pointer-events-none absolute right-14 bottom-12 z-10 hidden h-[122px] w-[122px] flex-none items-center justify-center rounded-full sm:flex"
+        className="stamp-badge-dashed pointer-events-none absolute right-14 bottom-12 z-10 hidden h-[148px] w-[112px] flex-none flex-col items-center justify-center gap-2 rounded-sm bg-panel sm:flex"
+        style={{ transform: 'rotate(-3deg)' }}
       >
-        <div className="flex h-[100px] w-[100px] items-center justify-center rounded-full border border-accent text-center">
-          <span className="text-[10.5px] leading-[1.5] font-semibold tracking-[0.12em] text-accent uppercase">
-            Field Notes
-            <br />
-            Est. Coverage
-          </span>
-        </div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" className="stroke-brass" strokeWidth="1.4" />
+          <path d="M12 7v5l3 2" className="stroke-brass" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+        <span className="text-[9.5px] font-semibold tracking-[0.1em] text-brass uppercase">Air Mail</span>
+        <span className="font-serif text-[21px] font-semibold text-ink">{totalCafes}</span>
+        <span className="text-[8.5px] font-semibold tracking-[0.08em] text-brass uppercase">cafes</span>
       </div>
 
       <DetailPanel key={selectedCity?.id ?? 'none'} city={selectedCity} onClose={() => setSelectedCityId(null)} />
