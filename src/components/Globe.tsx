@@ -1,21 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import {
+  AdditiveBlending,
   AmbientLight,
   BufferGeometry,
   Clock,
+  Color,
   CylinderGeometry,
   DirectionalLight,
   Float32BufferAttribute,
   Group,
   LatheGeometry,
-  LineBasicMaterial,
-  LineSegments,
   Mesh,
   MeshBasicMaterial,
-  MeshStandardMaterial,
   PerspectiveCamera,
+  Points,
   Raycaster,
   Scene,
+  ShaderMaterial,
   SphereGeometry,
   Vector2,
   Vector3,
@@ -23,7 +24,7 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import type { CityStop } from '../types/city';
-import { COASTLINE_POINTS } from '../lib/coastlines';
+import { LAND_DOTS } from '../lib/landDots';
 
 interface GlobeProps {
   /** Full, stable city list — pins are built once from this. */
@@ -35,9 +36,10 @@ interface GlobeProps {
 }
 
 const RADIUS = 2;
-const MARKER_COLOR = 0xb4623d;
-const HALO_COLOR = 0xc9a878;
-const INK_COLOR = 0x201c1a;
+const MARKER_COLOR = 0xffab66;
+const HALO_COLOR = 0xffc98f;
+const SPHERE_COLOR = 0x121010;
+const DOT_COLOR = 0xcfc3ae;
 const INTRO_DURATION = 2.6;
 const CLUSTER_RADIUS_PX = 32;
 const FLY_DURATION = 0.55;
@@ -73,24 +75,47 @@ function teardropGeometry(): LatheGeometry {
   return new LatheGeometry(points, 16);
 }
 
-function coastlineGeometry(): BufferGeometry {
+// Night-sky dot globe (Stripe-style): continents as a field of points
+// rather than drawn coastlines, each with a random twinkle phase.
+function landDotsGeometry(): BufferGeometry {
   const positions: number[] = [];
-  let prev: Vector3 | null = null;
-  for (let i = 0; i < COASTLINE_POINTS.length; i += 2) {
-    const lat = COASTLINE_POINTS[i];
-    const lon = COASTLINE_POINTS[i + 1];
-    if (lat === null || lon === null) {
-      prev = null;
-      continue;
-    }
-    const v = toVector(lat, lon, RADIUS * 1.008);
-    if (prev) positions.push(prev.x, prev.y, prev.z, v.x, v.y, v.z);
-    prev = v;
+  const phases: number[] = [];
+  for (let i = 0; i < LAND_DOTS.length; i += 2) {
+    const v = toVector(LAND_DOTS[i], LAND_DOTS[i + 1], RADIUS * 1.03);
+    positions.push(v.x, v.y, v.z);
+    phases.push(Math.random());
   }
   const geo = new BufferGeometry();
   geo.setAttribute('position', new Float32BufferAttribute(positions, 3));
+  geo.setAttribute('phase', new Float32BufferAttribute(phases, 1));
   return geo;
 }
+
+const DOT_VERTEX_SHADER = `
+  attribute float phase;
+  uniform float time;
+  uniform float pixelRatio;
+  uniform float baseSize;
+  varying float vTwinkle;
+  void main() {
+    vTwinkle = 0.5 + 0.5 * sin(time * 1.4 + phase * 6.2831853);
+    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+    gl_PointSize = baseSize * pixelRatio * (6.0 / -mvPosition.z);
+    gl_Position = projectionMatrix * mvPosition;
+  }
+`;
+
+const DOT_FRAGMENT_SHADER = `
+  uniform vec3 color;
+  varying float vTwinkle;
+  void main() {
+    vec2 c = gl_PointCoord - vec2(0.5);
+    float d = length(c);
+    if (d > 0.5) discard;
+    float alpha = smoothstep(0.5, 0.0, d) * (0.4 + 0.6 * vTwinkle);
+    gl_FragColor = vec4(color, alpha);
+  }
+`;
 
 export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity }: GlobeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -117,7 +142,12 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const scene = new Scene();
-    const camera = new PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+    // Near/far are tight around the scene's actual range (camera distance is
+    // ~3.6-13, see comfortableDistance below) rather than generic defaults —
+    // a 0.1-100 range wastes most depth-buffer precision outside the range
+    // that's ever used, which was causing the land dots (just 3% of RADIUS
+    // above the sphere surface) to z-fight with the sphere near screen center.
+    const camera = new PerspectiveCamera(45, container.clientWidth / container.clientHeight, 1, 20);
     // PerspectiveCamera fixes the *vertical* FOV, so on a narrow portrait
     // viewport the horizontal extent shrinks and the globe overflows the
     // sides. Back the camera up so the globe fits the tighter of the two
@@ -134,13 +164,10 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     renderer.domElement.style.cursor = 'grab';
     container.appendChild(renderer.domElement);
 
-    scene.add(new AmbientLight(0xf8ead8, 0.7));
-    const key = new DirectionalLight(0xfde8d0, 1.3);
+    scene.add(new AmbientLight(0x4a4038, 0.8));
+    const key = new DirectionalLight(0xffd9ad, 1.1);
     key.position.set(5, 4, 6);
     scene.add(key);
-    const fill = new DirectionalLight(0xe8d5bf, 0.4);
-    fill.position.set(-5, -3, -4);
-    scene.add(fill);
 
     const globeGroup = new Group();
     scene.add(globeGroup);
@@ -148,35 +175,36 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     globeGroup.add(
       new Mesh(
         new SphereGeometry(RADIUS, 64, 64),
-        new MeshStandardMaterial({ color: 0xfbf8f2, roughness: 0.65, metalness: 0.12 }),
+        new MeshBasicMaterial({ color: SPHERE_COLOR }),
       ),
     );
 
-    globeGroup.add(
-      new Mesh(
-        new SphereGeometry(RADIUS * 1.006, 24, 16),
-        new MeshBasicMaterial({ color: INK_COLOR, wireframe: true, transparent: true, opacity: 0.06 }),
-      ),
-    );
-
-    globeGroup.add(
-      new LineSegments(
-        coastlineGeometry(),
-        new LineBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.7 }),
-      ),
-    );
+    const dotMaterial = new ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        pixelRatio: { value: Math.min(window.devicePixelRatio || 1, 2) },
+        baseSize: { value: 6 },
+        color: { value: new Color(DOT_COLOR) },
+      },
+      vertexShader: DOT_VERTEX_SHADER,
+      fragmentShader: DOT_FRAGMENT_SHADER,
+      transparent: true,
+      depthWrite: false,
+    });
+    globeGroup.add(new Points(landDotsGeometry(), dotMaterial));
 
     const haloGeo = new SphereGeometry(0.12, 16, 8);
-    const haloMat = new MeshBasicMaterial({ color: HALO_COLOR, transparent: true, opacity: 0.22 });
-    const pinGeo = teardropGeometry();
-    const pinMat = new MeshStandardMaterial({
-      color: MARKER_COLOR,
-      emissive: MARKER_COLOR,
-      emissiveIntensity: 0.7,
-      roughness: 0.35,
+    const haloMat = new MeshBasicMaterial({
+      color: HALO_COLOR,
+      transparent: true,
+      opacity: 0.28,
+      blending: AdditiveBlending,
+      depthWrite: false,
     });
+    const pinGeo = teardropGeometry();
+    const pinMat = new MeshBasicMaterial({ color: MARKER_COLOR });
     const stemGeo = new CylinderGeometry(0.006, 0.006, RADIUS * 0.03, 6);
-    const stemMat = new MeshBasicMaterial({ color: INK_COLOR, transparent: true, opacity: 0.4 });
+    const stemMat = new MeshBasicMaterial({ color: MARKER_COLOR, transparent: true, opacity: 0.35 });
 
     const pins: Pin[] = [];
 
@@ -312,6 +340,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       const t = clock.getElapsedTime();
       const selectedId = selectedIdRef.current;
       const visible = visibleIdsRef.current;
+      dotMaterial.uniforms.time.value = reducedMotion ? 0 : t;
 
       if (flight) {
         const elapsed = (t - flight.start) / flight.duration;
@@ -434,7 +463,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       controls.dispose();
       renderer.dispose();
       scene.traverse((obj) => {
-        if (obj instanceof Mesh || obj instanceof LineSegments) {
+        if (obj instanceof Mesh || obj instanceof Points) {
           obj.geometry.dispose();
           const mat = obj.material;
           if (Array.isArray(mat)) mat.forEach((m) => m.dispose());
