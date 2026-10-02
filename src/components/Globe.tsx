@@ -287,6 +287,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const onPointerDown = (evt: PointerEvent) => {
       downPos = { x: evt.clientX, y: evt.clientY };
       renderer.domElement.style.cursor = 'grabbing';
+      closeClusterMenu();
     };
     const onPointerMove = (evt: PointerEvent) => {
       if (downPos) return;
@@ -315,8 +316,46 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     // the camera in until the group is loose enough to split back apart.
     // Each badge has a 44px invisible hit area around a smaller visible dot,
     // matching the minimum recommended touch target size.
+    //
+    // Some real-world pairs (e.g. Nairobi/Naivasha) are close enough that
+    // they're still within CLUSTER_RADIUS_PX of each other even at
+    // controls.minDistance, so no amount of zooming ever splits them. When a
+    // click would not actually move the camera any closer, show a small
+    // direct-selection menu listing the clustered cities instead of a no-op
+    // zoom that leaves the user stuck.
     const overlay = overlayRef.current;
     const badgePool: { button: HTMLButtonElement; dot: HTMLSpanElement }[] = [];
+
+    const clusterMenu = document.createElement('div');
+    clusterMenu.className = 'cluster-menu';
+    overlay?.appendChild(clusterMenu);
+
+    function closeClusterMenu() {
+      clusterMenu.style.display = 'none';
+      clusterMenu.replaceChildren();
+    }
+
+    function openClusterMenu(ids: string[], x: number, y: number) {
+      clusterMenu.replaceChildren();
+      for (const id of ids) {
+        const city = cities.find((c) => c.id === id);
+        if (!city) continue;
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'cluster-menu-item';
+        item.textContent = `${city.city}, ${city.country}`;
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeClusterMenu();
+          onSelectRef.current(city);
+        });
+        clusterMenu.appendChild(item);
+      }
+      clusterMenu.style.left = `${x}px`;
+      clusterMenu.style.top = `${y}px`;
+      clusterMenu.style.display = 'flex';
+    }
+
     function getBadge(i: number) {
       let entry = badgePool[i];
       if (!entry) {
@@ -331,8 +370,18 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
         button.appendChild(dot);
         button.addEventListener('click', () => {
           const dir = (button as unknown as { _dir?: Vector3 })._dir;
+          const ids = (button as unknown as { _ids?: string[] })._ids;
           if (!dir) return;
-          flyTo(dir, Math.max(controls.minDistance, camera.position.length() * 0.55));
+          const currentDist = camera.position.length();
+          const nextDist = Math.max(controls.minDistance, currentDist * 0.55);
+          const stuck = nextDist >= currentDist - 0.001;
+          if (stuck && ids && ids.length > 1) {
+            closeClusterMenu();
+            openClusterMenu(ids, parseFloat(button.style.left), parseFloat(button.style.top));
+            return;
+          }
+          closeClusterMenu();
+          flyTo(dir, nextDist);
         });
         overlay?.appendChild(button);
         entry = { button, dot };
@@ -408,7 +457,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
           button.style.display = 'flex';
           button.style.left = `${cx}px`;
           button.style.top = `${cy}px`;
-          (button as unknown as { _dir: Vector3 })._dir = avgDir;
+          (button as unknown as { _dir: Vector3; _ids: string[] })._dir = avgDir;
+          (button as unknown as { _ids: string[] })._ids = group.map((m) => m.id);
         }
         for (let i = badgeIndex; i < badgePool.length; i++) badgePool[i].button.style.display = 'none';
       }

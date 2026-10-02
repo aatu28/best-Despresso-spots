@@ -170,6 +170,41 @@ body {
   filter: brightness(1.08);
 }
 
+/* Shown instead of the badge once zooming in stops helping (e.g. two cities
+   close enough in real life that they never separate on screen), so the
+   cluster is never a dead end. */
+.cluster-menu {
+  position: absolute;
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 170px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--color-panel-border);
+  background: var(--color-panel);
+  box-shadow: 0 10px 28px rgba(46, 42, 34, 0.28);
+  transform: translate(-50%, 16px);
+  pointer-events: auto;
+}
+
+.cluster-menu-item {
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  font: 500 13px/1.3 "Archivo", sans-serif;
+  text-align: left;
+  white-space: nowrap;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cluster-menu-item:hover {
+  background: var(--color-tag-bg);
+}
+
 /* ---------- focus ---------- */
 
 :focus-visible {
