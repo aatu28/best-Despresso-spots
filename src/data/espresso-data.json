@@ -789,5 +789,18 @@
         "description": "Specialty coffee bar on Nussdorfer Strasse known for its cold brew tonic and San Sebastian cheesecake, with its own beans sold to brew at home."
       }
     ]
+  },
+  {
+    "id": "bratislava-slovakia",
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "latitude": 48.1486,
+    "longitude": 17.1077,
+    "cafes": [
+      {
+        "name": "Concept Coffee",
+        "description": "Specialty coffee shop on Kosicka serving single-origin filter coffee from Concept Coffee Roasters, which started in Piestany before opening in Bratislava; vegan-friendly menu with plant-based milks."
+      }
+    ]
   }
 ]
