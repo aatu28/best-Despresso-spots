@@ -739,5 +739,55 @@
         "description": "Sky-high lounge spanning levels 152 to 154 of the Burj Khalifa, a Guinness World Record holder as the highest lounge in the world, serving tea, coffee, and canapés with panoramic views of Dubai."
       }
     ]
+  },
+  {
+    "id": "colombo-sri-lanka",
+    "city": "Colombo",
+    "country": "Sri Lanka",
+    "latitude": 6.9271,
+    "longitude": 79.8612,
+    "cafes": [
+      {
+        "name": "Cafe Kumbuk",
+        "description": "Plant-filled, pet-friendly cafe in Colombo's Cinnamon Gardens, founded by a mother-daughter team; pours espresso and pour-over from its own house Kumbuk Blend alongside a seasonal, mostly vegan/vegetarian menu, with beans sold to go."
+      }
+    ]
+  },
+  {
+    "id": "vienna-austria",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.2082,
+    "longitude": 16.3738,
+    "cafes": [
+      {
+        "name": "Cafe Schwarzenberg",
+        "description": "One of Vienna's oldest grand coffeehouses, opened on the Ringstrasse in 1861 and a favorite haunt of architect Josef Hoffmann, who sketched many of his designs there."
+      },
+      {
+        "name": "Rooster",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "Elias Coffee Shop",
+        "description": "Curved white-tiled specialty coffee bar inside the Almanac Palais hotel on Parkring, roasting with Nordbeans and serving an all-vegan food menu alongside espresso, cold brew, and V60 pour-over."
+      },
+      {
+        "name": "Coffee U-Boot",
+        "description": "Small cafe on Florianigasse in Josefstadt serving coffee from the Friulian roastery Cambio Caffe alongside homemade cakes and sandwiches on Joseph bread, with south-facing outdoor seating."
+      },
+      {
+        "name": "Anker",
+        "description": "Branch of Vienna's century-old Ankerbrot bakery chain, serving coffee and classic Viennese pastries like krapfen and apple strudel slices from a quick-stop counter."
+      },
+      {
+        "name": "Jonas Reindl Coffee Roasters",
+        "description": "Vienna specialty coffee roaster and cafe chain named after the Schottentor tram loop, roasting Ethiopian and Colombian beans in-house on a Probat roaster and pulling shots on a Slayer espresso machine."
+      },
+      {
+        "name": "Truth Cafe",
+        "description": "Specialty coffee bar on Nussdorfer Strasse known for its cold brew tonic and San Sebastian cheesecake, with its own beans sold to brew at home."
+      }
+    ]
   }
 ]
