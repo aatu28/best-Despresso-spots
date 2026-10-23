@@ -657,7 +657,8 @@
     "cafes": [
       {
         "name": "St Regis Langkawi",
-        "description": "The Drawing Room at St. Regis Langkawi resort serves gourmet coffee and baked goods, with weekend afternoon tea overlooking the Andaman Sea."
+        "description": "The Drawing Room at St. Regis Langkawi resort serves gourmet coffee and baked goods, with weekend afternoon tea overlooking the Andaman Sea.",
+        "rating": 5
       }
     ]
   },
@@ -728,7 +729,8 @@
     "cafes": [
       {
         "name": "Savant Cafe",
-        "description": "Modern specialty coffee cafe and restaurant in Doha's Msheireb district serving French- and American-influenced dishes alongside artisanal coffee, including a tasting-flight-style \"Savant Tray.\""
+        "description": "Modern specialty coffee cafe and restaurant in Doha's Msheireb district serving French- and American-influenced dishes alongside artisanal coffee, including a tasting-flight-style \"Savant Tray.\"",
+        "rating": 5
       }
     ]
   },
@@ -741,7 +743,8 @@
     "cafes": [
       {
         "name": "Nylon Coffee Roasters",
-        "description": "Pioneering specialty coffee micro-roastery at Everton Park, Singapore, opened in 2012 by Dennis Tang and Jia Min Lee, sourcing beans directly from farms and cooperatives."
+        "description": "Pioneering specialty coffee micro-roastery at Everton Park, Singapore, opened in 2012 by Dennis Tang and Jia Min Lee, sourcing beans directly from farms and cooperatives.",
+        "rating": 5
       },
       {
         "name": "Five Oars Coffee Roasters",
@@ -758,7 +761,8 @@
     "cafes": [
       {
         "name": "Peaberry Coffee Roasters",
-        "description": "Coffee roastery on Malambo Road in Lusaka, Zambia, owned by World Barista Championship judge and Q Grader Teija Lublinkhof, roasting beans from Zambia, Uganda, Ethiopia, and Colombia."
+        "description": "Coffee roastery on Malambo Road in Lusaka, Zambia, owned by World Barista Championship judge and Q Grader Teija Lublinkhof, roasting beans from Zambia, Uganda, Ethiopia, and Colombia.",
+        "rating": 4
       }
     ]
   },
@@ -771,11 +775,13 @@
     "cafes": [
       {
         "name": "The Espresso Lab Roastery",
-        "description": "Dubai-born artisan coffee company founded by Ibrahim Al Mallouhi, roasting specialty beans at its Al Quoz facility and serving them at its Dubai Design District cafe; a four-time UAE National Barista Championship winner."
+        "description": "Dubai-born artisan coffee company founded by Ibrahim Al Mallouhi, roasting specialty beans at its Al Quoz facility and serving them at its Dubai Design District cafe; a four-time UAE National Barista Championship winner.",
+        "rating": 4
       },
       {
         "name": "The Lounge, Burj Khalifa",
-        "description": "Sky-high lounge spanning levels 152 to 154 of the Burj Khalifa, a Guinness World Record holder as the highest lounge in the world, serving tea, coffee, and canapés with panoramic views of Dubai."
+        "description": "Sky-high lounge spanning levels 152 to 154 of the Burj Khalifa, a Guinness World Record holder as the highest lounge in the world, serving tea, coffee, and canapés with panoramic views of Dubai.",
+        "rating": 5
       }
     ]
   },
@@ -788,7 +794,8 @@
     "cafes": [
       {
         "name": "Cafe Kumbuk",
-        "description": "Plant-filled, pet-friendly cafe in Colombo's Cinnamon Gardens, founded by a mother-daughter team; pours espresso and pour-over from its own house Kumbuk Blend alongside a seasonal, mostly vegan/vegetarian menu, with beans sold to go."
+        "description": "Plant-filled, pet-friendly cafe in Colombo's Cinnamon Gardens, founded by a mother-daughter team; pours espresso and pour-over from its own house Kumbuk Blend alongside a seasonal, mostly vegan/vegetarian menu, with beans sold to go.",
+        "rating": 5
       }
     ]
   },
