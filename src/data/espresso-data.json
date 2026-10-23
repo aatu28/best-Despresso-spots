@@ -367,19 +367,23 @@
     "cafes": [
       {
         "name": "Caffe Nero",
-        "description": "British coffeehouse chain founded in 1990 in South Kensington, later expanded under Gerry Ford into one of the UK's largest coffee chains."
+        "description": "British coffeehouse chain founded in 1990 in South Kensington, later expanded under Gerry Ford into one of the UK's largest coffee chains.",
+        "rating": 4
       },
       {
         "name": "GAIL's",
-        "description": "British bakery chain founded as a wholesale operation by Yael Mejia, opening its first customer-facing shop on Hampstead High Street in 2005."
+        "description": "British bakery chain founded as a wholesale operation by Yael Mejia, opening its first customer-facing shop on Hampstead High Street in 2005.",
+        "rating": 4
       },
       {
         "name": "Bar Italia",
-        "description": "Soho espresso bar opened in 1949 by the Polledri family at 22 Frith Street, site of Baird's first TV demonstration."
+        "description": "Soho espresso bar opened in 1949 by the Polledri family at 22 Frith Street, site of Baird's first TV demonstration.",
+        "rating": 4
       },
       {
         "name": "Blank Street Coffee",
-        "description": "Brooklyn-founded coffee chain that opened its first UK location in Fitzrovia in March 2022, serving specialty Arabica from Origin Coffee Roasters."
+        "description": "Brooklyn-founded coffee chain that opened its first UK location in Fitzrovia in March 2022, serving specialty Arabica from Origin Coffee Roasters.",
+        "rating": 4
       },
       {
         "name": "Algerian Coffee Stores",
@@ -387,7 +391,8 @@
       },
       {
         "name": "Costa Coffee",
-        "description": "British coffeehouse chain founded in London in 1971 by brothers Bruno and Sergio Costa, later acquired by Whitbread and then Coca-Cola."
+        "description": "British coffeehouse chain founded in London in 1971 by brothers Bruno and Sergio Costa, later acquired by Whitbread and then Coca-Cola.",
+        "rating": 4
       },
       {
         "name": "Barbican Cinema Cafe",
@@ -426,7 +431,8 @@
       },
       {
         "name": "Moto Coffee",
-        "description": "Riverside coffee shop in Osaka's Kitahama Terrace overlooking Nakanoshima Park, serving hand-drip and espresso drinks with popular terrace seating."
+        "description": "Riverside coffee shop in Osaka's Kitahama Terrace overlooking Nakanoshima Park, serving hand-drip and espresso drinks with popular terrace seating.",
+        "rating": 4
       },
       {
         "name": "Brooklyn Coffee Shop",
@@ -447,7 +453,8 @@
       },
       {
         "name": "% Arabica",
-        "description": "Kyoto-founded specialty coffee chain with a minimalist white design; its Seoul branch opened in 2022 inside COEX's Starfield Library."
+        "description": "Kyoto-founded specialty coffee chain with a minimalist white design; its Seoul branch opened in 2022 inside COEX's Starfield Library.",
+        "rating": 4
       },
       {
         "name": "PP Coffee",
