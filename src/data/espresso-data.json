@@ -274,11 +274,13 @@
       },
       {
         "name": "Copper + Cloves",
-        "description": "Plant-based wellness cafe and bookshop set in a garden in Indiranagar, Bengaluru, serving smoothies, salads, and bowls made from locally grown produce."
+        "description": "Plant-based wellness cafe and bookshop set in a garden in Indiranagar, Bengaluru, serving smoothies, salads, and bowls made from locally grown produce.",
+        "rating": 4
       },
       {
         "name": "Araku Coffee",
-        "description": "Flagship two-storey specialty cafe in Indiranagar, Bengaluru, with India's first Modbar brew bar, an in-house roastery, and an SCA-certified training academy."
+        "description": "Flagship two-storey specialty cafe in Indiranagar, Bengaluru, with India's first Modbar brew bar, an in-house roastery, and an SCA-certified training academy.",
+        "rating": 4
       },
       {
         "name": "Champaca Bookstore",
@@ -286,7 +288,8 @@
       },
       {
         "name": "Subko",
-        "description": "Specialty coffee roastery, bakehouse, and cacao brand with outlets in Koramangala, Shanti Nagar, and Indiranagar, Bengaluru, sourcing beans from India's coffee-growing states."
+        "description": "Specialty coffee roastery, bakehouse, and cacao brand with outlets in Koramangala, Shanti Nagar, and Indiranagar, Bengaluru, sourcing beans from India's coffee-growing states.",
+        "rating": 4
       }
     ]
   },
@@ -303,11 +306,13 @@
       },
       {
         "name": "Curators Coffee",
-        "description": "Specialty coffee chain with branches in Alkapuri and Subhanpura, Vadodara, serving coffee, tea, and continental fare alongside desserts."
+        "description": "Specialty coffee chain with branches in Alkapuri and Subhanpura, Vadodara, serving coffee, tea, and continental fare alongside desserts.",
+        "rating": 5
       },
       {
         "name": "Cafe Appetito Bungalow",
-        "description": "Akota branch of Vadodara's multi-outlet Cafe Appetito chain, a casual fast-food cafe known locally for its specialty coffee; other branches are in Manjalpur and at Sarabhai's Atlantis Mall."
+        "description": "Akota branch of Vadodara's multi-outlet Cafe Appetito chain, a casual fast-food cafe known locally for its specialty coffee; other branches are in Manjalpur and at Sarabhai's Atlantis Mall.",
+        "rating": 4
       }
     ]
   },
@@ -320,7 +325,8 @@
     "cafes": [
       {
         "name": "Hani Café",
-        "description": "Brunch and specialty coffee house in Costa da Caparica (Almada municipality) with a warm, nature-inspired space; all-day brunch, healthy bowls, and toasties alongside the coffee. The name means \"joyful\" or \"happy.\""
+        "description": "Brunch and specialty coffee house in Costa da Caparica (Almada municipality) with a warm, nature-inspired space; all-day brunch, healthy bowls, and toasties alongside the coffee. The name means \"joyful\" or \"happy.\"",
+        "rating": 5
       }
     ]
   },
@@ -333,11 +339,13 @@
     "cafes": [
       {
         "name": "Collect - Food . Radio . Records",
-        "description": "A Pink Street venue in Cais do Sodré combining a burger bar, vinyl record store, and live in-house radio station."
+        "description": "A Pink Street venue in Cais do Sodré combining a burger bar, vinyl record store, and live in-house radio station.",
+        "rating": 4
       },
       {
         "name": "Tact",
-        "description": "Family-run specialty coffee shop in Lisbon's Lapa neighborhood, set in a converted 1960s laundry with a no-laptop, community-focused policy."
+        "description": "Family-run specialty coffee shop in Lisbon's Lapa neighborhood, set in a converted 1960s laundry with a no-laptop, community-focused policy.",
+        "rating": 5
       },
       {
         "name": "Good Company",
@@ -345,7 +353,8 @@
       },
       {
         "name": "Comoba",
-        "description": "Zero-waste café near the Tejo River in a converted historic pharmacy building, serving organic, mostly plant-based food and fair-trade coffee since 2018."
+        "description": "Zero-waste café near the Tejo River in a converted historic pharmacy building, serving organic, mostly plant-based food and fair-trade coffee since 2018.",
+        "rating": 4
       }
     ]
   },
