@@ -479,7 +479,8 @@
       },
       {
         "name": "Coffeeboy Club",
-        "description": "Tokyo-listening-bar-inspired cafe in Gasket Alley, Section 13, Petaling Jaya, making its coffee-bar ingredients and kitchen fare in-house and hosting occasional music events."
+        "description": "Tokyo-listening-bar-inspired cafe in Gasket Alley, Section 13, Petaling Jaya, making its coffee-bar ingredients and kitchen fare in-house and hosting occasional music events.",
+        "rating": 5
       }
     ]
   },
@@ -496,7 +497,8 @@
       },
       {
         "name": "Chez Celine",
-        "description": "French bakery and cafe on Playa del Carmen's Quinta Avenida, serving baguettes, croissants, quiches, and crepes, rated 4.5 on Tripadvisor."
+        "description": "French bakery and cafe on Playa del Carmen's Quinta Avenida, serving baguettes, croissants, quiches, and crepes, rated 4.5 on Tripadvisor.",
+        "rating": 5
       }
     ]
   },
@@ -535,7 +537,8 @@
     "cafes": [
       {
         "name": "Magnolia Bakery",
-        "description": "West Village bakery on Bleecker Street, opened in 1996 by Jennifer Appel and Allysa Torey, credited with sparking the 1990s cupcake craze."
+        "description": "West Village bakery on Bleecker Street, opened in 1996 by Jennifer Appel and Allysa Torey, credited with sparking the 1990s cupcake craze.",
+        "rating": 5
       }
     ]
   },
@@ -561,7 +564,8 @@
     "cafes": [
       {
         "name": "Santagloria Coffee and Bakery",
-        "description": "Spanish coffee and bakery chain with multiple Madrid locations, including Atocha, Chamberí, and Malasaña, known for artisanal pastries and freshly baked bread."
+        "description": "Spanish coffee and bakery chain with multiple Madrid locations, including Atocha, Chamberí, and Malasaña, known for artisanal pastries and freshly baked bread.",
+        "rating": 4
       }
     ]
   },
@@ -587,7 +591,8 @@
     "cafes": [
       {
         "name": "Blue Bottle Coffee Roasters",
-        "description": "Blue Bottle Coffee location on the third floor of Atré Shinagawa above the station, designed by Schemata Architects with white stone interiors."
+        "description": "Blue Bottle Coffee location on the third floor of Atré Shinagawa above the station, designed by Schemata Architects with white stone interiors.",
+        "rating": 4
       }
     ]
   },
