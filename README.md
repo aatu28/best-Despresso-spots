@@ -17,6 +17,7 @@ City data lives in `src/data/espresso-data.json`, typed by `src/types/city.ts`:
 interface Cafe {
   name: string;
   description: string;
+  rating?: number; // personal 1-5, hand-filled; omitted means not yet rated
 }
 
 interface CityStop {
@@ -29,9 +30,9 @@ interface CityStop {
 }
 ```
 
-One pin per city — drag to rotate the globe, scroll to zoom, click a pin to open a detail panel with the country and the list of cafes visited there. Tap a cafe in that list to expand a short description of the spot. The "Country" filter (top-right) toggles which pins are shown without rebuilding the scene. Below it, `src/components/CityFinder.tsx` is a combined search/browse box — focus it empty to see every city grouped by country, or type to filter by city, country, or cafe name; selecting a result opens that city regardless of the current country filter. Selecting a city (by pin, search, or deep link) updates the URL to `?city=<id>`, and the detail panel has a "Copy link" button that copies that URL — so any spot can be linked or bookmarked directly.
+One pin per city — drag to rotate the globe, scroll to zoom, click a pin to open a detail panel with the country and the list of cafes visited there. Tap a cafe in that list to expand a short description of the spot. A cafe with a `rating` shows a row of 1-5 stars under its name — purely personal and informational, it doesn't reorder the list. The "Country" filter (top-right) toggles which pins are shown without rebuilding the scene. Below it, `src/components/CityFinder.tsx` is a combined search/browse box — focus it empty to see every city grouped by country, or type to filter by city, country, or cafe name; selecting a result opens that city regardless of the current country filter. Selecting a city (by pin, search, or deep link) updates the URL to `?city=<id>`, and the detail panel has a "Copy link" button that copies that URL — so any spot can be linked or bookmarked directly.
 
-To add a city, add an entry to `espresso-data.json` with its coordinates and cafes. A cafe's `description` is a real, sourced one-liner (official site / press / reviews) — if nothing about a name could be verified, set it to the literal string `"UNVERIFIED"` rather than inventing something; the panel shows "No verified details yet." for those instead of fabricated text.
+To add a city, add an entry to `espresso-data.json` with its coordinates and cafes. A cafe's `description` is a real, sourced one-liner (official site / press / reviews) — if nothing about a name could be verified, set it to the literal string `"UNVERIFIED"` rather than inventing something; the panel shows "No verified details yet." for those instead of fabricated text. `rating` is the opposite: pure personal opinion, not something to source or invent — leave it unset until you've actually decided what you think.
 
 ## Globe rendering
 

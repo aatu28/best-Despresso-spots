@@ -12,6 +12,18 @@ function formatCoord(lat: number, lon: number): string {
   return `${Math.abs(lat).toFixed(2)}°${latDir}, ${Math.abs(lon).toFixed(2)}°${lonDir}`;
 }
 
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <span aria-label={`Rated ${rating} out of 5`} className="flex gap-0.5 text-[11px] leading-none">
+      {Array.from({ length: 5 }, (_, i) => (
+        <span key={i} aria-hidden className={i < rating ? 'text-accent' : 'text-ink-faint opacity-40'}>
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function DetailPanel({ city, onClose }: DetailPanelProps) {
   const open = city !== null;
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -103,7 +115,10 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
                     className="w-full rounded-xl border border-panel-border px-[18px] py-4 text-left transition-colors hover:bg-tag-bg"
                   >
                     <span className="flex items-center justify-between gap-3">
-                      <span className="text-[15px] leading-[1.35] font-medium text-ink">{cafe.name}</span>
+                      <span className="flex flex-col gap-1">
+                        <span className="text-[15px] leading-[1.35] font-medium text-ink">{cafe.name}</span>
+                        {cafe.rating && <StarRating rating={cafe.rating} />}
+                      </span>
                       <span
                         aria-hidden
                         className="flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[13px] text-accent"
