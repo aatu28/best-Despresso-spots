@@ -808,7 +808,8 @@
     "cafes": [
       {
         "name": "Cafe Schwarzenberg",
-        "description": "One of Vienna's oldest grand coffeehouses, opened on the Ringstrasse in 1861 and a favorite haunt of architect Josef Hoffmann, who sketched many of his designs there."
+        "description": "One of Vienna's oldest grand coffeehouses, opened on the Ringstrasse in 1861 and a favorite haunt of architect Josef Hoffmann, who sketched many of his designs there.",
+        "rating": 4
       },
       {
         "name": "Café Rooster",
@@ -824,11 +825,13 @@
       },
       {
         "name": "Anker",
-        "description": "Branch of Vienna's century-old Ankerbrot bakery chain, serving coffee and classic Viennese pastries like krapfen and apple strudel slices from a quick-stop counter."
+        "description": "Branch of Vienna's century-old Ankerbrot bakery chain, serving coffee and classic Viennese pastries like krapfen and apple strudel slices from a quick-stop counter.",
+        "rating": 4
       },
       {
         "name": "Jonas Reindl Coffee Roasters",
-        "description": "Vienna specialty coffee roaster and cafe chain named after the Schottentor tram loop, roasting Ethiopian and Colombian beans in-house on a Probat roaster and pulling shots on a Slayer espresso machine."
+        "description": "Vienna specialty coffee roaster and cafe chain named after the Schottentor tram loop, roasting Ethiopian and Colombian beans in-house on a Probat roaster and pulling shots on a Slayer espresso machine.",
+        "rating": 5
       },
       {
         "name": "Truth Cafe",
@@ -863,15 +866,18 @@
       },
       {
         "name": "Espresso Embassy",
-        "description": "Pioneer of Budapest's third-wave coffee scene, set in a vaulted brick cellar designed by Spora Architects; alternative-method brews and bagged beans sold on-site, opened in 2013 by barista champion Tibor Varady."
+        "description": "Pioneer of Budapest's third-wave coffee scene, set in a vaulted brick cellar designed by Spora Architects; alternative-method brews and bagged beans sold on-site, opened in 2013 by barista champion Tibor Varady.",
+        "rating": 5
       },
       {
         "name": "Madal Cafe",
-        "description": "Budapest specialty coffee chain with its own roastery, Beyond Within, also pouring guest beans from London's Square Mile Roasters; its Alkotmany utca branch near Parliament is the city's largest."
+        "description": "Budapest specialty coffee chain with its own roastery, Beyond Within, also pouring guest beans from London's Square Mile Roasters; its Alkotmany utca branch near Parliament is the city's largest.",
+        "rating": 5
       },
       {
         "name": "Magveto Cafe",
-        "description": "Cafe-bookshop run by the Magveto publishing house on Dohany utca in Budapest's 7th district, open since 2017; sells the publisher's books alongside coffee, wine, and breakfast, and hosts book presentations and poetry evenings."
+        "description": "Cafe-bookshop run by the Magveto publishing house on Dohany utca in Budapest's 7th district, open since 2017; sells the publisher's books alongside coffee, wine, and breakfast, and hosts book presentations and poetry evenings.",
+        "rating": 5
       }
     ]
   }
