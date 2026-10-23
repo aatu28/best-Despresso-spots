@@ -8,23 +8,28 @@
     "cafes": [
       {
         "name": "The Coffee Movement",
-        "description": "Multi-location San Francisco specialty coffee shop known for tasting flights of three different coffees and expertly pulled espresso drinks."
+        "description": "Multi-location San Francisco specialty coffee shop known for tasting flights of three different coffees and expertly pulled espresso drinks.",
+        "rating": 5
       },
       {
         "name": "Caffe Greco",
-        "description": "North Beach Italian coffeehouse opened in 1988 by the Suleiman family, known for oversized cappuccinos made with Illy coffee and homemade tiramisu."
+        "description": "North Beach Italian coffeehouse opened in 1988 by the Suleiman family, known for oversized cappuccinos made with Illy coffee and homemade tiramisu.",
+        "rating": 4
       },
       {
         "name": "Cafe Reveille (Peruvian Espresso)",
-        "description": "North Beach cafe and roaster (Reveille Coffee Co.) known for its Paradise Espresso sourced from Peru's Amazonas region, served in a modernist space."
+        "description": "North Beach cafe and roaster (Reveille Coffee Co.) known for its Paradise Espresso sourced from Peru's Amazonas region, served in a modernist space.",
+        "rating": 4
       },
       {
         "name": "Caffe Trieste",
-        "description": "North Beach's pioneering espresso house, founded in 1956 by Gianni Giotta, a Beat-era literary hangout famous for its Saturday opera singalongs."
+        "description": "North Beach's pioneering espresso house, founded in 1956 by Gianni Giotta, a Beat-era literary hangout famous for its Saturday opera singalongs.",
+        "rating": 4
       },
       {
         "name": "Avotoasty",
-        "description": "Marina and Financial District cafe and in-house roastery founded in 2017 by Sofia Pinzon, known for avocado toast and a full espresso bar."
+        "description": "Marina and Financial District cafe and in-house roastery founded in 2017 by Sofia Pinzon, known for avocado toast and a full espresso bar.",
+        "rating": 4
       },
       {
         "name": "Haraz Coffee House",
@@ -32,7 +37,8 @@
       },
       {
         "name": "Sightglass Coffee",
-        "description": "SoMa roastery and cafe founded in 2009 by brothers Jerad and Justin Morrison, housed in a converted 1914 warehouse with a vintage Probat roaster."
+        "description": "SoMa roastery and cafe founded in 2009 by brothers Jerad and Justin Morrison, housed in a converted 1914 warehouse with a vintage Probat roaster.",
+        "rating": 4
       },
       {
         "name": "Red Bay Coffee",
@@ -44,7 +50,8 @@
       },
       {
         "name": "Blue Bottle Coffee Roasters",
-        "description": "Third-wave coffee roaster founded in 2002 by former clarinetist James Freeman, known for roasting small batches and serving beans within 24 hours."
+        "description": "Third-wave coffee roaster founded in 2002 by former clarinetist James Freeman, known for roasting small batches and serving beans within 24 hours.",
+        "rating": 4
       }
     ]
   },
@@ -57,7 +64,8 @@
     "cafes": [
       {
         "name": "Bird Rock Coffee Roasters",
-        "description": "La Jolla-based specialty coffee roaster founded in 2006, known for direct-trade single-origin coffees, competition-winning blends, and a dedicated pour-over bar."
+        "description": "La Jolla-based specialty coffee roaster founded in 2006, known for direct-trade single-origin coffees, competition-winning blends, and a dedicated pour-over bar.",
+        "rating": 5
       },
       {
         "name": "The Barn",
@@ -73,11 +81,13 @@
       },
       {
         "name": "Cafe Madelene",
-        "description": "Paris-inspired cafe founded in 2010 by Christine Perez, serving French crepes, paninis, and Illy espresso drinks at two San Diego locations."
+        "description": "Paris-inspired cafe founded in 2010 by Christine Perez, serving French crepes, paninis, and Illy espresso drinks at two San Diego locations.",
+        "rating": 5
       },
       {
         "name": "Caffe Italia (Little Italy)",
-        "description": "Espresso bar inside Little Italy's La Pensione Hotel, operating since 1992, serving Lavazza coffee, gelato, and Italian panini sandwiches."
+        "description": "Espresso bar inside Little Italy's La Pensione Hotel, operating since 1992, serving Lavazza coffee, gelato, and Italian panini sandwiches.",
+        "rating": 5
       }
     ]
   },
@@ -107,11 +117,13 @@
     "cafes": [
       {
         "name": "Tatte Bakery & Cafe (Back Bay)",
-        "description": "Boylston Street location of the Mediterranean bakery-cafe chain founded by Israeli-born baker Tzurit Or in 2008, known for pastries and coffee."
+        "description": "Boylston Street location of the Mediterranean bakery-cafe chain founded by Israeli-born baker Tzurit Or in 2008, known for pastries and coffee.",
+        "rating": 4
       },
       {
         "name": "Cafe Bonjour",
-        "description": "Downtown Crossing breakfast spot serving Moroccan and French dishes, including mint tea, with halal-friendly and largely organic ingredients."
+        "description": "Downtown Crossing breakfast spot serving Moroccan and French dishes, including mint tea, with halal-friendly and largely organic ingredients.",
+        "rating": 5
       }
     ]
   },
