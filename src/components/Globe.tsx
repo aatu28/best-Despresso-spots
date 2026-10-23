@@ -272,6 +272,12 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const pointer = new Vector2();
     let downPos: { x: number; y: number } | null = null;
     let hoveredId: string | null = null;
+    // autoRotate pauses the moment the pointer touches the canvas (otherwise
+    // a pin keeps drifting out from under the cursor while you're aiming a
+    // click) and only resumes once it's been idle for a bit, so the globe
+    // still reads as alive when no one's actively trying to click it.
+    let lastPointerActivity = -Infinity;
+    const IDLE_RESUME_SECONDS = 1.2;
 
     function pickPin(evt: PointerEvent) {
       const rect = renderer.domElement.getBoundingClientRect();
@@ -287,15 +293,18 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     const onPointerDown = (evt: PointerEvent) => {
       downPos = { x: evt.clientX, y: evt.clientY };
       renderer.domElement.style.cursor = 'grabbing';
+      lastPointerActivity = clock.getElapsedTime();
       closeClusterMenu();
     };
     const onPointerMove = (evt: PointerEvent) => {
+      lastPointerActivity = clock.getElapsedTime();
       if (downPos) return;
       const hit = pickPin(evt);
       hoveredId = hit?.id ?? null;
       renderer.domElement.style.cursor = hoveredId ? 'pointer' : 'grab';
     };
     const onPointerUp = (evt: PointerEvent) => {
+      lastPointerActivity = clock.getElapsedTime();
       if (!downPos) return;
       const moved = Math.hypot(evt.clientX - downPos.x, evt.clientY - downPos.y);
       downPos = null;
@@ -488,7 +497,8 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
         }
       }
 
-      controls.autoRotate = !reducedMotion && !flight;
+      const idle = t - lastPointerActivity > IDLE_RESUME_SECONDS;
+      controls.autoRotate = !reducedMotion && !flight && idle;
       controls.update();
       renderer.render(scene, camera);
     };
