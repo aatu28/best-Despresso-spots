@@ -570,25 +570,16 @@
     ]
   },
   {
-    "id": "setagaya-city-japan",
-    "city": "Setagaya City",
+    "id": "tokyo-japan",
+    "city": "Tokyo",
     "country": "Japan",
-    "latitude": 35.6467,
-    "longitude": 139.6531,
+    "latitude": 35.6762,
+    "longitude": 139.6503,
     "cafes": [
       {
         "name": "Rain on the Roof",
         "description": "Sangenjaya café in Setagaya known for curry dishes and a dim, wood-paneled interior said to have inspired Persona 5's Leblanc café."
-      }
-    ]
-  },
-  {
-    "id": "shinagawa-station-japan",
-    "city": "Shinagawa Station",
-    "country": "Japan",
-    "latitude": 35.6285,
-    "longitude": 139.7387,
-    "cafes": [
+      },
       {
         "name": "Blue Bottle Coffee Roasters",
         "description": "Blue Bottle Coffee location on the third floor of Atré Shinagawa above the station, designed by Schemata Architects with white stone interiors.",
