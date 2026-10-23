@@ -156,7 +156,8 @@
       },
       {
         "name": "Kesh Kesh Coffee Roasters & Cafe",
-        "description": "Specialty coffee roaster and cafe in Kilimani, Nairobi, roasting in-house Kenyan and East African arabica beans, popular for laptop-friendly workspace."
+        "description": "Specialty coffee roaster and cafe in Kilimani, Nairobi, roasting in-house Kenyan and East African arabica beans, popular for laptop-friendly workspace.",
+        "rating": 4
       },
       {
         "name": "The Coffee Club",
@@ -176,7 +177,8 @@
       },
       {
         "name": "Le Grenier a Pain",
-        "description": "French bakery chain founded by Michel Galloyer in 1998, operating four Nairobi branches offering traditional baguettes, pastries, and viennoiseries."
+        "description": "French bakery chain founded by Michel Galloyer in 1998, operating four Nairobi branches offering traditional baguettes, pastries, and viennoiseries.",
+        "rating": 5
       }
     ]
   },
@@ -210,7 +212,8 @@
       },
       {
         "name": "Mandabatmaz",
-        "description": "Tiny historic Turkish coffee shop on Istiklal Street in Beyoglu serving traditional Turkish coffee since 1967, renowned for its thick foam."
+        "description": "Tiny historic Turkish coffee shop on Istiklal Street in Beyoglu serving traditional Turkish coffee since 1967, renowned for its thick foam.",
+        "rating": 5
       },
       {
         "name": "Federal Coffee",
@@ -235,7 +238,8 @@
       },
       {
         "name": "Fern Forest Cafe",
-        "description": "Family-run garden cafe in Chiang Mai's Old City, founded in 2003 from the family's coffee plantation, with a waterfall and koi pond."
+        "description": "Family-run garden cafe in Chiang Mai's Old City, founded in 2003 from the family's coffee plantation, with a waterfall and koi pond.",
+        "rating": 4
       },
       {
         "name": "Gateway Coffee Roaster",
@@ -252,7 +256,8 @@
     "cafes": [
       {
         "name": "Origo Coffee",
-        "description": "First specialty coffee shop with its own roaster in Bucharest, open since 2013 on Lipscani Street, doubling as a cocktail bar."
+        "description": "First specialty coffee shop with its own roaster in Bucharest, open since 2013 on Lipscani Street, doubling as a cocktail bar.",
+        "rating": 5
       }
     ]
   },
