@@ -391,7 +391,8 @@
     "cafes": [
       {
         "name": "Embankment Coffee",
-        "description": "Specialty coffee shop in Osaka's Kitahama district, housed in a 1912 riverside wooden building, serving light-roast single-origin coffee."
+        "description": "Specialty coffee shop in Osaka's Kitahama district, housed in a 1912 riverside wooden building, serving light-roast single-origin coffee.",
+        "rating": 5
       },
       {
         "name": "Elmersgreen",
@@ -812,7 +813,8 @@
     "cafes": [
       {
         "name": "Mantra Coffee",
-        "description": "Cozy specialty cafe on Veres Palne utca open since 2014, roasting its own light-roast beans alongside guest coffees from Italy's Rubens Gardelli, brewed on AeroPress, Chemex, V60, and Gina."
+        "description": "Cozy specialty cafe on Veres Palne utca open since 2014, roasting its own light-roast beans alongside guest coffees from Italy's Rubens Gardelli, brewed on AeroPress, Chemex, V60, and Gina.",
+        "rating": 4
       },
       {
         "name": "Espresso Embassy",
