@@ -61,15 +61,15 @@
       },
       {
         "name": "The Barn",
-        "description": "UNVERIFIED"
+        "description": "San Diego coffee shop that has since closed permanently."
       },
       {
         "name": "Scrimshaw Coffee",
         "description": "All-day cafe on El Cajon Boulevard operating since 2017, serving espresso drinks, bagels, wine and beer in a community-focused space."
       },
       {
-        "name": "Ostra Coffee",
-        "description": "UNVERIFIED"
+        "name": "Mostra Coffee",
+        "description": "San Diego micro-roaster that started as a home-roasting operation in 2013, founded by Beverly and Sam Magtanong with Jelynn Malone and Mike Arquines; named Roast Magazine's Micro Roaster of the Year in 2020."
       },
       {
         "name": "Cafe Madelene",
@@ -176,11 +176,11 @@
     "longitude": 106.6297,
     "cafes": [
       {
-        "name": "Copa Coffee",
+        "name": "Kupca Coffee",
         "description": "UNVERIFIED"
       },
       {
-        "name": "74 Ky Con",
+        "name": "Kim Thuỷ Tea & Coffee",
         "description": "UNVERIFIED"
       }
     ]
@@ -302,8 +302,8 @@
     "longitude": -9.2367,
     "cafes": [
       {
-        "name": "Local cafe",
-        "description": "UNVERIFIED"
+        "name": "Hani Café",
+        "description": "Brunch and specialty coffee house in Costa da Caparica (Almada municipality) with a warm, nature-inspired space; all-day brunch, healthy bowls, and toasties alongside the coffee. The name means \"joyful\" or \"happy.\""
       }
     ]
   },
@@ -765,7 +765,7 @@
         "description": "One of Vienna's oldest grand coffeehouses, opened on the Ringstrasse in 1861 and a favorite haunt of architect Josef Hoffmann, who sketched many of his designs there."
       },
       {
-        "name": "Rooster",
+        "name": "Café Rooster",
         "description": "UNVERIFIED"
       },
       {
