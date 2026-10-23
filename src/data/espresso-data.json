@@ -802,5 +802,26 @@
         "description": "Specialty coffee shop on Kosicka serving single-origin filter coffee from Concept Coffee Roasters, which started in Piestany before opening in Bratislava; vegan-friendly menu with plant-based milks."
       }
     ]
+  },
+  {
+    "id": "budapest-hungary",
+    "city": "Budapest",
+    "country": "Hungary",
+    "latitude": 47.4979,
+    "longitude": 19.0402,
+    "cafes": [
+      {
+        "name": "Mantra Coffee",
+        "description": "Cozy specialty cafe on Veres Palne utca open since 2014, roasting its own light-roast beans alongside guest coffees from Italy's Rubens Gardelli, brewed on AeroPress, Chemex, V60, and Gina."
+      },
+      {
+        "name": "Espresso Embassy",
+        "description": "Pioneer of Budapest's third-wave coffee scene, set in a vaulted brick cellar designed by Spora Architects; alternative-method brews and bagged beans sold on-site, opened in 2013 by barista champion Tibor Varady."
+      },
+      {
+        "name": "Madal Cafe",
+        "description": "Budapest specialty coffee chain with its own roastery, Beyond Within, also pouring guest beans from London's Square Mile Roasters; its Alkotmany utca branch near Parliament is the city's largest."
+      }
+    ]
   }
 ]
