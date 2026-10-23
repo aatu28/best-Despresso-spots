@@ -51,15 +51,24 @@ function App() {
 
   return (
     <div className="relative h-dvh w-full overflow-hidden bg-bg text-ink">
-      <Suspense
-        fallback={
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <div className="h-[70vmin] w-[70vmin] rounded-full border border-panel-border opacity-40" />
-          </div>
-        }
-      >
-        <Globe cities={cities} visibleIds={visibleIds} selectedCityId={selectedCityId} onSelectCity={selectCity} />
-      </Suspense>
+      {/*
+        On mobile the header/filter/search stack is tall enough that it would
+        otherwise sit right on top of the globe's usual pin band, which both
+        hides pins and blocks taps from ever reaching the canvas underneath.
+        Reserving that height here (cleared again at sm, where those controls
+        detach into their own corners) keeps every pin reachable.
+      */}
+      <div className="box-border h-full w-full pt-[248px] sm:pt-0">
+        <Suspense
+          fallback={
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="h-[70vmin] w-[70vmin] rounded-full border border-panel-border opacity-40" />
+            </div>
+          }
+        >
+          <Globe cities={cities} visibleIds={visibleIds} selectedCityId={selectedCityId} onSelectCity={selectCity} />
+        </Suspense>
+      </div>
 
       <div className="paper-grain pointer-events-none absolute inset-0 z-0" />
 
