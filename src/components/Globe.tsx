@@ -275,7 +275,9 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
     // autoRotate pauses the moment the pointer touches the canvas (otherwise
     // a pin keeps drifting out from under the cursor while you're aiming a
     // click) and only resumes once it's been idle for a bit, so the globe
-    // still reads as alive when no one's actively trying to click it.
+    // still reads as alive when no one's actively trying to click it. It
+    // also stays paused for as long as a city is selected — otherwise it'd
+    // resume and drift away from the pin while you're just reading its panel.
     let lastPointerActivity = -Infinity;
     const IDLE_RESUME_SECONDS = 1.2;
 
@@ -498,7 +500,7 @@ export default function Globe({ cities, visibleIds, selectedCityId, onSelectCity
       }
 
       const idle = t - lastPointerActivity > IDLE_RESUME_SECONDS;
-      controls.autoRotate = !reducedMotion && !flight && idle;
+      controls.autoRotate = !reducedMotion && !flight && idle && !selectedId;
       controls.update();
       renderer.render(scene, camera);
     };
