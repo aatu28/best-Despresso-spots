@@ -264,10 +264,6 @@
         "description": "Flagship two-storey specialty cafe in Indiranagar, Bengaluru, with India's first Modbar brew bar, an in-house roastery, and an SCA-certified training academy."
       },
       {
-        "name": "Cafe Appetito",
-        "description": "UNVERIFIED"
-      },
-      {
         "name": "Champaca Bookstore",
         "description": "Independent, women-run bookstore, children's library, and cafe in Vasanth Nagar, Bengaluru, founded in 2019, serving coffee and desserts alongside indie-published books."
       },
@@ -291,6 +287,10 @@
       {
         "name": "Curators Coffee",
         "description": "Specialty coffee chain with branches in Alkapuri and Subhanpura, Vadodara, serving coffee, tea, and continental fare alongside desserts."
+      },
+      {
+        "name": "Cafe Appetito Bungalow",
+        "description": "Akota branch of Vadodara's multi-outlet Cafe Appetito chain, a casual fast-food cafe known locally for its specialty coffee; other branches are in Manjalpur and at Sarabhai's Atlantis Mall."
       }
     ]
   },
