@@ -176,7 +176,7 @@
         "description": "Specialty coffee roaster and cafe off Farasi Lane in Nairobi, founded by Wanjiru Mari, serving single-origin coffee with sourdough pastries."
       },
       {
-        "name": "Le Grenier a Pain",
+        "name": "Le Grenier à Pain",
         "description": "French bakery chain founded by Michel Galloyer in 1998, operating four Nairobi branches offering traditional baguettes, pastries, and viennoiseries.",
         "rating": 5
       }
@@ -366,7 +366,7 @@
     "longitude": -0.1278,
     "cafes": [
       {
-        "name": "Caffe Nero",
+        "name": "Caffè Nero",
         "description": "British coffeehouse chain founded in 1990 in South Kensington, later expanded under Gerry Ford into one of the UK's largest coffee chains.",
         "rating": 4
       },
@@ -496,7 +496,7 @@
         "description": "Argentine-owned specialty coffee shop just off Fifth Avenue in Playa del Carmen, known for its minimalist, pet-friendly space and espresso-based breakfast menu."
       },
       {
-        "name": "Chez Celine",
+        "name": "Chez Céline",
         "description": "French bakery and cafe on Playa del Carmen's Quinta Avenida, serving baguettes, croissants, quiches, and crepes, rated 4.5 on Tripadvisor.",
         "rating": 5
       }
@@ -806,7 +806,7 @@
     "longitude": 16.3738,
     "cafes": [
       {
-        "name": "Cafe Schwarzenberg",
+        "name": "Café Schwarzenberg",
         "description": "One of Vienna's oldest grand coffeehouses, opened on the Ringstrasse in 1861 and a favorite haunt of architect Josef Hoffmann, who sketched many of his designs there.",
         "rating": 4
       },
@@ -820,7 +820,7 @@
       },
       {
         "name": "Coffee U-Boot",
-        "description": "Small cafe on Florianigasse in Josefstadt serving coffee from the Friulian roastery Cambio Caffe alongside homemade cakes and sandwiches on Joseph bread, with south-facing outdoor seating."
+        "description": "Small cafe on Florianigasse in Josefstadt serving coffee from the Friulian roastery Cambio Caffè alongside homemade cakes and sandwiches on Joseph bread, with south-facing outdoor seating."
       },
       {
         "name": "Anker",
@@ -833,8 +833,8 @@
         "rating": 5
       },
       {
-        "name": "Truth Cafe",
-        "description": "Specialty coffee bar on Nussdorfer Strasse known for its cold brew tonic and San Sebastian cheesecake, with its own beans sold to brew at home."
+        "name": "Truth Café",
+        "description": "Specialty coffee bar on Nußdorfer Straße known for its cold brew tonic and San Sebastian cheesecake, with its own beans sold to brew at home."
       }
     ]
   },
@@ -847,7 +847,7 @@
     "cafes": [
       {
         "name": "Concept Coffee",
-        "description": "Specialty coffee shop on Kosicka serving single-origin filter coffee from Concept Coffee Roasters, which started in Piestany before opening in Bratislava; vegan-friendly menu with plant-based milks."
+        "description": "Specialty coffee shop on Košická serving single-origin filter coffee from Concept Coffee Roasters, which started in Piešťany before opening in Bratislava; vegan-friendly menu with plant-based milks."
       }
     ]
   },
@@ -860,22 +860,22 @@
     "cafes": [
       {
         "name": "Mantra Coffee",
-        "description": "Cozy specialty cafe on Veres Palne utca open since 2014, roasting its own light-roast beans alongside guest coffees from Italy's Rubens Gardelli, brewed on AeroPress, Chemex, V60, and Gina.",
+        "description": "Cozy specialty cafe on Veres Pálné utca open since 2014, roasting its own light-roast beans alongside guest coffees from Italy's Rubens Gardelli, brewed on AeroPress, Chemex, V60, and Gina.",
         "rating": 4
       },
       {
         "name": "Espresso Embassy",
-        "description": "Pioneer of Budapest's third-wave coffee scene, set in a vaulted brick cellar designed by Spora Architects; alternative-method brews and bagged beans sold on-site, opened in 2013 by barista champion Tibor Varady.",
+        "description": "Pioneer of Budapest's third-wave coffee scene, set in a vaulted brick cellar designed by Spora Architects; alternative-method brews and bagged beans sold on-site, opened in 2013 by barista champion Tibor Várady.",
         "rating": 5
       },
       {
         "name": "Madal Cafe",
-        "description": "Budapest specialty coffee chain with its own roastery, Beyond Within, also pouring guest beans from London's Square Mile Roasters; its Alkotmany utca branch near Parliament is the city's largest.",
+        "description": "Budapest specialty coffee chain with its own roastery, Beyond Within, also pouring guest beans from London's Square Mile Roasters; its Alkotmány utca branch near Parliament is the city's largest.",
         "rating": 5
       },
       {
-        "name": "Magveto Cafe",
-        "description": "Cafe-bookshop run by the Magveto publishing house on Dohany utca in Budapest's 7th district, open since 2017; sells the publisher's books alongside coffee, wine, and breakfast, and hosts book presentations and poetry evenings.",
+        "name": "Magvető Café",
+        "description": "Cafe-bookshop run by the Magvető publishing house on Dohány utca in Budapest's 7th district, open since 2017; sells the publisher's books alongside coffee, wine, and breakfast, and hosts book presentations and poetry evenings.",
         "rating": 5
       }
     ]
@@ -888,16 +888,16 @@
     "longitude": 21.0122,
     "cafes": [
       {
-        "name": "Loskot Cafe x Przesniona",
+        "name": "Łoskot Cafe x Prześniona",
         "description": "Specialty cafe on Jasna Street serving filter coffee, nitro and cold brew, and an all-day brunch menu with vegan and plant-based-milk options; wheelchair accessible with outdoor seating."
       },
       {
         "name": "DOT Coffeestation",
-        "description": "Specialty filter coffee shop on Leszczynska Street with a remote-work-friendly setup and outdoor tables."
+        "description": "Specialty filter coffee shop on Leszczyńska Street with a remote-work-friendly setup and outdoor tables."
       },
       {
-        "name": "Green Caffe Nero",
-        "description": "Poland's largest independent cafe chain, born from a 2012 partnership between Caffe Nero's Gerry Ford and Green Coffee's Adam Ringer; now over 90 locations nationwide, often set in historic buildings like Warsaw's Palace of Culture and Science and the Jablkowski Brothers department store."
+        "name": "Green Caffè Nero",
+        "description": "Poland's largest independent cafe chain, born from a 2012 partnership between Caffè Nero's Gerry Ford and Green Coffee's Adam Ringer; now over 90 locations nationwide, often set in historic buildings like Warsaw's Palace of Culture and Science and the Jabłkowski Brothers department store."
       },
       {
         "name": "Costa Coffee",

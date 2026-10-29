@@ -6,6 +6,18 @@ interface CityFinderProps {
   onSelectCity: (city: CityStop) => void;
 }
 
+// Letters like ł and ß are distinct characters, not base letter + accent,
+// so NFD alone doesn't fold them.
+const NON_DECOMPOSING: Record<string, string> = { ł: 'l', ß: 'ss', đ: 'd', ø: 'o' };
+
+function fold(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/[łßđø]/g, (ch) => NON_DECOMPOSING[ch]);
+}
+
 export default function CityFinder({ cities, onSelectCity }: CityFinderProps) {
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
@@ -13,14 +25,14 @@ export default function CityFinder({ cities, onSelectCity }: CityFinderProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const q = query.trim().toLowerCase();
+  const q = fold(query.trim());
   const matches = q
     ? cities
         .filter(
           (c) =>
-            c.city.toLowerCase().includes(q) ||
-            c.country.toLowerCase().includes(q) ||
-            c.cafes.some((cafe) => cafe.name.toLowerCase().includes(q)),
+            fold(c.city).includes(q) ||
+            fold(c.country).includes(q) ||
+            c.cafes.some((cafe) => fold(cafe.name).includes(q)),
         )
         .sort((a, b) => a.city.localeCompare(b.city))
     : [...cities].sort((a, b) => a.country.localeCompare(b.country) || a.city.localeCompare(b.city));

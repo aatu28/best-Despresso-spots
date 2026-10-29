@@ -12,6 +12,13 @@ function formatCoord(lat: number, lon: number): string {
   return `${Math.abs(lat).toFixed(2)}°${latDir}, ${Math.abs(lon).toFixed(2)}°${lonDir}`;
 }
 
+// A search URL rather than a stored place link, so there's nothing per-cafe to
+// keep in sync; Maps resolves name + city to the listing (or a short list).
+function mapsUrl(cafeName: string, city: CityStop): string {
+  const query = `${cafeName}, ${city.city}, ${city.country}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
 function StarRating({ rating }: { rating: number }) {
   return (
     <span aria-label={`Rated ${rating} out of 5`} className="flex gap-0.5 text-[11px] leading-none">
@@ -104,15 +111,20 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
           <div className="h-px bg-line" />
 
           <ul className="flex flex-col gap-2.5">
-            {city.cafes.map((cafe) => {
+            {city.cafes.map((cafe, i) => {
               const isOpen = expanded.has(cafe.name);
               const hasDescription = cafe.description && cafe.description !== 'UNVERIFIED';
+              const detailsId = `cafe-details-${city.id}-${i}`;
               return (
-                <li key={cafe.name}>
+                <li
+                  key={cafe.name}
+                  className="rounded-xl border border-panel-border transition-colors hover:bg-tag-bg"
+                >
                   <button
                     onClick={() => toggle(cafe.name)}
                     aria-expanded={isOpen}
-                    className="w-full rounded-xl border border-panel-border px-[18px] py-4 text-left transition-colors hover:bg-tag-bg"
+                    aria-controls={detailsId}
+                    className="w-full rounded-xl px-[18px] py-4 text-left"
                   >
                     <span className="flex items-center justify-between gap-3">
                       <span className="flex flex-col gap-1">
@@ -127,12 +139,34 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
                         {isOpen ? '−' : '+'}
                       </span>
                     </span>
-                    <div className={`cafe-description ${isOpen ? 'is-open' : ''}`}>
-                      <p className="pt-3 text-[13.5px] leading-[1.6] text-ink-faint">
-                        {hasDescription ? cafe.description : 'No verified details yet.'}
-                      </p>
-                    </div>
                   </button>
+                  {/* inert while collapsed so the hidden Maps link isn't tab-reachable */}
+                  <div id={detailsId} inert={!isOpen} className={`cafe-description ${isOpen ? 'is-open' : ''}`}>
+                    <div>
+                      <div className="flex flex-col items-start gap-3 px-[18px] pb-4">
+                        <p className="text-[13.5px] leading-[1.6] text-ink-faint">
+                          {hasDescription ? cafe.description : 'No verified details yet.'}
+                        </p>
+                        <a
+                          href={mapsUrl(cafe.name, city)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-accent hover:underline"
+                        >
+                          <svg aria-hidden width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path
+                              d="M6 11s3.75-3.4 3.75-6.25a3.75 3.75 0 1 0-7.5 0C2.25 7.6 6 11 6 11Z"
+                              stroke="currentColor"
+                              strokeWidth="1.1"
+                            />
+                            <circle cx="6" cy="4.75" r="1.3" stroke="currentColor" strokeWidth="1.1" />
+                          </svg>
+                          Open in Google Maps
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               );
             })}

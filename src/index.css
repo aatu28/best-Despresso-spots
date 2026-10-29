@@ -224,8 +224,9 @@ body {
   grid-template-rows: 1fr;
 }
 
-.cafe-description > p {
+.cafe-description > * {
   overflow: hidden;
+  min-height: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
