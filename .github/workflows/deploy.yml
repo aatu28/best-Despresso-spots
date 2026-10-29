@@ -25,6 +25,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npx playwright install --with-deps --only-shell chromium
+      # Re-screenshots the social preview on every deploy so its counts always
+      # match the data. If it fails, the build already contains the committed
+      # public/og-image.png, so the deploy still goes out with that.
+      - name: Refresh social preview image
+        run: node scripts/og-image.mjs dist/og-image.png
+        continue-on-error: true
       - uses: actions/configure-pages@v5
         with:
           enablement: true

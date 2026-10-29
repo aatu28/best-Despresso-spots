@@ -34,6 +34,8 @@ One pin per city — drag to rotate the globe, scroll to zoom, click a pin to op
 
 To add a city, add an entry to `espresso-data.json` with its coordinates and cafes. A cafe's `description` is a real, sourced one-liner (official site / press / reviews) — if nothing about a name could be verified, set it to the literal string `"UNVERIFIED"` rather than inventing something; the panel shows "No verified details yet." for those instead of fabricated text. `rating` is the opposite: pure personal opinion, not something to source or invent — leave it unset until you've actually decided what you think.
 
+Nothing else needs updating when the data changes. The meta description's city/cafe/country counts are injected from `espresso-data.json` at build time (a small plugin in `vite.config.ts`), and every deploy re-screenshots the social preview image with `scripts/og-image.mjs`, so link previews always show current numbers. If that screenshot step ever fails, the deploy still ships with the committed `public/og-image.png`; `npm run og-image` refreshes that fallback locally.
+
 ## Globe rendering
 
 `src/components/Globe.tsx` sets up the three.js scene: a lit paper-colored sphere with a faint lat/lon graticule, continents drawn as a dense field of ~4,600 small circular points (a custom `ShaderMaterial`), and a wax-seal-red teardrop pin + halo + stem per city. At this point density the land reads as filled continents without any geometry or texture generation — `OrbitControls` handles drag/zoom/auto-rotate; raycasting handles click-to-select.
