@@ -879,5 +879,30 @@
         "rating": 5
       }
     ]
+  },
+  {
+    "id": "warsaw-poland",
+    "city": "Warsaw",
+    "country": "Poland",
+    "latitude": 52.2297,
+    "longitude": 21.0122,
+    "cafes": [
+      {
+        "name": "Loskot Cafe x Przesniona",
+        "description": "Specialty cafe on Jasna Street serving filter coffee, nitro and cold brew, and an all-day brunch menu with vegan and plant-based-milk options; wheelchair accessible with outdoor seating."
+      },
+      {
+        "name": "DOT Coffeestation",
+        "description": "Specialty filter coffee shop on Leszczynska Street with a remote-work-friendly setup and outdoor tables."
+      },
+      {
+        "name": "Green Caffe Nero",
+        "description": "Poland's largest independent cafe chain, born from a 2012 partnership between Caffe Nero's Gerry Ford and Green Coffee's Adam Ringer; now over 90 locations nationwide, often set in historic buildings like Warsaw's Palace of Culture and Science and the Jablkowski Brothers department store."
+      },
+      {
+        "name": "Costa Coffee",
+        "description": "British coffeehouse chain with numerous Warsaw locations, from Krakowskie Przedmieście near the university to Chopin Airport and Warsaw Central station."
+      }
+    ]
   }
 ]
