@@ -904,5 +904,47 @@
         "description": "British coffeehouse chain with numerous Warsaw locations, from Krakowskie Przedmieście near the university to Chopin Airport and Warsaw Central station."
       }
     ]
+  },
+  {
+    "id": "naples-italy",
+    "city": "Naples",
+    "country": "Italy",
+    "latitude": 40.8518,
+    "longitude": 14.2681,
+    "cafes": [
+      {
+        "name": "Salvator Rosa Cafe",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "Caffè del Professore",
+        "description": "Bar on Piazza Trieste e Trento by Piazza del Plebiscito, famous for its caffè alla nocciola, an espresso with hazelnut cream that is the house specialty."
+      },
+      {
+        "name": "Caffetteria Matteotti",
+        "description": "Early-opening neighborhood coffee bar on Via Cesare Battisti, just off Piazza Matteotti near Via Toledo."
+      },
+      {
+        "name": "Caffè Vecchia Napoli",
+        "description": "UNVERIFIED"
+      },
+      {
+        "name": "Bar Elena",
+        "description": "UNVERIFIED"
+      }
+    ]
+  },
+  {
+    "id": "sorrento-italy",
+    "city": "Sorrento",
+    "country": "Italy",
+    "latitude": 40.6263,
+    "longitude": 14.3758,
+    "cafes": [
+      {
+        "name": "Gentile Cafè",
+        "description": "Sorrento cafe and pasticceria serving coffee and pastries."
+      }
+    ]
   }
 ]
