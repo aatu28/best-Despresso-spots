@@ -410,6 +410,31 @@
       {
         "name": "Kyoto Mameshiba Cafe",
         "description": "Pet café in Kyoto's Nakagyo Ward offering timed sessions with resident Shiba Inu dogs and a complimentary vending-machine drink."
+      },
+      {
+        "name": "Starbucks Ninenzaka Yasaka Chaya",
+        "description": "Starbucks in a century-old townhouse on the Ninenzaka slope near Kiyomizu-dera, opened in 2017 as the chain's first store with tatami seating; guests take their shoes off for the upstairs tatami rooms overlooking a small garden."
+      },
+      {
+        "name": "% Arabica Arashiyama",
+        "description": "Riverside coffee stand by the Togetsukyo Bridge in Arashiyama, opened in 2015 in a small glass-fronted building renovated by Puddle; known for long queues and its Kyoto Latte."
+      },
+      {
+        "name": "Ichikawaya Coffee",
+        "description": "Family-run cafe in a 200-year-old Higashiyama machiya near Kiyomizu-dera, opened in 2015 by a former Inoda Coffee veteran; roasts its own beans, serves nel-drip coffee in Kiyomizu-ware cups, and is known for seasonal fruit sandwiches."
+      }
+    ]
+  },
+  {
+    "id": "kinosaki-onsen-japan",
+    "city": "Kinosaki Onsen",
+    "country": "Japan",
+    "latitude": 35.6261,
+    "longitude": 134.8113,
+    "cafes": [
+      {
+        "name": "DRIP & DROP COFFEE SUPPLY",
+        "description": "Takeout coffee stand in Kinosaki Tokiwa Garden from the Kyoto micro-roastery of the same name, its first shop in Hyogo; serves a house Kinosaki Blend and Kinosaki Coffee Milk."
       }
     ]
   },
