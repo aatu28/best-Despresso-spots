@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/*
+ * A phone held sideways is wide enough for the `sm` (desktop) layout but only
+ * ~320–400px tall, so the globe would fill the screen behind the title and
+ * controls. `short:` gives those screens their own layout: header in a left
+ * column, globe to its right.
+ */
+@custom-variant short (@media (orientation: landscape) and (max-height: 500px));
+
 @theme {
   --font-display: "Archivo", system-ui, sans-serif;
   --font-serif: "Fraunces", serif;

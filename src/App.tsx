@@ -56,9 +56,11 @@ function App() {
         otherwise sit right on top of the globe's usual pin band, which both
         hides pins and blocks taps from ever reaching the canvas underneath.
         Reserving that height here (cleared again at sm, where those controls
-        detach into their own corners) keeps every pin reachable.
+        detach into their own corners) keeps every pin reachable. Sideways
+        phones (`short:`) get the same idea horizontally: the header takes a
+        left column and the globe the space to its right.
       */}
-      <div className="box-border h-full w-full pt-[248px] sm:pt-0">
+      <div className="box-border h-full w-full pt-[248px] sm:pt-0 short:pt-0 short:pl-[44%]">
         <Suspense
           fallback={
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -83,10 +85,10 @@ function App() {
       <div className="airmail-stripe pointer-events-none absolute inset-x-0 top-0 z-10" />
       <div className="airmail-stripe pointer-events-none absolute inset-x-0 bottom-0 z-10" />
 
-      <div className="absolute inset-x-0 top-0 z-10 flex flex-col gap-2 p-4 sm:block sm:p-0">
+      <div className="absolute inset-x-0 top-0 z-10 flex flex-col gap-2 p-4 sm:block sm:p-0 short:right-auto short:flex short:w-[44%] short:gap-3 short:py-5 short:pr-4 short:pl-6">
         <GlobeHeader totalCities={cities.length} totalCountries={countries.length} totalCafes={totalCafes} />
 
-        <div className="flex flex-col items-end gap-2 sm:absolute sm:top-14 sm:right-14 sm:gap-3">
+        <div className="flex flex-col items-end gap-2 sm:absolute sm:top-14 sm:right-14 sm:gap-3 short:static short:items-start short:gap-2">
           <CountryFilter
             countries={countries}
             selectedCountry={selectedCountry}
@@ -101,13 +103,13 @@ function App() {
         </div>
       </div>
 
-      <p className="pointer-events-none absolute bottom-8 left-8 z-10 text-[11px] tracking-[0.02em] text-ink-faint sm:bottom-12 sm:left-14">
+      <p className="pointer-events-none absolute bottom-8 left-8 z-10 text-[11px] tracking-[0.02em] text-ink-faint sm:bottom-12 sm:left-14 short:bottom-5 short:left-6">
         Drag to rotate &bull; Scroll to zoom &bull; Click a mark
       </p>
 
       <div
         aria-hidden
-        className="stamp-badge-dashed pointer-events-none absolute right-14 bottom-12 z-10 hidden h-[148px] w-[112px] flex-none flex-col items-center justify-center gap-2 rounded-sm bg-panel sm:flex"
+        className="stamp-badge-dashed pointer-events-none absolute right-14 bottom-12 z-10 hidden h-[148px] w-[112px] flex-none flex-col items-center justify-center gap-2 rounded-sm bg-panel sm:flex short:hidden"
         style={{ transform: 'rotate(-3deg)' }}
       >
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">

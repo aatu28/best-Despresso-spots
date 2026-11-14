@@ -14,9 +14,10 @@ export default function CountryFilter({
   totalCount,
 }: CountryFilterProps) {
   return (
-    <div className="flex flex-col items-end gap-1.5 self-end sm:self-auto">
+    <div className="flex flex-col items-end gap-1.5 self-end sm:self-auto short:items-start short:self-start">
       <label className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-ink-faint uppercase">
-        Country
+        {/* Too wide for the left column on the narrowest sideways phones; the select speaks for itself. */}
+        <span className="max-sm:short:sr-only">Country</span>
         <select
           value={selectedCountry}
           onChange={(e) => onCountryChange(e.target.value)}

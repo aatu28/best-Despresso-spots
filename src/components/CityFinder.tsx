@@ -77,7 +77,7 @@ export default function CityFinder({ cities, onSelectCity }: CityFinderProps) {
   let lastCountry: string | null = null;
 
   return (
-    <div ref={rootRef} className="relative w-[220px] sm:w-[260px]">
+    <div ref={rootRef} className="relative w-[220px] sm:w-[260px] short:w-full">
       <div className="relative flex items-center">
         <svg
           aria-hidden
@@ -126,7 +126,8 @@ export default function CityFinder({ cities, onSelectCity }: CityFinderProps) {
         <ul
           id="city-finder-listbox"
           role="listbox"
-          className="absolute top-[calc(100%+8px)] right-0 z-20 max-h-80 w-full overflow-y-auto rounded-xl border border-panel-border bg-panel py-1.5 shadow-lg"
+          // On sideways phones there's no room below the search box, so the list opens over the globe side instead.
+          className="absolute top-[calc(100%+8px)] right-0 z-20 max-h-80 w-full overflow-y-auto rounded-xl border border-panel-border bg-panel py-1.5 shadow-lg short:fixed short:top-4 short:right-4 short:bottom-4 short:left-[calc(44%+16px)] short:max-h-none short:w-auto"
         >
           {matches.length === 0 && (
             <li className="px-4 py-3 text-[13px] text-ink-faint">No cities or cafes match "{query}".</li>
