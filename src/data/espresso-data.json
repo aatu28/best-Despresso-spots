@@ -956,6 +956,18 @@
       {
         "name": "Bar Elena",
         "description": "UNVERIFIED"
+      },
+      {
+        "name": "Leopoldo",
+        "description": "Neapolitan pastry and taralli maker that began in 1940, now with pastry shops and cafes across the city; known for its classic sugna-and-pepper taralli."
+      },
+      {
+        "name": "Vulevu' Caffetteria Bistrot",
+        "description": "Central Naples caffetteria and bistrot near Via Toledo, open from breakfast through dinner with Neapolitan dishes."
+      },
+      {
+        "name": "Gran Caffè Valentino",
+        "description": "Coffee bar inside Napoli Centrale, the city's main railway station."
       }
     ]
   },
