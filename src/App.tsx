@@ -56,11 +56,12 @@ function App() {
         otherwise sit right on top of the globe's usual pin band, which both
         hides pins and blocks taps from ever reaching the canvas underneath.
         Reserving that height here (cleared again at sm, where those controls
-        detach into their own corners) keeps every pin reachable. Sideways
+        detach into their own corners) keeps every pin reachable; the bottom
+        padding does the same for the "Drag to rotate" hint. Sideways
         phones (`short:`) get the same idea horizontally: the header takes a
         left column and the globe the space to its right.
       */}
-      <div className="box-border h-full w-full pt-[248px] sm:pt-0 short:pt-0 short:pl-[44%]">
+      <div className="box-border h-full w-full pt-[248px] pb-12 sm:pt-0 sm:pb-0 short:pt-0 short:pb-0 short:pl-[44%]">
         <Suspense
           fallback={
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -104,7 +105,8 @@ function App() {
       </div>
 
       <p className="pointer-events-none absolute bottom-8 left-8 z-10 text-[11px] tracking-[0.02em] text-ink-faint sm:bottom-12 sm:left-14 short:bottom-5 short:left-6">
-        Drag to rotate &bull; Scroll to zoom &bull; Click a mark
+        Drag to rotate &bull; <span className="pointer-coarse:hidden">Scroll to zoom &bull; Click a mark</span>
+        <span className="hidden pointer-coarse:inline">Pinch to zoom &bull; Tap a mark</span>
       </p>
 
       <div

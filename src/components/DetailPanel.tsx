@@ -63,10 +63,12 @@ export default function DetailPanel({ city, onClose }: DetailPanelProps) {
     }
   }
 
+  // On portrait phones the sheet stops at 248px, where App's mobile header
+  // ends, so it covers the globe but never cuts through the search box.
   return (
     <aside
       aria-live="polite"
-      className={`detail-panel absolute inset-x-0 bottom-0 z-30 flex max-h-[70vh] flex-col gap-5 overflow-y-auto border-t border-panel-border bg-panel p-6 shadow-2xl sm:inset-x-auto sm:top-0 sm:right-0 sm:h-full sm:max-h-none sm:w-[min(400px,90vw)] sm:border-t-0 sm:border-l sm:p-10 sm:py-12 short:inset-x-auto short:top-0 short:right-0 short:h-full short:max-h-none short:w-[min(400px,70vw)] short:gap-4 short:border-t-0 short:border-l short:p-6 ${
+      className={`detail-panel absolute inset-x-0 bottom-0 z-30 flex max-h-[calc(100dvh-248px)] flex-col gap-5 overflow-y-auto border-t border-panel-border bg-panel p-6 shadow-2xl sm:inset-x-auto sm:top-0 sm:right-0 sm:h-full sm:max-h-none sm:w-[min(400px,90vw)] sm:border-t-0 sm:border-l sm:p-10 sm:py-12 short:inset-x-auto short:top-0 short:right-0 short:h-full short:max-h-none short:w-[min(400px,70vw)] short:gap-4 short:border-t-0 short:border-l short:p-6 ${
         open
           ? 'translate-y-0 sm:translate-x-0 short:translate-x-0'
           : 'translate-y-full sm:translate-x-full sm:translate-y-0 short:translate-x-full short:translate-y-0'
